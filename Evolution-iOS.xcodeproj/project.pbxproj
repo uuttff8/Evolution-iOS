@@ -18,6 +18,7 @@
 		4E290FB223DDF28E008A5E15 /* ProposalsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FB123DDF28E008A5E15 /* ProposalsListViewController.swift */; };
 		4E290FB423DDF2A1008A5E15 /* ProposalsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E290FB323DDF2A1008A5E15 /* ProposalsList.storyboard */; };
 		4E290FB723DDF5D2008A5E15 /* Storyboaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FB623DDF5D2008A5E15 /* Storyboaded.swift */; };
+		4E290FC123DE098E008A5E15 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FC023DE098E008A5E15 /* BaseCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		4E290FB123DDF28E008A5E15 /* ProposalsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsListViewController.swift; sourceTree = "<group>"; };
 		4E290FB323DDF2A1008A5E15 /* ProposalsList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProposalsList.storyboard; sourceTree = "<group>"; };
 		4E290FB623DDF5D2008A5E15 /* Storyboaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboaded.swift; sourceTree = "<group>"; };
+		4E290FC023DE098E008A5E15 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				4E290F7823DDEF34008A5E15 /* SceneDelegate.swift */,
 				4E290FAB23DDF21A008A5E15 /* Features */,
 				4E290FAD23DDF252008A5E15 /* Base */,
+				4E290FB823DDFEEA008A5E15 /* CustomViews */,
 				4E290FB523DDF5A2008A5E15 /* Utils */,
 				4E290FA923DDEF4C008A5E15 /* Supporting */,
 			);
@@ -165,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				4E290FAF23DDF274008A5E15 /* BaseViewController.swift */,
+				4E290FC023DE098E008A5E15 /* BaseCoordinator.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -175,6 +179,13 @@
 				4E290FB623DDF5D2008A5E15 /* Storyboaded.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		4E290FB823DDFEEA008A5E15 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E290FC123DE098E008A5E15 /* BaseCoordinator.swift in Sources */,
 				4E290FB723DDF5D2008A5E15 /* Storyboaded.swift in Sources */,
 				4E290FB023DDF274008A5E15 /* BaseViewController.swift in Sources */,
 				4E290FB223DDF28E008A5E15 /* ProposalsListViewController.swift in Sources */,

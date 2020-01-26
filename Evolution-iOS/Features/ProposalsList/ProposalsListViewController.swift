@@ -9,10 +9,7 @@
 import UIKit
 
 class ProposalsListViewController: BaseViewController, Storyboarded {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+    
     
 }
+
