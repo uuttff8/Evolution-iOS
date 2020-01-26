@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ProposalsListViewController.swift
 //  Evolution-iOS
 //
 //  Created by uuttff8 on 1/26/20.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ProposalsListViewController: BaseViewController, Storyboarded {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
-
-
+    
 }
-
