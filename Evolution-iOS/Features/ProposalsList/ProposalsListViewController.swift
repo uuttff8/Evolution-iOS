@@ -10,6 +10,9 @@ import UIKit
 
 class ProposalsListViewController: BaseViewController, Storyboarded {
     
-    
+    @IBOutlet weak var navDropDown: NavDropDown! {
+        didSet {
+            self.navDropDown.vc = self
+        }
+    }
 }
-

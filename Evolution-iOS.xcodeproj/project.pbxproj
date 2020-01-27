@@ -19,6 +19,8 @@
 		4E290FB423DDF2A1008A5E15 /* ProposalsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E290FB323DDF2A1008A5E15 /* ProposalsList.storyboard */; };
 		4E290FB723DDF5D2008A5E15 /* Storyboaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FB623DDF5D2008A5E15 /* Storyboaded.swift */; };
 		4E290FC123DE098E008A5E15 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FC023DE098E008A5E15 /* BaseCoordinator.swift */; };
+		4E290FC423DF7B0F008A5E15 /* NavDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FC323DF7B0F008A5E15 /* NavDropDown.swift */; };
+		4E290FC623DF7C36008A5E15 /* NavDropDown.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E290FC523DF7C36008A5E15 /* NavDropDown.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		4E290FB323DDF2A1008A5E15 /* ProposalsList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProposalsList.storyboard; sourceTree = "<group>"; };
 		4E290FB623DDF5D2008A5E15 /* Storyboaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboaded.swift; sourceTree = "<group>"; };
 		4E290FC023DE098E008A5E15 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		4E290FC323DF7B0F008A5E15 /* NavDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDropDown.swift; sourceTree = "<group>"; };
+		4E290FC523DF7C36008A5E15 /* NavDropDown.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavDropDown.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,8 +188,18 @@
 		4E290FB823DDFEEA008A5E15 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				4E290FC223DF7AFE008A5E15 /* NavDropDownView */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		4E290FC223DF7AFE008A5E15 /* NavDropDownView */ = {
+			isa = PBXGroup;
+			children = (
+				4E290FC323DF7B0F008A5E15 /* NavDropDown.swift */,
+				4E290FC523DF7C36008A5E15 /* NavDropDown.xib */,
+			);
+			path = NavDropDownView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +308,7 @@
 			files = (
 				4E290F8623DDEF34008A5E15 /* LaunchScreen.storyboard in Resources */,
 				4E290F8323DDEF34008A5E15 /* Assets.xcassets in Resources */,
+				4E290FC623DF7C36008A5E15 /* NavDropDown.xib in Resources */,
 				4E290FB423DDF2A1008A5E15 /* ProposalsList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +340,7 @@
 				4E290FB223DDF28E008A5E15 /* ProposalsListViewController.swift in Sources */,
 				4E290F8123DDEF34008A5E15 /* Evolution_iOS.xcdatamodeld in Sources */,
 				4E290F7723DDEF34008A5E15 /* AppDelegate.swift in Sources */,
+				4E290FC423DF7B0F008A5E15 /* NavDropDown.swift in Sources */,
 				4E290F7923DDEF34008A5E15 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

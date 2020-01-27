@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavDropDown" customModule="Evolution_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="arrow" destination="Sfr-Wy-vpO" id="eTz-Ox-Qzi"/>
+                <outlet property="title" destination="B4V-pF-dCp" id="x9G-Ba-vCr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="272" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OF7-L5-nQz">
+                    <rect key="frame" x="0.0" y="0.0" width="272" height="90"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4V-pF-dCp">
+                            <rect key="frame" x="116.5" y="34" width="39" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="highlightedColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sfr-Wy-vpO">
+                            <rect key="frame" x="160.5" y="34" width="19" height="22"/>
+                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <state key="normal" image="chevron.up" catalog="system">
+                                <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="B4V-pF-dCp" firstAttribute="centerY" secondItem="OF7-L5-nQz" secondAttribute="centerY" id="0p9-V1-JZu"/>
+                        <constraint firstItem="Sfr-Wy-vpO" firstAttribute="leading" secondItem="B4V-pF-dCp" secondAttribute="trailing" constant="5" id="FfT-Vn-T6t"/>
+                        <constraint firstItem="B4V-pF-dCp" firstAttribute="centerX" secondItem="OF7-L5-nQz" secondAttribute="centerX" id="UIG-Sw-kob"/>
+                        <constraint firstItem="Sfr-Wy-vpO" firstAttribute="top" secondItem="B4V-pF-dCp" secondAttribute="top" id="XGq-bt-8eF"/>
+                        <constraint firstItem="B4V-pF-dCp" firstAttribute="centerX" secondItem="OF7-L5-nQz" secondAttribute="centerX" id="iaD-Eh-uiB"/>
+                        <constraint firstItem="Sfr-Wy-vpO" firstAttribute="bottom" secondItem="B4V-pF-dCp" secondAttribute="bottom" id="o2i-DN-ciK"/>
+                        <constraint firstItem="B4V-pF-dCp" firstAttribute="centerY" secondItem="OF7-L5-nQz" secondAttribute="centerY" id="o5F-mW-AQl"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OF7-L5-nQz" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="KlB-uH-0kX"/>
+                <constraint firstItem="OF7-L5-nQz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jUk-f8-lk0"/>
+                <constraint firstItem="OF7-L5-nQz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mmY-JW-pQP"/>
+                <constraint firstItem="OF7-L5-nQz" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="sNY-ej-Mom"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="343.47826086956525" y="-117.1875"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chevron.up" catalog="system" width="64" height="36"/>
+    </resources>
+</document>

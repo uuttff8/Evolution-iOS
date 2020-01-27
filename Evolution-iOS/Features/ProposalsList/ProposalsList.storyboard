@@ -19,7 +19,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="FYN-hc-bdx">
                         <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="Wyc-Uz-pHh" customClass="NavDropDown" customModule="Evolution_iOS" customModuleProvider="target">
+                            <rect key="frame" x="151" y="7" width="112" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
                     </navigationItem>
+                    <connections>
+                        <outlet property="navDropDown" destination="Wyc-Uz-pHh" id="m1q-9v-tFl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWb-rV-RoB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
