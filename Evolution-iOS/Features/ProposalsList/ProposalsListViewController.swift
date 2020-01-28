@@ -15,4 +15,10 @@ class ProposalsListViewController: BaseViewController, Storyboarded {
             self.navDropDown.vc = self
         }
     }
+    
+    override func viewDidLoad() {
+        self.navDropDown.didChangeLanguageCompletion = { (lang: LanguageSelected) in
+            print(lang)
+        }
+    }
 }

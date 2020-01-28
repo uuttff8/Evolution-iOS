@@ -15,9 +15,10 @@ enum LanguageSelected {
 
 class NavDropDown: UIButton {
     
-    var language = LanguageSelected.Swift
+    var didChangeLanguageCompletion: ((LanguageSelected) -> ())?
     
-    var vc: UIViewController?
+    var language = LanguageSelected.Swift
+    weak var vc: UIViewController?
     
     @IBOutlet private weak var title: UILabel!
     @IBOutlet weak var arrow: UIButton!
@@ -56,12 +57,14 @@ class NavDropDown: UIButton {
             self.title.text = "Swift"
             self.language = LanguageSelected.Swift
             self.rotateArrowWithAnimation()
+            self.didChangeLanguageCompletion?(LanguageSelected.Swift)
         }
         
         let rustAc = UIAlertAction(title: "Rust", style: .default) { (action) in
             self.title.text = "Rust"
             self.language = LanguageSelected.Rust
             self.rotateArrowWithAnimation()
+            self.didChangeLanguageCompletion?(LanguageSelected.Rust)
         }
         
         alert.addAction(swiftAc); alert.addAction(rustAc)
@@ -82,7 +85,7 @@ class NavDropDown: UIButton {
 
 // MARK: - UIView Extension -
 
-extension UIView {
+private extension UIView {
     
     /**
      Rotate a view by specified degrees

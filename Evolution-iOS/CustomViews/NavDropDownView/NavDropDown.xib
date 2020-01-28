@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,6 +27,10 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sfr-Wy-vpO">
                             <rect key="frame" x="160.5" y="34" width="19" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="19" id="O0B-dc-I7F"/>
+                                <constraint firstAttribute="height" constant="22" id="QOT-IQ-lYh"/>
+                            </constraints>
                             <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <state key="normal" image="chevron.up" catalog="system">
                                 <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -48,13 +51,12 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="OF7-L5-nQz" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="KlB-uH-0kX"/>
-                <constraint firstItem="OF7-L5-nQz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jUk-f8-lk0"/>
+                <constraint firstItem="OF7-L5-nQz" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="KlB-uH-0kX"/>
+                <constraint firstItem="OF7-L5-nQz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jUk-f8-lk0"/>
                 <constraint firstItem="OF7-L5-nQz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mmY-JW-pQP"/>
-                <constraint firstItem="OF7-L5-nQz" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="sNY-ej-Mom"/>
+                <constraint firstItem="OF7-L5-nQz" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="sNY-ej-Mom"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="343.47826086956525" y="-117.1875"/>
         </view>
     </objects>
