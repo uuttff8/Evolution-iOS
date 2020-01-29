@@ -13,15 +13,15 @@ enum LanguageSelected {
     case Rust
 }
 
+@IBDesignable
 class NavDropDown: UIButton {
     
     var didChangeLanguageCompletion: ((LanguageSelected) -> ())?
-    
     var language = LanguageSelected.Swift
     weak var vc: UIViewController?
     
     @IBOutlet private weak var title: UILabel!
-    @IBOutlet weak var arrow: UIButton!
+    @IBOutlet private weak var arrow: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,7 +38,7 @@ class NavDropDown: UIButton {
         commonInit()
     }
     
-    func commonInit() {
+    private func commonInit() {
         guard let view = Bundle(for: NavDropDown.self).loadNibNamed(String(describing: NavDropDown.self), owner: self, options: nil)?.first as? UIView else { return }
         view.frame = self.bounds
         self.addSubview(view)
@@ -75,9 +75,9 @@ class NavDropDown: UIButton {
         vc?.present(alert, animated: true, completion: nil)
     }
     
-    func rotateArrowWithAnimation() {
+    private func rotateArrowWithAnimation() {
         UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseInOut], animations: {
-                self.arrow.rotate(angle: -180)
+                self.arrow.rotate(angle: 180)
         })
     }
 }

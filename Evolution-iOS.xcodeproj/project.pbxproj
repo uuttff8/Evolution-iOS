@@ -21,6 +21,9 @@
 		4E290FC123DE098E008A5E15 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FC023DE098E008A5E15 /* BaseCoordinator.swift */; };
 		4E290FC423DF7B0F008A5E15 /* NavDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FC323DF7B0F008A5E15 /* NavDropDown.swift */; };
 		4E290FC623DF7C36008A5E15 /* NavDropDown.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E290FC523DF7C36008A5E15 /* NavDropDown.xib */; };
+		4E290FC923E15E0E008A5E15 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FC823E15E0E008A5E15 /* HttpClient.swift */; };
+		4E290FCB23E15E48008A5E15 /* EvoNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FCA23E15E48008A5E15 /* EvoNetworking.swift */; };
+		4E290FCE23E15EC9008A5E15 /* Proposals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FCD23E15EC9008A5E15 /* Proposals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		4E290FC023DE098E008A5E15 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		4E290FC323DF7B0F008A5E15 /* NavDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDropDown.swift; sourceTree = "<group>"; };
 		4E290FC523DF7C36008A5E15 /* NavDropDown.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavDropDown.xib; sourceTree = "<group>"; };
+		4E290FC823E15E0E008A5E15 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		4E290FCA23E15E48008A5E15 /* EvoNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvoNetworking.swift; sourceTree = "<group>"; };
+		4E290FCD23E15EC9008A5E15 /* Proposals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proposals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +186,8 @@
 		4E290FB523DDF5A2008A5E15 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4E290FCC23E15EAB008A5E15 /* Models */,
+				4E290FC723E15D21008A5E15 /* Networking */,
 				4E290FB623DDF5D2008A5E15 /* Storyboaded.swift */,
 			);
 			path = Utils;
@@ -200,6 +208,23 @@
 				4E290FC523DF7C36008A5E15 /* NavDropDown.xib */,
 			);
 			path = NavDropDownView;
+			sourceTree = "<group>";
+		};
+		4E290FC723E15D21008A5E15 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				4E290FC823E15E0E008A5E15 /* HttpClient.swift */,
+				4E290FCA23E15E48008A5E15 /* EvoNetworking.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		4E290FCC23E15EAB008A5E15 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4E290FCD23E15EC9008A5E15 /* Proposals.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,7 +363,10 @@
 				4E290FB723DDF5D2008A5E15 /* Storyboaded.swift in Sources */,
 				4E290FB023DDF274008A5E15 /* BaseViewController.swift in Sources */,
 				4E290FB223DDF28E008A5E15 /* ProposalsListViewController.swift in Sources */,
+				4E290FC923E15E0E008A5E15 /* HttpClient.swift in Sources */,
+				4E290FCE23E15EC9008A5E15 /* Proposals.swift in Sources */,
 				4E290F8123DDEF34008A5E15 /* Evolution_iOS.xcdatamodeld in Sources */,
+				4E290FCB23E15E48008A5E15 /* EvoNetworking.swift in Sources */,
 				4E290F7723DDEF34008A5E15 /* AppDelegate.swift in Sources */,
 				4E290FC423DF7B0F008A5E15 /* NavDropDown.swift in Sources */,
 				4E290F7923DDEF34008A5E15 /* SceneDelegate.swift in Sources */,
