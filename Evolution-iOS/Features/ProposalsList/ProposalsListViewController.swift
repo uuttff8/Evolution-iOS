@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Combine
 
-class ProposalsListViewController: BaseViewController, Storyboarded {
+class ProposalsListViewController: ViewController {
+    
+    weak var coordinator: ProposalsListCoordinator?
     
     @IBOutlet weak var navDropDown: NavDropDown! {
         didSet {
@@ -17,8 +20,12 @@ class ProposalsListViewController: BaseViewController, Storyboarded {
     }
     
     override func viewDidLoad() {
-        self.navDropDown.didChangeLanguageCompletion = { (lang: LanguageSelected) in
-            print(lang)
+        guard let coordinator = coordinator else { return }
+        
+        self.navDropDown.didChangeLanguageCompletion = { (selectedLang: LanguageSelected) in
+            coordinator.changeLangTo(selectedLang)
         }
     }
 }
+
+extension ProposalsListViewController: Storyboarded {}

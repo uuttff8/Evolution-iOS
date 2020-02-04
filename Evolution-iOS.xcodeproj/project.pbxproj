@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4E290F7723DDEF34008A5E15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290F7623DDEF34008A5E15 /* AppDelegate.swift */; };
-		4E290F7923DDEF34008A5E15 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290F7823DDEF34008A5E15 /* SceneDelegate.swift */; };
 		4E290F8123DDEF34008A5E15 /* Evolution_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E290F7F23DDEF34008A5E15 /* Evolution_iOS.xcdatamodeld */; };
 		4E290F8323DDEF34008A5E15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E290F8223DDEF34008A5E15 /* Assets.xcassets */; };
 		4E290F8623DDEF34008A5E15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E290F8423DDEF34008A5E15 /* LaunchScreen.storyboard */; };
@@ -24,6 +23,10 @@
 		4E290FC923E15E0E008A5E15 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FC823E15E0E008A5E15 /* HttpClient.swift */; };
 		4E290FCB23E15E48008A5E15 /* EvoNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FCA23E15E48008A5E15 /* EvoNetworking.swift */; };
 		4E290FCE23E15EC9008A5E15 /* Proposals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FCD23E15EC9008A5E15 /* Proposals.swift */; };
+		4E61815723E8523B0059DEA3 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61815623E8523B0059DEA3 /* UIColor+Extensions.swift */; };
+		4E61815A23E85EB80059DEA3 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61815923E85EB80059DEA3 /* Buttons.swift */; };
+		4E61815C23E9B22F0059DEA3 /* ProposalsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61815B23E9B22F0059DEA3 /* ProposalsListController.swift */; };
+		4E61815E23E9B4CA0059DEA3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61815D23E9B4CA0059DEA3 /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +49,6 @@
 /* Begin PBXFileReference section */
 		4E290F7323DDEF34008A5E15 /* Evolution-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Evolution-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E290F7623DDEF34008A5E15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4E290F7823DDEF34008A5E15 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4E290F8023DDEF34008A5E15 /* Evolution_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Evolution_iOS.xcdatamodel; sourceTree = "<group>"; };
 		4E290F8223DDEF34008A5E15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E290F8523DDEF34008A5E15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,6 +69,10 @@
 		4E290FC823E15E0E008A5E15 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		4E290FCA23E15E48008A5E15 /* EvoNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvoNetworking.swift; sourceTree = "<group>"; };
 		4E290FCD23E15EC9008A5E15 /* Proposals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proposals.swift; sourceTree = "<group>"; };
+		4E61815623E8523B0059DEA3 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		4E61815923E85EB80059DEA3 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		4E61815B23E9B22F0059DEA3 /* ProposalsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsListController.swift; sourceTree = "<group>"; };
+		4E61815D23E9B4CA0059DEA3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				4E290F7623DDEF34008A5E15 /* AppDelegate.swift */,
-				4E290F7823DDEF34008A5E15 /* SceneDelegate.swift */,
+				4E61815D23E9B4CA0059DEA3 /* AppCoordinator.swift */,
 				4E290FAB23DDF21A008A5E15 /* Features */,
 				4E290FAD23DDF252008A5E15 /* Base */,
 				4E290FB823DDFEEA008A5E15 /* CustomViews */,
@@ -170,6 +176,7 @@
 			children = (
 				4E290FB123DDF28E008A5E15 /* ProposalsListViewController.swift */,
 				4E290FB323DDF2A1008A5E15 /* ProposalsList.storyboard */,
+				4E61815B23E9B22F0059DEA3 /* ProposalsListController.swift */,
 			);
 			path = ProposalsList;
 			sourceTree = "<group>";
@@ -189,6 +196,7 @@
 				4E290FCC23E15EAB008A5E15 /* Models */,
 				4E290FC723E15D21008A5E15 /* Networking */,
 				4E290FB623DDF5D2008A5E15 /* Storyboaded.swift */,
+				4E61815623E8523B0059DEA3 /* UIColor+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -196,7 +204,7 @@
 		4E290FB823DDFEEA008A5E15 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				4E290FC223DF7AFE008A5E15 /* NavDropDownView */,
+				4E61815823E85EA30059DEA3 /* designables */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -225,6 +233,15 @@
 				4E290FCD23E15EC9008A5E15 /* Proposals.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4E61815823E85EA30059DEA3 /* designables */ = {
+			isa = PBXGroup;
+			children = (
+				4E290FC223DF7AFE008A5E15 /* NavDropDownView */,
+				4E61815923E85EB80059DEA3 /* Buttons.swift */,
+			);
+			path = designables;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,14 +379,17 @@
 				4E290FC123DE098E008A5E15 /* BaseCoordinator.swift in Sources */,
 				4E290FB723DDF5D2008A5E15 /* Storyboaded.swift in Sources */,
 				4E290FB023DDF274008A5E15 /* BaseViewController.swift in Sources */,
+				4E61815A23E85EB80059DEA3 /* Buttons.swift in Sources */,
 				4E290FB223DDF28E008A5E15 /* ProposalsListViewController.swift in Sources */,
 				4E290FC923E15E0E008A5E15 /* HttpClient.swift in Sources */,
+				4E61815E23E9B4CA0059DEA3 /* AppCoordinator.swift in Sources */,
 				4E290FCE23E15EC9008A5E15 /* Proposals.swift in Sources */,
 				4E290F8123DDEF34008A5E15 /* Evolution_iOS.xcdatamodeld in Sources */,
+				4E61815723E8523B0059DEA3 /* UIColor+Extensions.swift in Sources */,
 				4E290FCB23E15E48008A5E15 /* EvoNetworking.swift in Sources */,
 				4E290F7723DDEF34008A5E15 /* AppDelegate.swift in Sources */,
+				4E61815C23E9B22F0059DEA3 /* ProposalsListController.swift in Sources */,
 				4E290FC423DF7B0F008A5E15 /* NavDropDown.swift in Sources */,
-				4E290F7923DDEF34008A5E15 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

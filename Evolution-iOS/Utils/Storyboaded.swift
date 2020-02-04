@@ -18,8 +18,6 @@ protocol Storyboarded {
 
 extension Storyboarded where Self: UIViewController {
     static func instantiate(from storyboardId: AppStoryboards) -> Self {
-        print("111asdads")
-
         let id = String(describing: self)
         // load our storyboard
         var storyboard: UIStoryboard

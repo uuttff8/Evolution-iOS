@@ -14,13 +14,43 @@
                     <view key="view" contentMode="scaleToFill" id="t11-9b-0aN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="adn-lI-NGj">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="F2K-w8-Thk">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F2K-w8-Thk" id="tmx-3X-DIa">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="118" id="TBb-ZV-fSf">
+                                        <rect key="frame" x="0.0" y="128" width="414" height="118"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TBb-ZV-fSf" id="3fY-wr-Yj0">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fke-I3-oC2" firstAttribute="bottom" secondItem="adn-lI-NGj" secondAttribute="bottom" id="GWg-Ez-1mK"/>
+                            <constraint firstItem="fke-I3-oC2" firstAttribute="trailing" secondItem="adn-lI-NGj" secondAttribute="trailing" id="LX2-xa-79g"/>
+                            <constraint firstItem="adn-lI-NGj" firstAttribute="leading" secondItem="fke-I3-oC2" secondAttribute="leading" id="hfw-3d-Mgk"/>
+                            <constraint firstItem="adn-lI-NGj" firstAttribute="top" secondItem="fke-I3-oC2" secondAttribute="top" id="lww-PI-lfU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fke-I3-oC2"/>
                     </view>
                     <navigationItem key="navigationItem" id="FYN-hc-bdx">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="Wyc-Uz-pHh" customClass="NavDropDown" customModule="Evolution_iOS" customModuleProvider="target">
-                            <rect key="frame" x="151" y="7" width="112" height="30"/>
+                            <rect key="frame" x="151" y="5" width="112" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
@@ -33,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="876.81159420289862" y="92.410714285714278"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Proposals List Navigation Controller-->
         <scene sceneID="E9y-6Q-mtU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mWu-9r-QUM" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ProposalsListNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="mWu-9r-QUM" customClass="ProposalsListNavigationController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Akl-RS-tns">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -49,7 +79,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHo-m6-DWU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-33.333333333333336" y="92.410714285714278"/>
+            <point key="canvasLocation" x="41" y="92"/>
         </scene>
     </scenes>
 </document>

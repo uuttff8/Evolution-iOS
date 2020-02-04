@@ -6,21 +6,11 @@
 //  Copyright © 2020 Anton Kuzmin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class BaseCoordinator<BaseView> {
-  
-    var presenterView: BaseView?
-    
-    func onCreate(view: BaseView) {
-        self.presenterView = view
-    }
+protocol Coordinator {
+    var childCoordinators: [Coordinator] { get set }
+    var navigationController: UINavigationController { get set }
 
-    func onDestroy() {
-        self.presenterView = nil
-    }
-    
-    func printDada(response: Data) {
-        print(String(data: response, encoding: .utf8) ?? "")
-    }
+    func start()
 }

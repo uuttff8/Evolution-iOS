@@ -9,30 +9,38 @@
 import Foundation
 import Combine
 
-protocol MLApiLinksProvider {
-    func fetchLinks(url: String, userCountry: String) -> AnyPublisher<Proposals?, Never>
+
+private enum ConstantsApiUrl: String {
+    case Swift = "https://data.evoapp.io/"
+    case Rust = "http://34.90.185.88:8000/"
 }
 
-protocol MLApiProvider: MLApiLinksProvider { }
+private protocol MLApiLinksProviderSwift {
+    func fetchProposals() -> AnyPublisher<[ProposalSwift]?, Never>
+}
 
-final class MLApi: MLApiProvider {
-    private struct Constants {
-        static let apiUrl: String = "http://34.90.185.88:8000/"
-    }
-    
+private protocol MLApiLinksProviderRust {
+    func fetchProposals() -> AnyPublisher<ProposalsRust?, Never>
+}
+
+private protocol MLApiProviderRust: MLApiLinksProviderRust { }
+private protocol MLApiProviderSwift: MLApiLinksProviderSwift { }
+
+final class MLApiImplRust: MLApiProviderRust {
+        
     private let httpClient: HTTPClientProvider
     
     init(httpClient: HTTPClientProvider = HTTPClient()) {
         self.httpClient = httpClient
     }
     
-    func fetchLinks(url: String, userCountry: String) -> AnyPublisher<Proposals?, Never> {
-        let url = URL(string: Constants.apiUrl + "proposals")
+    func fetchProposals() -> AnyPublisher<ProposalsRust?, Never> {
+        let url = URL(string: ConstantsApiUrl.Rust.rawValue + "proposals")
         return httpClient.get(url: url!)
             .retry(1)
-            .map { data -> Proposals? in
+            .map { data -> ProposalsRust? in
                 guard let data = data,
-                let response = try? JSONDecoder().decode(Proposals.self, from: data) else {
+                let response = try? JSONDecoder().decode(ProposalsRust.self, from: data) else {
                     return nil
             }
             return response
@@ -40,4 +48,33 @@ final class MLApi: MLApiProvider {
         .replaceError(with: nil)
         .eraseToAnyPublisher()
     }
+}
+
+final class MLApiImplSwift: MLApiProviderSwift {
+
+    private let httpClient: HTTPClientProvider
+    
+    init(httpClient: HTTPClientProvider = HTTPClient()) {
+        self.httpClient = httpClient
+    }
+    
+    func fetchProposals() -> AnyPublisher<[ProposalSwift]?, Never> {
+        let url = URL(string: ConstantsApiUrl.Swift.rawValue + "proposals")
+        return httpClient.get(url: url!)
+            .retry(1)
+            .map { data -> [ProposalSwift]? in
+                guard let data = data,
+                let response = try? JSONDecoder().decode([ProposalSwift].self, from: data) else {
+                    return nil
+            }
+            return response
+        }
+        .replaceError(with: nil)
+        .eraseToAnyPublisher()
+    }
+}
+
+enum MLApi {
+    static let Swift = MLApiImplSwift()
+    static let Rust = MLApiImplRust()
 }
