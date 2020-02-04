@@ -9,6 +9,11 @@
 import UIKit
 import Combine
 
+enum LangData {
+    case RustData(ProposalsRust)
+    case SwiftData([ProposalSwift])
+}
+
 class ProposalsListCoordinator: Coordinator {
 
     var childCoordinators = [Coordinator]()
@@ -29,21 +34,19 @@ class ProposalsListCoordinator: Coordinator {
         
     }
     
-    func changeLangTo(_ lang: LanguageSelected) {
+    func changeLangTo(_ lang: LanguageSelected, completion: @escaping (LangData) -> ()) {
         switch lang {
         case .Rust:
             MLApi.Rust.fetchProposals()
                 .receive(on: RunLoop.main)
                 .sink { (propRust) in
-                    if let propRust = propRust {
-                        print(propRust)
-                    }
+                    guard let propRust = propRust else { return }
+                    completion(LangData.RustData(propRust))
             }.store(in: &self.cancellable)
         case .Swift:
             MLApi.Swift.fetchProposals().sink { (propSwift) in
-                if let propSwift = propSwift {
-                    print(propSwift)
-                }
+                guard let propSwift = propSwift else { return }
+                completion(LangData.SwiftData(propSwift))
             }.store(in: &self.cancellable)
         }
     }

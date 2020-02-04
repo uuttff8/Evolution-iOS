@@ -8,17 +8,20 @@
 
 import UIKit
 
+// MARK: - Rust Proposals Models
+
 struct ProposalsRust: Decodable {
-    let proposals: Array<ProposalRust>
+    var proposals: Array<ProposalRust>
 }
 
 struct ProposalRust: Decodable {
-    let title: String
-    let index: String // change to int
-    let date: String
-    let issue: String
+    let title: String?
+    let index: String? 
+    let date: String?
+    let issue: String?
 }
 
+// MARK: - Swift Proposals Models
 
 struct ProposalSwift: Decodable {
     let id: Int
