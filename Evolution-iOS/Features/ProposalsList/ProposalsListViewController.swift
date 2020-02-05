@@ -27,9 +27,15 @@ class ProposalsListViewController: ViewController, Storyboarded {
         }
     }
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         guard let coordinator = coordinator else { return }
         
+        languageChangeSubscriber(coordinator)
+    }
+    
+    // MARK: - Private
+    fileprivate func languageChangeSubscriber(_ coordinator: ProposalsListCoordinator) {
         self.navDropDown.didChangeLanguageCompletion = { [weak self] (selectedLang: LanguageSelected) in
             guard let self = self else { return }
             
@@ -37,9 +43,7 @@ class ProposalsListViewController: ViewController, Storyboarded {
                 switch langData {
                 case .RustData(let propRust):
                     self.dataSource = propRust
-                    break
                 case .SwiftData(let propSwift):
-                    
                     break
                 }
             })
@@ -54,17 +58,13 @@ extension ProposalsListViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProposalsRustTableViewCell.self), for: indexPath) as! ProposalsRustTableViewCell
-        cell.title.text = dataSource?.proposals[indexPath.item].title
-        cell.date.text = dataSource?.proposals[indexPath.item].date
-        cell.index.text = dataSource?.proposals[indexPath.item].index
-        cell.issue.text = dataSource?.proposals[indexPath.item].issue
-
+        
+        cell.initialaze(with: dataSource?.proposals[indexPath.item])
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 106
     }
-    
-    
 }

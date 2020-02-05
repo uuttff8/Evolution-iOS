@@ -1,25 +1,12 @@
 //
-//  Proposals.swift
+//  SwiftProposals.swift
 //  Evolution-iOS
 //
-//  Created by uuttff8 on 1/29/20.
+//  Created by uuttff8 on 2/5/20.
 //  Copyright © 2020 Anton Kuzmin. All rights reserved.
 //
 
 import UIKit
-
-// MARK: - Rust Proposals Models
-
-struct ProposalsRust: Decodable {
-    var proposals: Array<ProposalRust>
-}
-
-struct ProposalRust: Decodable {
-    let title: String?
-    let index: String? 
-    let date: String?
-    let issue: String?
-}
 
 // MARK: - Swift Proposals Models
 
@@ -86,6 +73,31 @@ struct Person: Decodable {
     
 }
 
+extension Person: Searchable {
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Keys.self)
+        self.id = try container.decodeIfPresent(String.self, forKey: .id)
+        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+        self.link = try container.decodeIfPresent(String.self, forKey: .link)
+        self.username = GithubUserFormatter.format(unboxedValue: self.link)
+    }
+    
+}
+
+struct GithubUserFormatter {
+    static func format(unboxedValue: String?) -> String? {
+        guard let unboxedValue = unboxedValue else { return nil }
+        let values = unboxedValue.components(separatedBy: "/").filter { $0 != "" }
+        if values.count > 0, let value = values.last {
+            return value
+        }
+
+        return nil
+    }
+}
+
+
 struct GithubProfile: Codable {
     let login: String
     let id: Int
@@ -139,6 +151,44 @@ struct Bug: Codable {
     
 }
 
+extension Bug {
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Keys.self)
+        self.status = try container.decodeIfPresent(String.self, forKey: .status)
+        self.title = try container.decodeIfPresent(String.self, forKey: .title)
+        self.link = try container.decodeIfPresent(String.self, forKey: .link)
+        self.radar = try container.decodeIfPresent(String.self, forKey: .radar)
+        self.assignee = try container.decodeIfPresent(String.self, forKey: .assignee)
+        self.resolution = try container.decodeIfPresent(String.self, forKey: .resolution)
+        let idString = try container.decode(String.self, forKey: .id)
+        self.id = BugIDFormatter.format(unboxedValue: idString)
+        if let dateString = try container.decodeIfPresent(String.self, forKey: .updated) {
+            let dateFormatter = Config.Date.Formatter.iso8601
+            self.updated = dateFormatter.date(from: dateString)
+        }
+        else {
+            self.updated = nil
+        }
+    }
+    
+}
+
+struct BugIDFormatter {
+    static func format(unboxedValue: String) -> Int {
+        let id: Int = unboxedValue.regex(Config.Common.Regex.bugID)
+        return id
+    }
+}
+
+
+extension Bug: CustomStringConvertible {
+    var description: String {
+        return String(format: "SR-\(self.id)")
+    }
+}
+
+
 struct Status: Decodable {
     let version: Version?
     let state: StatusState
@@ -173,7 +223,7 @@ extension Status {
         }
         state = validState
         
-        let dateFormatter = Formatter.yearMonthDay
+        let dateFormatter = Config.Date.Formatter.yearMonthDay
         if let startDate = try container.decodeIfPresent(String.self, forKey: .start) {
             start = dateFormatter.date(from: startDate)
         }
@@ -316,27 +366,5 @@ public struct State {
         self.className = className ?? ""
         self.identifier = identifier
         self.color = color
-    }
-}
-
-struct Formatter {
-    static func custom(_ value: String) -> DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = value
-        formatter.locale = Locale(identifier: "en_US")
-        
-        return formatter
-    }
-    
-    static var iso8601: DateFormatter {
-        return custom("yyyy-MM-dd'T'HH:mm:ss.SSS")
-    }
-    
-    static var yearMonthDay: DateFormatter {
-        return custom("yyyy-MM-dd")
-    }
-
-    static var monthDay: DateFormatter {
-        return custom("MMMM dd")
     }
 }

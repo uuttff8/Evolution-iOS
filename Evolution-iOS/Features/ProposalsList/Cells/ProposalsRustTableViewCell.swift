@@ -19,6 +19,15 @@ class ProposalsRustTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func initialaze(with proposal: ProposalRust?) {
+        if let proposal = proposal {
+            title.text = proposal.title
+            index.text = proposal.index
+            date.text  = proposal.date
+            issue.text = proposal.issue
+        }
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
