@@ -44,7 +44,9 @@ class ProposalsListCoordinator: Coordinator {
                     completion(LangData.RustData(propRust))
             }.store(in: &self.cancellable)
         case .Swift:
-            MLApi.Swift.fetchProposals().sink { (propSwift) in
+            MLApi.Swift.fetchProposals()
+                .receive(on: RunLoop.main)
+                .sink { (propSwift) in
                 guard let propSwift = propSwift else { return }
                 completion(LangData.SwiftData(propSwift))
             }.store(in: &self.cancellable)

@@ -53,6 +53,63 @@ struct ProposalSwift: Decodable {
     
 }
 
+extension ProposalSwift {
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Keys.self)
+        
+        let idString = try container.decode(String.self, forKey: .id)
+        self.id = ProposalIDFormatter.format(unboxedValue: idString)
+        
+        self.title              = try container.decode(String.self, forKey: .title)
+        self.status             = try container.decode(Status.self, forKey: .status)
+        self.summary            = try container.decodeIfPresent(String.self, forKey: .summary)
+        self.authors            = try container.decodeIfPresent([Person].self, forKey: .authors)
+        self.warnings           = try container.decodeIfPresent([Warning].self, forKey: .warnings)
+        self.link               = try container.decodeIfPresent(String.self, forKey: .link)
+        self.reviewManager      = try container.decodeIfPresent(Person.self, forKey: .reviewManager)
+        self.sha                = try container.decodeIfPresent(String.self, forKey: .sha)
+        self.bugs               = try container.decodeIfPresent([Bug].self, forKey: .trackingBugs)
+        self.implementations    = try container.decodeIfPresent([Implementation].self, forKey: .implementation)
+    }
+    
+}
+
+private struct ProposalIDFormatter {
+    static func format(unboxedValue: String) -> Int {
+        let id: Int = unboxedValue.regex(Config.Common.Regex.proposalID)
+        return id
+    }
+}
+
+extension ProposalSwift: CustomStringConvertible {
+    var description: String {
+        return String(format: "SE-%04i", self.id)
+    }
+}
+
+extension ProposalSwift: Comparable {
+    public static func == (lhs: ProposalSwift, rhs: ProposalSwift) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    public static func < (lhs: ProposalSwift, rhs: ProposalSwift) -> Bool {
+        return lhs.id < rhs.id
+    }
+    
+    public static func <= (lhs: ProposalSwift, rhs: ProposalSwift) -> Bool {
+        return lhs.id <= rhs.id
+    }
+    
+    public static func >= (lhs: ProposalSwift, rhs: ProposalSwift) -> Bool {
+        return lhs.id >= rhs.id
+    }
+    
+    public static func > (lhs: ProposalSwift, rhs: ProposalSwift) -> Bool {
+        return lhs.id > rhs.id
+    }
+}
+
 
 struct Person: Decodable {
     var id: String?
@@ -124,6 +181,36 @@ struct Implementation: Decodable {
     let id: String
     let repository: String
     let account: String
+}
+
+
+extension Implementation: CustomStringConvertible {
+    var description: String {
+        var content: String = ""
+        
+        switch self.type {
+        case .pull:
+            content = "\(repository)#\(id)"
+            
+        case .commit:
+            let index = id.index(id.startIndex, offsetBy: 7)
+            let hash = id.prefix(upTo: index)
+            
+            content = "\(repository)@\(hash)"
+            
+        }
+        return content
+    }
+    
+    var path: String {
+        return "\(account)/\(repository)/\(type.rawValue)/\(id)"
+    }
+}
+
+extension Implementation: Equatable {
+    public static func == (lhs: Implementation, rhs: Implementation) -> Bool {
+        return lhs.path == rhs.path
+    }
 }
 
 
@@ -368,3 +455,60 @@ public struct State {
         self.color = color
     }
 }
+
+
+//struct User: Codable {
+//    let id: String
+//    let tags: [Notifications.Tag]?
+//    var notifications: Bool?
+//    let createdAt: Date?
+//    let updatedAt: Date?
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id = "ckID"
+//        case tags
+//        case createdAt
+//        case updatedAt
+//        case notifications
+//    }
+//
+//    init(id: String, tags: [Notifications.Tag]? = nil, notifications: Bool = true) {
+//        self.id             = id
+//        self.tags           = tags
+//        self.notifications  = notifications
+//        self.createdAt      = nil
+//        self.updatedAt      = nil
+//    }
+//}
+//
+//extension User {
+//    static var current: User? {
+//        let bundleID = Environment.bundleID ?? "io.swift-evolution.app"
+//        let keychain = Keychain(service: bundleID).synchronizable(true)
+//
+//        guard let token = try? keychain.getString("currentUser") else {
+//            return nil
+//        }
+//
+//
+//        return User(id: token)
+//    }
+//}
+//
+//struct Notifications {}
+//
+//extension Notifications {
+//    struct Tag: Codable {
+//        let id: String
+//        let name: String
+//        let identifier: String
+//        let subscribed: Bool?
+//
+//        enum CodingKeys: String, CodingKey {
+//            case id = "_id"
+//            case name
+//            case identifier
+//            case subscribed
+//        }
+//    }
+//}

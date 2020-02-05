@@ -25,7 +25,7 @@ extension Storyboarded where Self: UIViewController {
         switch storyboardId {
         case .ProposalsList:
             storyboard = UIStoryboard(name: AppStoryboards.ProposalsList.rawValue, bundle: Bundle.main)
-            print(storyboard)
+            print("UIStoryboard: \(storyboard.value(forKey: "name") ?? "Error! Unknown class")")
         }
         // instantiate a view controller with that identifier, and force cast as the type that was requested
         return storyboard.instantiateViewController(withIdentifier: id) as! Self
