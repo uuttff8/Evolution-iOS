@@ -9,7 +9,9 @@
 import UIKit
 
 enum AppStoryboards: String {
-    case ProposalsList = "ProposalsList"
+    case ProposalsListContainer = "ProposalsListController"
+    case ProposalsListRust = "ProposalsListRust"
+    case ProposalsListSwift = "ProposalsListSwift"
 }
 
 protocol Storyboarded {
@@ -22,10 +24,20 @@ extension Storyboarded where Self: UIViewController {
         // load our storyboard
         var storyboard: UIStoryboard
         
+        // TODO(uuttff8): Refactor
         switch storyboardId {
-        case .ProposalsList:
-            storyboard = UIStoryboard(name: AppStoryboards.ProposalsList.rawValue, bundle: Bundle.main)
+        case .ProposalsListContainer:
+            storyboard = UIStoryboard(name: AppStoryboards.ProposalsListContainer.rawValue, bundle: Bundle.main)
             print("UIStoryboard: \(storyboard.value(forKey: "name") ?? "Error! Unknown class")")
+            
+        case .ProposalsListRust:
+            storyboard = UIStoryboard(name: AppStoryboards.ProposalsListRust.rawValue, bundle: Bundle.main)
+            print("UIStoryboard: \(storyboard.value(forKey: "name") ?? "Error! Unknown class")")
+
+        case .ProposalsListSwift:
+            storyboard = UIStoryboard(name: AppStoryboards.ProposalsListSwift.rawValue, bundle: Bundle.main)
+            print("UIStoryboard: \(storyboard.value(forKey: "name") ?? "Error! Unknown class")")
+            
         }
         // instantiate a view controller with that identifier, and force cast as the type that was requested
         return storyboard.instantiateViewController(withIdentifier: id) as! Self

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mWu-9r-QUM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -7,16 +7,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Proposals List View Controller-->
+        <!--Proposals List Rust View Controller-->
         <scene sceneID="Grd-h8-d3R">
             <objects>
-                <viewController storyboardIdentifier="ProposalsListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eGB-s8-oC8" customClass="ProposalsListViewController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProposalsListRustViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eGB-s8-oC8" customClass="ProposalsListRustViewController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t11-9b-0aN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="adn-lI-NGj">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProposalsRustTableViewCell" rowHeight="106" id="F2K-w8-Thk" customClass="ProposalsRustTableViewCell" customModule="Evolution_iOS" customModuleProvider="target">
@@ -77,14 +77,6 @@
                                             <outlet property="title" destination="c2J-G8-4aC" id="7FL-mM-ARM"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="118" id="TBb-ZV-fSf">
-                                        <rect key="frame" x="0.0" y="134" width="414" height="118"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TBb-ZV-fSf" id="3fY-wr-Yj0">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="eGB-s8-oC8" id="LEW-Bi-LHt"/>
@@ -117,24 +109,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWb-rV-RoB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="876.81159420289862" y="92.410714285714278"/>
-        </scene>
-        <!--Proposals List Navigation Controller-->
-        <scene sceneID="E9y-6Q-mtU">
-            <objects>
-                <navigationController storyboardIdentifier="ProposalsListNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="mWu-9r-QUM" customClass="ProposalsListNavigationController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Akl-RS-tns">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="eGB-s8-oC8" kind="relationship" relationship="rootViewController" id="8Rx-WH-41v"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NHo-m6-DWU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="41" y="92"/>
         </scene>
     </scenes>
 </document>

@@ -9,9 +9,11 @@
 import UIKit
 import Combine
 
-class ProposalsListViewController: ViewController, Storyboarded {
+private typealias OfferEmployeCell = (type: String, height: CGFloat, enumType: LanguageSelected, data: Any?)
+
+class ProposalsListRustViewController: ViewController, Storyboarded {
     
-    weak var coordinator: ProposalsListCoordinator?
+    weak var coordinator: ProposalsListRustCoordinator?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navDropDown: NavDropDown! {
@@ -29,29 +31,11 @@ class ProposalsListViewController: ViewController, Storyboarded {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
-        guard let coordinator = coordinator else { return }
-        
-        languageChangeSubscriber(coordinator)
-    }
-    
-    // MARK: - Private
-    fileprivate func languageChangeSubscriber(_ coordinator: ProposalsListCoordinator) {
-        self.navDropDown.didChangeLanguageCompletion = { [weak self] (selectedLang: LanguageSelected) in
-            guard let self = self else { return }
-            
-            coordinator.changeLangTo(selectedLang, completion: { (langData) in
-                switch langData {
-                case .RustData(let propRust):
-                    self.dataSource = propRust
-                case .SwiftData(let propSwift):
-                    break
-                }
-            })
-        }
+        guard let _ = coordinator else { return }
     }
 }
 
-extension ProposalsListViewController: UITableViewDelegate, UITableViewDataSource {
+extension ProposalsListRustViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.proposals.count ?? 0
     }

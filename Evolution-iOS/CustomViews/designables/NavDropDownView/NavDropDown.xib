@@ -37,7 +37,7 @@
                             </state>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="B4V-pF-dCp" firstAttribute="centerY" secondItem="OF7-L5-nQz" secondAttribute="centerY" id="0p9-V1-JZu"/>
                         <constraint firstItem="Sfr-Wy-vpO" firstAttribute="leading" secondItem="B4V-pF-dCp" secondAttribute="trailing" constant="5" id="FfT-Vn-T6t"/>
@@ -49,7 +49,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="OF7-L5-nQz" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="KlB-uH-0kX"/>
                 <constraint firstItem="OF7-L5-nQz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jUk-f8-lk0"/>

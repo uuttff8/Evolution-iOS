@@ -43,14 +43,15 @@ class NavDropDown: UIButton {
         view.frame = self.bounds
         self.addSubview(view)
         
-        let gest = UITapGestureRecognizer(target: self, action: #selector(self.lol))
+        let gest = UITapGestureRecognizer(target: self, action: #selector(self.rotateArrow))
         
         addGestureRecognizer(gest)
     }
     
     
-    // TODO: Add Closures when value is changed
-    @objc func lol() {
+    @objc func rotateArrow() {
+        guard let vc = vc else { fatalError("You should provide default view controller (variable vc) in code") }
+        
         rotateArrowWithAnimation()
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let swiftAc = UIAlertAction(title: "Swift", style: .default) { (action) in
@@ -72,7 +73,7 @@ class NavDropDown: UIButton {
             self.rotateArrowWithAnimation()
             
         }))
-        vc?.present(alert, animated: true, completion: nil)
+        vc.present(alert, animated: true, completion: nil)
     }
     
     private func rotateArrowWithAnimation() {

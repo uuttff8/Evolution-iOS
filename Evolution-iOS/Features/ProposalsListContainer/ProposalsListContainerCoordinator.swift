@@ -1,37 +1,28 @@
 //
-//  ProposalsListController.swift
+//  ProposalsListContainerController.swift
 //  Evolution-iOS
 //
-//  Created by uuttff8 on 2/4/20.
+//  Created by uuttff8 on 2/6/20.
 //  Copyright © 2020 Anton Kuzmin. All rights reserved.
 //
 
 import UIKit
 import Combine
 
-enum LangData {
-    case RustData(ProposalsRust)
-    case SwiftData([ProposalSwift])
-}
-
-class ProposalsListCoordinator: Coordinator {
-
+class ProposalsListContainerCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
-
-    private var cancellable = Set<AnyCancellable>()
-
+    
+    var cancellable = Set<AnyCancellable>()
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        // Make here init of Swift proposals
-        let vc = ProposalsListViewController.instantiate(from: AppStoryboards.ProposalsList)
+        let vc = ProposalsListContainerViewController.instantiate(from: AppStoryboards.ProposalsListContainer)
         navigationController.pushViewController(vc, animated: false)
         vc.coordinator = self
-        
     }
     
     func changeLangTo(_ lang: LanguageSelected, completion: @escaping (LangData) -> ()) {
@@ -52,6 +43,4 @@ class ProposalsListCoordinator: Coordinator {
             }.store(in: &self.cancellable)
         }
     }
-    
-    
 }

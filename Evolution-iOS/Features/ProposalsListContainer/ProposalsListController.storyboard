@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Proposals List Container View Controller-->
+        <scene sceneID="NAG-iz-Y4V">
+            <objects>
+                <viewController storyboardIdentifier="ProposalsListContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7ru-Lh-aeD" customClass="ProposalsListContainerViewController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mrQ-Cb-ORx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="01R-0g-aSn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xhi-95-FOx">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="l28-Aa-v3c" customClass="NavDropDown" customModule="Evolution_iOS" customModuleProvider="target">
+                            <rect key="frame" x="151" y="5" width="112" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="navDropDown" destination="l28-Aa-v3c" id="iDO-uQ-iJ9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FL8-3K-uA9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="876.81159420289862" y="92.410714285714278"/>
+        </scene>
+        <!--Proposals List Navigation Controller-->
+        <scene sceneID="FvV-Kh-q9g">
+            <objects>
+                <navigationController storyboardIdentifier="ProposalsListNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="892-eS-beZ" customClass="ProposalsListNavigationController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fum-jI-4or">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7ru-Lh-aeD" kind="relationship" relationship="rootViewController" id="1fV-EJ-DlD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0iX-0I-gLT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="41" y="92"/>
+        </scene>
+    </scenes>
+</document>
