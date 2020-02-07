@@ -102,7 +102,6 @@
                         </view>
                     </navigationItem>
                     <connections>
-                        <outlet property="navDropDown" destination="Wyc-Uz-pHh" id="m1q-9v-tFl"/>
                         <outlet property="tableView" destination="adn-lI-NGj" id="3aH-hW-AP1"/>
                     </connections>
                 </viewController>

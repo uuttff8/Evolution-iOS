@@ -16,11 +16,6 @@ class ProposalsListRustViewController: ViewController, Storyboarded {
     weak var coordinator: ProposalsListRustCoordinator?
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var navDropDown: NavDropDown! {
-        didSet {
-            self.navDropDown.vc = self
-        }
-    }
     
     var dataSource: ProposalsRust? {
         didSet {

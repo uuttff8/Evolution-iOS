@@ -39,6 +39,7 @@
 		4E61817C23EC807C0059DEA3 /* ProposalsListSwiftCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61817B23EC807C0059DEA3 /* ProposalsListSwiftCoordinator.swift */; };
 		4E61817E23EC80870059DEA3 /* ProposalsListSwift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E61817D23EC80870059DEA3 /* ProposalsListSwift.storyboard */; };
 		4E61818023EC80980059DEA3 /* ProposalsListSwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61817F23EC80980059DEA3 /* ProposalsListSwiftViewController.swift */; };
+		4ED8C2D123EDFF40005938AF /* ProposalsListSwiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D023EDFF40005938AF /* ProposalsListSwiftTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		4E61817B23EC807C0059DEA3 /* ProposalsListSwiftCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsListSwiftCoordinator.swift; sourceTree = "<group>"; };
 		4E61817D23EC80870059DEA3 /* ProposalsListSwift.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProposalsListSwift.storyboard; sourceTree = "<group>"; };
 		4E61817F23EC80980059DEA3 /* ProposalsListSwiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsListSwiftViewController.swift; sourceTree = "<group>"; };
+		4ED8C2D023EDFF40005938AF /* ProposalsListSwiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsListSwiftTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +296,7 @@
 		4E61817023EC75B50059DEA3 /* ProposalsListSwift */ = {
 			isa = PBXGroup;
 			children = (
+				4ED8C2CF23EDFF1B005938AF /* Cells */,
 				4E61817F23EC80980059DEA3 /* ProposalsListSwiftViewController.swift */,
 				4E61817D23EC80870059DEA3 /* ProposalsListSwift.storyboard */,
 				4E61817B23EC807C0059DEA3 /* ProposalsListSwiftCoordinator.swift */,
@@ -318,6 +321,14 @@
 				4E61817923EC7C9F0059DEA3 /* Containered.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		4ED8C2CF23EDFF1B005938AF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4ED8C2D023EDFF40005938AF /* ProposalsListSwiftTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,6 +484,7 @@
 				4E61816B23EB45DD0059DEA3 /* String.swift in Sources */,
 				4E61817323EC76800059DEA3 /* ProposalsListContainerViewController.swift in Sources */,
 				4E61816423E9E5AA0059DEA3 /* ProposalsRustTableViewCell.swift in Sources */,
+				4ED8C2D123EDFF40005938AF /* ProposalsListSwiftTableViewCell.swift in Sources */,
 				4E290F7723DDEF34008A5E15 /* AppDelegate.swift in Sources */,
 				4E61815C23E9B22F0059DEA3 /* ProposalsListCoordinator.swift in Sources */,
 				4E290FC423DF7B0F008A5E15 /* NavDropDown.swift in Sources */,

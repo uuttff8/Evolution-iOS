@@ -58,9 +58,10 @@ class ProposalsListContainerViewController: UIViewController, Storyboarded, Cont
                     self.add(asChildViewController: self.proposalsRustVC)
                     self.proposalsRustVC.dataSource = propRust
                     break
-                case .SwiftData(_ /*let propSwift*/):
+                case .SwiftData(let propSwift):
                     self.remove(asChildViewController: self.proposalsRustVC)
                     self.add(asChildViewController: self.proposalsSwiftVC)
+                    self.proposalsSwiftVC.dataSource = propSwift
                 }
             })
         }

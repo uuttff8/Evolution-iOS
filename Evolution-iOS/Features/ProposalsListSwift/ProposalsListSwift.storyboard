@@ -14,13 +14,42 @@
                     <view key="view" contentMode="scaleToFill" id="a4U-1u-f6R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Hx-Tg-RYK">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProposalsListSwiftTableViewCell" rowHeight="96" id="WR9-eY-7eD" customClass="ProposalsListSwiftTableViewCell" customModule="Evolution_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="96"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WR9-eY-7eD" id="aiy-6V-orN">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Me5-IF-1kh" id="BRz-47-8Ru"/>
+                                    <outlet property="delegate" destination="Me5-IF-1kh" id="zXC-Cm-ZMH"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Gf4-dP-AwM" firstAttribute="trailing" secondItem="5Hx-Tg-RYK" secondAttribute="trailing" id="Has-Ne-DXc"/>
+                            <constraint firstItem="Gf4-dP-AwM" firstAttribute="bottom" secondItem="5Hx-Tg-RYK" secondAttribute="bottom" id="jm7-8D-NOw"/>
+                            <constraint firstItem="5Hx-Tg-RYK" firstAttribute="top" secondItem="Gf4-dP-AwM" secondAttribute="top" id="qWv-B5-WCX"/>
+                            <constraint firstItem="5Hx-Tg-RYK" firstAttribute="leading" secondItem="Gf4-dP-AwM" secondAttribute="leading" id="zYe-or-gYB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Gf4-dP-AwM"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="5Hx-Tg-RYK" id="pc4-vf-38w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31C-Oz-O0p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-133" y="139"/>
+            <point key="canvasLocation" x="-133.33333333333334" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>
