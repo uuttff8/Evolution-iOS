@@ -18,8 +18,9 @@ class ProposalsListContainerViewController: UIViewController, Storyboarded, Cont
     weak var coordinator: ProposalsListContainerCoordinator?
     
     private lazy var proposalsRustVC: ProposalsListRustViewController = {
-        let vc = ProposalsListRustViewController.instantiate(from: AppStoryboards.ProposalsListRust)
-        
+        let coordinator = ProposalsListRustCoordinator()
+        coordinator.start()
+        let vc = coordinator.getVC()
         // Add View Controller as Child View Controller
         self.add(asChildViewController: vc)
 
@@ -27,8 +28,9 @@ class ProposalsListContainerViewController: UIViewController, Storyboarded, Cont
     }()
 
     private lazy var proposalsSwiftVC: ProposalsListSwiftViewController = {
-        let vc = ProposalsListSwiftViewController.instantiate(from: AppStoryboards.ProposalsListSwift)
-        
+        let coordinator = ProposalsListSwiftCoordinator()
+        coordinator.start()
+        let vc = coordinator.getVC()
         // Add View Controller as Child View Controller
         self.add(asChildViewController: vc)
 
@@ -63,5 +65,4 @@ class ProposalsListContainerViewController: UIViewController, Storyboarded, Cont
             })
         }
     }
-    
 }

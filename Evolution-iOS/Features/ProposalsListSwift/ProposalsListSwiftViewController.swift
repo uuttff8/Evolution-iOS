@@ -10,6 +10,8 @@ import UIKit
 
 class ProposalsListSwiftViewController: ViewController, Storyboarded {
 
+    weak var coordinator: ProposalsListSwiftCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

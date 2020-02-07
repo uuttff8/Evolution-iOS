@@ -6,4 +6,25 @@
 //  Copyright © 2020 Anton Kuzmin. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import Combine
+
+class ProposalsListSwiftCoordinator: Coordinator {
+    var navigationController: UINavigationController?
+    var childCoordinators = [Coordinator]()
+
+    
+    init(navigationController: UINavigationController? = nil) {
+        self.navigationController = navigationController
+    }
+    
+    func start() {
+        
+    }
+    
+    func getVC() -> ProposalsListSwiftViewController {
+        let vc = ProposalsListSwiftViewController.instantiate(from: AppStoryboards.ProposalsListSwift)
+        vc.coordinator = self
+        return vc
+    }
+}

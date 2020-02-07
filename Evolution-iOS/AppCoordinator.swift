@@ -10,15 +10,15 @@ import UIKit
 import Combine
 
 class AppCoordinator: Coordinator {
+    var navigationController: UINavigationController?    
     var childCoordinators = [Coordinator]()
-    var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let child = ProposalsListContainerCoordinator(navigationController: navigationController)
+        let child = ProposalsListContainerCoordinator(navigationController: navigationController ?? UINavigationController())
         childCoordinators.append(child)
         child.start()
     }

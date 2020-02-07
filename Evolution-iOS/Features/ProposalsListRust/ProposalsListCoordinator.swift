@@ -17,20 +17,22 @@ enum LangData {
 class ProposalsListRustCoordinator: Coordinator {
 
     var childCoordinators = [Coordinator]()
-    var navigationController: UINavigationController
+    var navigationController: UINavigationController?
 
     private var cancellable = Set<AnyCancellable>()
 
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController? = nil) {
         self.navigationController = navigationController
     }
     
     func start() {
-        // Make here init of Swift proposals
-        let vc = ProposalsListRustViewController.instantiate(from: AppStoryboards.ProposalsListRust)
-        navigationController.pushViewController(vc, animated: false)
-        vc.coordinator = self
         
+    }
+    
+    func getVC() -> ProposalsListRustViewController {
+        let vc = ProposalsListRustViewController.instantiate(from: AppStoryboards.ProposalsListRust)
+        vc.coordinator = self
+        return vc
     }
 }

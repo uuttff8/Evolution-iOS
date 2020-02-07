@@ -11,7 +11,7 @@ import Combine
 
 class ProposalsListContainerCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
-    var navigationController: UINavigationController
+    var navigationController: UINavigationController?
     
     var cancellable = Set<AnyCancellable>()
     
@@ -21,7 +21,7 @@ class ProposalsListContainerCoordinator: Coordinator {
     
     func start() {
         let vc = ProposalsListContainerViewController.instantiate(from: AppStoryboards.ProposalsListContainer)
-        navigationController.pushViewController(vc, animated: false)
+        navigationController?.pushViewController(vc, animated: false)
         vc.coordinator = self
     }
     
