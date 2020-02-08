@@ -1,5 +1,5 @@
 //
-//  ProposalsListSwiftCoordinator.swift
+//  ProposalsSwiftCoordinator.swift
 //  Evolution-iOS
 //
 //  Created by uuttff8 on 2/6/20.
@@ -9,7 +9,7 @@
 import UIKit
 import Combine
 
-class ProposalsListSwiftCoordinator: Coordinator {
+class ProposalsSwiftCoordinator: Coordinator {
     var navigationController: UINavigationController?
     var childCoordinators = [Coordinator]()
 
@@ -22,9 +22,10 @@ class ProposalsListSwiftCoordinator: Coordinator {
         
     }
     
-    func getVC() -> ProposalsListSwiftViewController {
-        let vc = ProposalsListSwiftViewController.instantiate(from: AppStoryboards.ProposalsListSwift)
+    func getVC() -> ProposalsSwiftViewController {
+        let vc = ProposalsSwiftViewController.instantiate(from: AppStoryboards.ProposalsSwift)
         vc.coordinator = self
         return vc
     }
 }
+

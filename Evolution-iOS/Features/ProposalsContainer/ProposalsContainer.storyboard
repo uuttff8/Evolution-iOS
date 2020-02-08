@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Proposals List Container View Controller-->
+        <!--Proposals Container View Controller-->
         <scene sceneID="NAG-iz-Y4V">
             <objects>
-                <viewController storyboardIdentifier="ProposalsListContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7ru-Lh-aeD" customClass="ProposalsListContainerViewController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProposalsContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7ru-Lh-aeD" customClass="ProposalsContainerViewController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mrQ-Cb-ORx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,10 +33,10 @@
             </objects>
             <point key="canvasLocation" x="876.81159420289862" y="92.410714285714278"/>
         </scene>
-        <!--Proposals List Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="FvV-Kh-q9g">
             <objects>
-                <navigationController storyboardIdentifier="ProposalsListNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="892-eS-beZ" customClass="ProposalsListNavigationController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="892-eS-beZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fum-jI-4or">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

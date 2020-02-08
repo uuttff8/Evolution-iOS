@@ -1,5 +1,5 @@
 //
-//  ProposalsListContainerController.swift
+//  ProposalsContainerController.swift
 //  Evolution-iOS
 //
 //  Created by uuttff8 on 2/6/20.
@@ -9,7 +9,7 @@
 import UIKit
 import Combine
 
-class ProposalsListContainerCoordinator: Coordinator {
+class ProposalsContainerCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController?
     
@@ -20,9 +20,18 @@ class ProposalsListContainerCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = ProposalsListContainerViewController.instantiate(from: AppStoryboards.ProposalsListContainer)
+        let vc = ProposalsContainerViewController.instantiate(from: AppStoryboards.ProposalsContainer)
         navigationController?.pushViewController(vc, animated: false)
         vc.coordinator = self
+    }
+    
+    func initSwiftVC(completion: @escaping ([ProposalSwift]) -> ()) {
+        MLApi.Swift.fetchProposals()
+            .receive(on: RunLoop.main)
+            .sink { (propSwift) in
+            guard let propSwift = propSwift else { return }
+            completion(propSwift)
+        }.store(in: &self.cancellable)
     }
     
     func changeLangTo(_ lang: LanguageSelected, completion: @escaping (LangData) -> ()) {
@@ -43,4 +52,5 @@ class ProposalsListContainerCoordinator: Coordinator {
             }.store(in: &self.cancellable)
         }
     }
+    
 }

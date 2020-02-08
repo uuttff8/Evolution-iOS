@@ -1,5 +1,5 @@
 //
-//  ProposalsListViewController.swift
+//  ProposalsViewController.swift
 //  Evolution-iOS
 //
 //  Created by uuttff8 on 1/26/20.
@@ -11,9 +11,9 @@ import Combine
 
 private typealias OfferEmployeCell = (type: String, height: CGFloat, enumType: LanguageSelected, data: Any?)
 
-class ProposalsListRustViewController: ViewController, Storyboarded {
+class ProposalsRustViewController: ViewController, Storyboarded {
     
-    weak var coordinator: ProposalsListRustCoordinator?
+    weak var coordinator: ProposalsRustCoordinator?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -30,7 +30,7 @@ class ProposalsListRustViewController: ViewController, Storyboarded {
     }
 }
 
-extension ProposalsListRustViewController: UITableViewDelegate, UITableViewDataSource {
+extension ProposalsRustViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.proposals.count ?? 0
     }

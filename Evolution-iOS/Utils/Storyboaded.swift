@@ -9,9 +9,9 @@
 import UIKit
 
 enum AppStoryboards: String {
-    case ProposalsListContainer = "ProposalsListController"
-    case ProposalsListRust = "ProposalsListRust"
-    case ProposalsListSwift = "ProposalsListSwift"
+    case ProposalsContainer = "ProposalsContainer"
+    case ProposalsRust = "ProposalsRust"
+    case ProposalsSwift = "ProposalsSwift"
 }
 
 protocol Storyboarded {
@@ -26,16 +26,16 @@ extension Storyboarded where Self: UIViewController {
         
         // TODO(uuttff8): Refactor
         switch storyboardId {
-        case .ProposalsListContainer:
-            storyboard = UIStoryboard(name: AppStoryboards.ProposalsListContainer.rawValue, bundle: Bundle.main)
+        case .ProposalsContainer:
+            storyboard = UIStoryboard(name: AppStoryboards.ProposalsContainer.rawValue, bundle: Bundle.main)
             print("UIStoryboard: \(storyboard.value(forKey: "name") ?? "Error! Unknown class")")
             
-        case .ProposalsListRust:
-            storyboard = UIStoryboard(name: AppStoryboards.ProposalsListRust.rawValue, bundle: Bundle.main)
+        case .ProposalsRust:
+            storyboard = UIStoryboard(name: AppStoryboards.ProposalsRust.rawValue, bundle: Bundle.main)
             print("UIStoryboard: \(storyboard.value(forKey: "name") ?? "Error! Unknown class")")
 
-        case .ProposalsListSwift:
-            storyboard = UIStoryboard(name: AppStoryboards.ProposalsListSwift.rawValue, bundle: Bundle.main)
+        case .ProposalsSwift:
+            storyboard = UIStoryboard(name: AppStoryboards.ProposalsSwift.rawValue, bundle: Bundle.main)
             print("UIStoryboard: \(storyboard.value(forKey: "name") ?? "Error! Unknown class")")
             
         }

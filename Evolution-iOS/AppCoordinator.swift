@@ -18,7 +18,7 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let child = ProposalsListContainerCoordinator(navigationController: navigationController ?? UINavigationController())
+        let child = ProposalsContainerCoordinator(navigationController: navigationController!)
         childCoordinators.append(child)
         child.start()
     }

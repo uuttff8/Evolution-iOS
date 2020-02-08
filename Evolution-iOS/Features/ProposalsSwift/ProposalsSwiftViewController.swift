@@ -1,5 +1,5 @@
 //
-//  ProposalsListSwiftViewController.swift
+//  ProposalsSwiftViewController.swift
 //  Evolution-iOS
 //
 //  Created by uuttff8 on 2/6/20.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ProposalsListSwiftViewController: ViewController, Storyboarded {
+class ProposalsSwiftViewController: ViewController, Storyboarded {
 
-    weak var coordinator: ProposalsListSwiftCoordinator?
+    weak var coordinator: ProposalsSwiftCoordinator?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -30,13 +30,13 @@ class ProposalsListSwiftViewController: ViewController, Storyboarded {
 
 }
 
-extension ProposalsListSwiftViewController: UITableViewDelegate, UITableViewDataSource {
+extension ProposalsSwiftViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProposalsListSwiftTableViewCell.self), for: indexPath) as! ProposalsListSwiftTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProposalsSwiftTableViewCell.self), for: indexPath) as! ProposalsSwiftTableViewCell
         
         // TODO:
 //        cell.initialaze(with: dataSource?[indexPath.item])

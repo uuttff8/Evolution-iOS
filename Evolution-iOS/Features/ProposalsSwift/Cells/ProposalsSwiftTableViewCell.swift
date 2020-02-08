@@ -1,5 +1,5 @@
 //
-//  ProposalsListSiwftTableViewCell.swift
+//  ProposalsSiwftTableViewCell.swift
 //  Evolution-iOS
 //
 //  Created by uuttff8 on 2/7/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProposalsListSwiftTableViewCell: UITableViewCell {
+class ProposalsSwiftTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

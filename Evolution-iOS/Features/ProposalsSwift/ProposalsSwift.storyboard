@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Proposals List Swift View Controller-->
+        <!--Proposals Swift View Controller-->
         <scene sceneID="Ree-e9-9Ao">
             <objects>
-                <viewController storyboardIdentifier="ProposalsListSwiftViewController" id="Me5-IF-1kh" customClass="ProposalsListSwiftViewController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProposalsSwiftViewController" id="Me5-IF-1kh" customClass="ProposalsSwiftViewController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a4U-1u-f6R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProposalsListSwiftTableViewCell" rowHeight="96" id="WR9-eY-7eD" customClass="ProposalsListSwiftTableViewCell" customModule="Evolution_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProposalsSwiftTableViewCell" rowHeight="96" id="WR9-eY-7eD" customClass="ProposalsSwiftTableViewCell" customModule="Evolution_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WR9-eY-7eD" id="aiy-6V-orN">

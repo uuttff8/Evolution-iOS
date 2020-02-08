@@ -1,5 +1,5 @@
 //
-//  ProposalsListContainerViewController.swift
+//  ProposalsContainerViewController.swift
 //  Evolution-iOS
 //
 //  Created by uuttff8 on 2/6/20.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-class ProposalsListContainerViewController: UIViewController, Storyboarded, Containered {
+class ProposalsContainerViewController: UIViewController, Storyboarded, Containered {
     
     @IBOutlet weak var navDropDown: NavDropDown! {
         didSet {
             self.navDropDown.vc = self
         }
     }
-    weak var coordinator: ProposalsListContainerCoordinator?
+    weak var coordinator: ProposalsContainerCoordinator?
     
-    private lazy var proposalsRustVC: ProposalsListRustViewController = {
-        let coordinator = ProposalsListRustCoordinator()
+    private lazy var proposalsRustVC: ProposalsRustViewController = {
+        let coordinator = ProposalsRustCoordinator()
         coordinator.start()
         let vc = coordinator.getVC()
         // Add View Controller as Child View Controller
@@ -27,8 +27,8 @@ class ProposalsListContainerViewController: UIViewController, Storyboarded, Cont
         return vc
     }()
 
-    private lazy var proposalsSwiftVC: ProposalsListSwiftViewController = {
-        let coordinator = ProposalsListSwiftCoordinator()
+    private lazy var proposalsSwiftVC: ProposalsSwiftViewController = {
+        let coordinator = ProposalsSwiftCoordinator()
         coordinator.start()
         let vc = coordinator.getVC()
         // Add View Controller as Child View Controller
@@ -41,13 +41,16 @@ class ProposalsListContainerViewController: UIViewController, Storyboarded, Cont
         super.viewDidLoad()
         guard let coordinator = coordinator else { return }
         
-        self.add(asChildViewController: self.proposalsSwiftVC)
-
+        coordinator.initSwiftVC { (propSwift) in
+            self.add(asChildViewController: self.proposalsSwiftVC)
+            self.proposalsSwiftVC.dataSource = propSwift
+        }
+        
         languageChangeSubscriber(coordinator)
     }
     
     // MARK: - Private
-    fileprivate func languageChangeSubscriber(_ coordinator: ProposalsListContainerCoordinator) {
+    fileprivate func languageChangeSubscriber(_ coordinator: ProposalsContainerCoordinator) {
         self.navDropDown.didChangeLanguageCompletion = { [weak self] (selectedLang: LanguageSelected) in
             guard let self = self else { return }
             

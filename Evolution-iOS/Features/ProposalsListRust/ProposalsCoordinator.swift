@@ -1,5 +1,5 @@
 //
-//  ProposalsListController.swift
+//  ProposalsController.swift
 //  Evolution-iOS
 //
 //  Created by uuttff8 on 2/4/20.
@@ -14,7 +14,7 @@ enum LangData {
     case SwiftData([ProposalSwift])
 }
 
-class ProposalsListRustCoordinator: Coordinator {
+class ProposalsRustCoordinator: Coordinator {
 
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController?
@@ -30,8 +30,8 @@ class ProposalsListRustCoordinator: Coordinator {
         
     }
     
-    func getVC() -> ProposalsListRustViewController {
-        let vc = ProposalsListRustViewController.instantiate(from: AppStoryboards.ProposalsListRust)
+    func getVC() -> ProposalsRustViewController {
+        let vc = ProposalsRustViewController.instantiate(from: AppStoryboards.ProposalsRust)
         vc.coordinator = self
         return vc
     }
