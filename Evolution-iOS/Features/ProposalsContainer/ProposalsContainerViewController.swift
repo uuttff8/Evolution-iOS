@@ -54,14 +54,14 @@ class ProposalsContainerViewController: UIViewController, Storyboarded, Containe
         guard let coordinator = coordinator else { return }
         
         // Show loading Indicator
-        present(alert, animated: true, completion: nil)
+        self.parent?.present(alert, animated: true, completion: nil)
         
         coordinator.initSwiftVC { (propSwift) in
             self.add(asChildViewController: self.proposalsSwiftVC)
             self.proposalsSwiftVC.dataSource = propSwift
             
             // Hide loading indicator
-            self.dismiss(animated: true, completion: nil)
+            self.parent?.dismiss(animated: true, completion: nil)
         }
         
         languageChangeSubscriber(coordinator)
