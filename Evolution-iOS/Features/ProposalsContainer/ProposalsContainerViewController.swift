@@ -17,6 +17,18 @@ class ProposalsContainerViewController: UIViewController, Storyboarded, Containe
     }
     weak var coordinator: ProposalsContainerCoordinator?
     
+    var alert: UIAlertController {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        
+        return alert
+    }
+    
     private lazy var proposalsRustVC: ProposalsRustViewController = {
         let coordinator = ProposalsRustCoordinator()
         coordinator.start()
@@ -41,9 +53,15 @@ class ProposalsContainerViewController: UIViewController, Storyboarded, Containe
         super.viewDidLoad()
         guard let coordinator = coordinator else { return }
         
+        // Show loading Indicator
+        present(alert, animated: true, completion: nil)
+        
         coordinator.initSwiftVC { (propSwift) in
             self.add(asChildViewController: self.proposalsSwiftVC)
             self.proposalsSwiftVC.dataSource = propSwift
+            
+            // Hide loading indicator
+            self.dismiss(animated: true, completion: nil)
         }
         
         languageChangeSubscriber(coordinator)

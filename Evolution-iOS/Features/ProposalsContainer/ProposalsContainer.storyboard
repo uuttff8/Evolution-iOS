@@ -36,7 +36,7 @@
         <!--Navigation Controller-->
         <scene sceneID="FvV-Kh-q9g">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="892-eS-beZ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavControllerContainer" automaticallyAdjustsScrollViewInsets="NO" id="892-eS-beZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fum-jI-4or">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
