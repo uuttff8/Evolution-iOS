@@ -52,30 +52,47 @@ class ProposalsContainerViewController: UIViewController, Storyboarded, Containe
         return vc
     }()
     
+    
+    // MARK: - Lifecycle -
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let coordinator = coordinator else { return }
+        guard let _ = coordinator else { return }
         
+        if Reachability.isConnectedToNetwork() == true {
+            downloadSwiftProposals()
+            languageChangeSubscribe()
+        } else {
+            // TODO: create no connection view
+        }
+        
+    }
+    
+    
+    // MARK: - Private -
+    
+    private func downloadSwiftProposals() {
         // Show loading Indicator
         self.parent?.present(alert, animated: true, completion: nil)
         
-        coordinator.initSwiftVC { (propSwift) in
+        coordinator?.initSwiftVC { (propSwift) in
             self.add(asChildViewController: self.proposalsSwiftVC)
             self.proposalsSwiftVC.dataSource = propSwift
             
             // Hide loading indicator
             self.parent?.dismiss(animated: true, completion: nil)
         }
-        
-        languageChangeSubscriber(coordinator)
     }
     
-    // MARK: - Private
-    fileprivate func languageChangeSubscriber(_ coordinator: ProposalsContainerCoordinator) {
+    private func languageChangeSubscribe() {
         self.navDropDown.didChangeLanguageCompletion = { [weak self] (selectedLang: LanguageSelected) in
             guard let self = self else { return }
             
-            coordinator.changeLangTo(selectedLang, completion: { (langData) in
+            self.coordinator?.changeLangTo(selectedLang, completion: { (langData) in
                 switch langData {
                 case .RustData(let propRust):
                     self.remove(asChildViewController: self.proposalsSwiftVC)
