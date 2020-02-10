@@ -21,7 +21,6 @@ class ProposalsSwiftViewController: ViewController, Storyboarded {
         }
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,13 +37,27 @@ extension ProposalsSwiftViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProposalsSwiftTableViewCell.self), for: indexPath) as! ProposalsSwiftTableViewCell
         
-        // TODO:
-//        cell.initialaze(with: dataSource?[indexPath.item])
+        cell.proposal = self.dataSource?[indexPath.item]
+        
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 106
+        return 176
+    }
+}
+
+extension ProposalsSwiftViewController: ProposalSwiftDelegate {
+    func didSelect(person: Person) {
+        // TODO: Go to person screen
+    }
+    
+    func didSelect(proposal: ProposalSwift) {
+        // TODO: Go to proposal screen
+    }
+    
+    func didSelect(implementation: Implementation) {
+        // TODO: Go to safari with implementation
     }
 }

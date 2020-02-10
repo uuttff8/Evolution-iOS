@@ -81,7 +81,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <outlet property="detalisLabel" destination="uBw-hH-dXq" id="zwD-Q6-vrO"/>
+                                            <outlet property="detailsLabel" destination="uBw-hH-dXq" id="DpJ-XB-YKP"/>
                                             <outlet property="statusIndicatorView" destination="UsQ-s4-Em3" id="CHf-sf-Ate"/>
                                             <outlet property="statusLabel" destination="wH1-Eu-zWM" id="Ec8-U8-gjZ"/>
                                             <outlet property="statusLabelWidthConstraint" destination="Lla-i9-ZEg" id="Suz-oX-Qzs"/>
