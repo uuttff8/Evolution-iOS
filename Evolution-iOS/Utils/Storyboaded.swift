@@ -12,6 +12,7 @@ enum AppStoryboards: String {
     case ProposalsContainer = "ProposalsContainer"
     case ProposalsRust = "ProposalsRust"
     case ProposalsSwift = "ProposalsSwift"
+    case NoConnection = "NoConnection"
 }
 
 protocol Storyboarded {
@@ -22,25 +23,26 @@ extension Storyboarded where Self: UIViewController {
     static func instantiate(from storyboardId: AppStoryboards) -> Self {
         let id = String(describing: self)
         // load our storyboard
-        var storyboard: UIStoryboard
+        var storyboard: UIStoryboard!
+        
+        func createStoryboard(_ sb: AppStoryboards) {
+            storyboard = UIStoryboard(name: sb.rawValue, bundle: Bundle.main)
+            print("UIStoryboard: \(storyboard.value(forKey: "name") ?? "Error! Unknown class")")
+        }
         
         // TODO(uuttff8): Refactor
         switch storyboardId {
         case .ProposalsContainer:
-            storyboard = UIStoryboard(name: AppStoryboards.ProposalsContainer.rawValue, bundle: Bundle.main)
-            print("UIStoryboard: \(storyboard.value(forKey: "name") ?? "Error! Unknown class")")
-            
+            createStoryboard(AppStoryboards.ProposalsContainer)
         case .ProposalsRust:
-            storyboard = UIStoryboard(name: AppStoryboards.ProposalsRust.rawValue, bundle: Bundle.main)
-            print("UIStoryboard: \(storyboard.value(forKey: "name") ?? "Error! Unknown class")")
-
+            createStoryboard(AppStoryboards.ProposalsRust)
         case .ProposalsSwift:
-            storyboard = UIStoryboard(name: AppStoryboards.ProposalsSwift.rawValue, bundle: Bundle.main)
-            print("UIStoryboard: \(storyboard.value(forKey: "name") ?? "Error! Unknown class")")
-            
+            createStoryboard(AppStoryboards.ProposalsSwift)
+        case .NoConnection:
+            createStoryboard(AppStoryboards.NoConnection)
         }
+                
         // instantiate a view controller with that identifier, and force cast as the type that was requested
         return storyboard.instantiateViewController(withIdentifier: id) as! Self
     }
-
 }

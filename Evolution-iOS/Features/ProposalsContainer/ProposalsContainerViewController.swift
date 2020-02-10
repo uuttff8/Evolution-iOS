@@ -52,6 +52,13 @@ class ProposalsContainerViewController: UIViewController, Storyboarded, Containe
         return vc
     }()
     
+    private lazy var noConnectionVC: NoConnectionViewController = {
+        let vc = NoConnectionViewController.instantiate(from: AppStoryboards.NoConnection)
+        vc.delegate = self
+        return vc
+    }()
+
+    
     
     // MARK: - Lifecycle -
     
@@ -63,17 +70,25 @@ class ProposalsContainerViewController: UIViewController, Storyboarded, Containe
         super.viewDidLoad()
         guard let _ = coordinator else { return }
         
-        if Reachability.isConnectedToNetwork() == true {
-            downloadSwiftProposals()
-            languageChangeSubscribe()
-        } else {
-            // TODO: create no connection view
-        }
+        connectIfhasConnection()
         
     }
     
-    
     // MARK: - Private -
+    
+    private func connectIfhasConnection() {
+        if Reachability.isConnectedToNetwork() == true {
+            setupProcessing()
+        } else {
+            // TODO: create no connection view
+            self.add(asChildViewController: self.noConnectionVC)
+        }
+    }
+    
+    private func setupProcessing() {
+        downloadSwiftProposals()
+        languageChangeSubscribe()
+    }
     
     private func downloadSwiftProposals() {
         // Show loading Indicator
@@ -106,5 +121,13 @@ class ProposalsContainerViewController: UIViewController, Storyboarded, Containe
                 }
             })
         }
+    }
+}
+
+extension ProposalsContainerViewController: NoConnectionDelegate {
+    func retryConnection() {
+        self.remove(asChildViewController: self.noConnectionVC)
+        
+        self.connectIfhasConnection()
     }
 }
