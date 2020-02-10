@@ -12,7 +12,10 @@ class ProposalsContainerViewController: UIViewController, Storyboarded, Containe
     
     @IBOutlet weak var navDropDown: NavDropDown! {
         didSet {
-            self.navDropDown.vc = self
+            self.navDropDown.showAlertCompletion = { [weak self] (alert: UIAlertController) in
+                guard let self = self else { return }
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     weak var coordinator: ProposalsContainerCoordinator?

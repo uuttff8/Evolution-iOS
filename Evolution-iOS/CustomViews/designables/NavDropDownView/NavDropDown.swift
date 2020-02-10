@@ -16,9 +16,10 @@ enum LanguageSelected {
 @IBDesignable
 class NavDropDown: UIButton {
     
+    var showAlertCompletion: ((UIAlertController) -> ())?
     var didChangeLanguageCompletion: ((LanguageSelected) -> ())?
+    
     var language = LanguageSelected.Swift
-    weak var vc: UIViewController?
     
     @IBOutlet private weak var title: UILabel!
     @IBOutlet private weak var arrow: UIButton!
@@ -50,8 +51,6 @@ class NavDropDown: UIButton {
     
     
     @objc func rotateArrow() {
-        guard let vc = vc else { fatalError("You should provide default view controller (variable vc) in code") }
-        
         rotateArrowWithAnimation()
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let swiftAc = UIAlertAction(title: "Swift", style: .default) { (action) in
@@ -73,7 +72,8 @@ class NavDropDown: UIButton {
             self.rotateArrowWithAnimation()
             
         }))
-        vc.present(alert, animated: true, completion: nil)
+        
+        self.showAlertCompletion?(alert)
     }
     
     private func rotateArrowWithAnimation() {
