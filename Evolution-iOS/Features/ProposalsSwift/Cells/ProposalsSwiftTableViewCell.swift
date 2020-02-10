@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import SwiftRichString
 
 class ProposalsSwiftTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var detalisLabel: UITextView!
+    @IBOutlet weak var statusIndicatorView: UIView!
+    @IBOutlet weak var statusLabel: StatusLabel!
+    
+    @IBOutlet weak var statusLabelWidthConstraint: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

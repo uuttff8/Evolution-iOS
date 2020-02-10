@@ -19,13 +19,73 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProposalsSwiftTableViewCell" rowHeight="96" id="WR9-eY-7eD" customClass="ProposalsSwiftTableViewCell" customModule="Evolution_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="96"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WR9-eY-7eD" id="aiy-6V-orN">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                                    <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProposalsSwiftTableViewCell" focusStyle="custom" rowHeight="176" id="TAB-it-BAz" customClass="ProposalsSwiftTableViewCell" customModule="Evolution_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="176"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TAB-it-BAz" id="qnU-uG-Byt">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" keyboardDismissMode="interactive" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uBw-hH-dXq">
+                                                    <rect key="frame" x="20" y="47" width="374" height="118"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="TAB-it-BAz" id="NeW-6G-2V4"/>
+                                                    </connections>
+                                                </textView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UsQ-s4-Em3">
+                                                    <rect key="frame" x="12" y="3" width="3" height="170.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="3" id="NsJ-x7-LTg"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" layoutMarginsFollowReadableWidth="YES" text="" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wH1-Eu-zWM" customClass="StatusLabel" customModule="swift_evolution" customModuleProvider="target">
+                                                    <rect key="frame" x="26" y="21" width="40" height="26"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="Lla-i9-ZEg"/>
+                                                        <constraint firstAttribute="height" constant="26" id="mLo-JV-KNz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" red="0.81568627449999997" green="0.1333333333" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.81568627449999997" green="0.1333333333" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="topMargin" secondItem="wH1-Eu-zWM" secondAttribute="top" constant="-10" id="5Kr-Ge-i3O"/>
+                                                <constraint firstItem="UsQ-s4-Em3" firstAttribute="top" secondItem="qnU-uG-Byt" secondAttribute="topMargin" constant="-8" id="7c7-Uy-cnt"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="UsQ-s4-Em3" secondAttribute="bottom" constant="-8.5" id="AQ5-fX-UzD"/>
+                                                <constraint firstItem="uBw-hH-dXq" firstAttribute="top" secondItem="wH1-Eu-zWM" secondAttribute="bottom" id="KoV-Xy-lFn"/>
+                                                <constraint firstItem="UsQ-s4-Em3" firstAttribute="leading" secondItem="qnU-uG-Byt" secondAttribute="leadingMargin" constant="-8" id="WuE-bK-BfI"/>
+                                                <constraint firstItem="uBw-hH-dXq" firstAttribute="leading" secondItem="qnU-uG-Byt" secondAttribute="leadingMargin" id="YhE-S5-UOU"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="uBw-hH-dXq" secondAttribute="bottom" id="by8-oY-lO7"/>
+                                                <constraint firstItem="wH1-Eu-zWM" firstAttribute="leading" secondItem="UsQ-s4-Em3" secondAttribute="trailing" constant="11" id="kJx-62-gZO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="uBw-hH-dXq" secondAttribute="trailing" id="rMU-ep-IJ0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="detalisLabel" destination="uBw-hH-dXq" id="zwD-Q6-vrO"/>
+                                            <outlet property="statusIndicatorView" destination="UsQ-s4-Em3" id="CHf-sf-Ate"/>
+                                            <outlet property="statusLabel" destination="wH1-Eu-zWM" id="Ec8-U8-gjZ"/>
+                                            <outlet property="statusLabelWidthConstraint" destination="Lla-i9-ZEg" id="Suz-oX-Qzs"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -40,6 +40,7 @@
 		4E61817E23EC80870059DEA3 /* ProposalsSwift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E61817D23EC80870059DEA3 /* ProposalsSwift.storyboard */; };
 		4E61818023EC80980059DEA3 /* ProposalsSwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61817F23EC80980059DEA3 /* ProposalsSwiftViewController.swift */; };
 		4ED8C2D123EDFF40005938AF /* ProposalsSwiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D023EDFF40005938AF /* ProposalsSwiftTableViewCell.swift */; };
+		4ED8C2D523F1951F005938AF /* SwiftRichString in Frameworks */ = {isa = PBXBuildFile; productRef = 4ED8C2D423F1951F005938AF /* SwiftRichString */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ED8C2D523F1951F005938AF /* SwiftRichString in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +349,9 @@
 			dependencies = (
 			);
 			name = "Evolution-iOS";
+			packageProductDependencies = (
+				4ED8C2D423F1951F005938AF /* SwiftRichString */,
+			);
 			productName = "Evolution-iOS";
 			productReference = 4E290F7323DDEF34008A5E15 /* Evolution-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -419,6 +424,9 @@
 				Base,
 			);
 			mainGroup = 4E290F6A23DDEF34008A5E15;
+			packageReferences = (
+				4ED8C2D323F1951F005938AF /* XCRemoteSwiftPackageReference "SwiftRichString" */,
+			);
 			productRefGroup = 4E290F7423DDEF34008A5E15 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -810,6 +818,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4ED8C2D323F1951F005938AF /* XCRemoteSwiftPackageReference "SwiftRichString" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftRichString.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4ED8C2D423F1951F005938AF /* SwiftRichString */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4ED8C2D323F1951F005938AF /* XCRemoteSwiftPackageReference "SwiftRichString" */;
+			productName = SwiftRichString;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4E290F7F23DDEF34008A5E15 /* Evolution_iOS.xcdatamodeld */ = {
