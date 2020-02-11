@@ -8,23 +8,60 @@
 
 import UIKit
 
-class ProposalsSwiftViewController: ViewController, Storyboarded {
+class ProposalsSwiftViewController: NetViewController, Storyboarded {
 
     weak var coordinator: ProposalsSwiftCoordinator?
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.estimatedRowHeight = 164
+            tableView.estimatedSectionHeaderHeight = 44.0
+            tableView.rowHeight = UITableView.automaticDimension
+            
+            tableView.addSubview(refreshControl)
+        }
+    }
     
     var dataSource: [ProposalSwift]? {
         didSet {
             self.dataSource?.reverse()
-            tableView.reloadData()
         }
     }
+    
+    fileprivate weak var appDelegate: AppDelegate?
+    
+    // Filters
+    fileprivate var languages: [Version] = []
+    fileprivate var status: [StatusState] = []
+    
+    // Proposal ordering
+    fileprivate lazy var statusOrder: [StatusState] = {
+        return [.awaitingReview, .scheduledForReview, .activeReview,
+                .returnedForRevision, .accepted, .acceptedWithRevisions, .implemented,
+                .deferred, .rejected, .withdrawn]
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
+        
+        // Filter Header View settings
+//        filterHeaderView.statusFilterView.delegate = self
+//        filterHeaderView.languageVersionFilterView.delegate = self
+//        filterHeaderView.searchBar.delegate = self
+//        filterHeaderView.clipsToBounds = true
+//
+//        filterHeaderView.filterButton.addTarget(self, action: #selector(filterButtonAction(_:)), for: .touchUpInside)
+//        filterHeaderView.filteredByButton.addTarget(self, action: #selector(filteredByButtonAction(_:)), for: .touchUpInside)
+//
+//        filterHeaderView.filterLevel = .without
 
-        // Do any additional setup after loading the view.
+    }
+    
+    // MARK: - Objc Actions
+    @objc private func pullToRefresh(_ sender: UIRefreshControl) {
+//        getProposalList()
     }
 
 }
@@ -38,26 +75,25 @@ extension ProposalsSwiftViewController: UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProposalsSwiftTableViewCell.self), for: indexPath) as! ProposalsSwiftTableViewCell
         
         cell.proposal = self.dataSource?[indexPath.item]
-        
+        cell.delegate = self
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 176
     }
 }
 
 extension ProposalsSwiftViewController: ProposalSwiftDelegate {
     func didSelect(person: Person) {
         // TODO: Go to person screen
+        print("person selected")
     }
     
     func didSelect(proposal: ProposalSwift) {
         // TODO: Go to proposal screen
+        print("proposal selected")
     }
     
     func didSelect(implementation: Implementation) {
         // TODO: Go to safari with implementation
+        print("implementation selected")
     }
 }

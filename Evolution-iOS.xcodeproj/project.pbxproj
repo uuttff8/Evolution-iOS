@@ -46,6 +46,13 @@
 		4ED8C2DC23F1B1DE005938AF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2DB23F1B1DE005938AF /* Reachability.swift */; };
 		4ED8C2DF23F1B44C005938AF /* NoConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2DE23F1B44C005938AF /* NoConnectionViewController.swift */; };
 		4ED8C2E323F1B4BF005938AF /* NoConnection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED8C2E223F1B4BF005938AF /* NoConnection.storyboard */; };
+		4ED8C2E623F30C56005938AF /* FilterListGenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2E523F30C56005938AF /* FilterListGenericView.swift */; };
+		4ED8C2E823F30C99005938AF /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2E723F30C99005938AF /* FilterCollectionViewCell.swift */; };
+		4ED8C2EA23F30CD8005938AF /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2E923F30CD8005938AF /* UICollectionView+Ext.swift */; };
+		4ED8C2ED23F30D0D005938AF /* DGCollectionViewLeftAlignFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2EC23F30D0D005938AF /* DGCollectionViewLeftAlignFlowLayout.swift */; };
+		4ED8C2F023F30E7E005938AF /* FilterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2EF23F30E7E005938AF /* FilterHeaderView.swift */; };
+		4ED8C2F223F30F33005938AF /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2F123F30F33005938AF /* UIColor+Ext.swift */; };
+		4ED8C2F423F30FFC005938AF /* UIKit+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2F323F30FFC005938AF /* UIKit+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +117,13 @@
 		4ED8C2DB23F1B1DE005938AF /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		4ED8C2DE23F1B44C005938AF /* NoConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionViewController.swift; sourceTree = "<group>"; };
 		4ED8C2E223F1B4BF005938AF /* NoConnection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoConnection.storyboard; sourceTree = "<group>"; };
+		4ED8C2E523F30C56005938AF /* FilterListGenericView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListGenericView.swift; sourceTree = "<group>"; };
+		4ED8C2E723F30C99005938AF /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		4ED8C2E923F30CD8005938AF /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
+		4ED8C2EC23F30D0D005938AF /* DGCollectionViewLeftAlignFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGCollectionViewLeftAlignFlowLayout.swift; sourceTree = "<group>"; };
+		4ED8C2EF23F30E7E005938AF /* FilterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHeaderView.swift; sourceTree = "<group>"; };
+		4ED8C2F123F30F33005938AF /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		4ED8C2F323F30FFC005938AF /* UIKit+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,10 +218,11 @@
 		4E290FAB23DDF21A008A5E15 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				4ED8C2EE23F30E60005938AF /* FilterHeaderView */,
 				4ED8C2DD23F1B425005938AF /* NoConnection */,
 				4E61817123EC76550059DEA3 /* ProposalsContainer */,
 				4E61817023EC75B50059DEA3 /* ProposalsSwift */,
-				4E61816F23EC75AD0059DEA3 /* ProposalsListRust */,
+				4E61816F23EC75AD0059DEA3 /* ProposalsRust */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -237,6 +252,8 @@
 		4E290FB823DDFEEA008A5E15 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				4ED8C2EB23F30D03005938AF /* vender */,
+				4ED8C2E423F30C49005938AF /* view */,
 				4E61815823E85EA30059DEA3 /* designables */,
 			);
 			path = CustomViews;
@@ -294,11 +311,14 @@
 				4E61816A23EB45DD0059DEA3 /* String.swift */,
 				4ED8C2D623F1965E005938AF /* URL.swift */,
 				4ED8C2D923F19FEF005938AF /* Implementation.swift */,
+				4ED8C2E923F30CD8005938AF /* UICollectionView+Ext.swift */,
+				4ED8C2F123F30F33005938AF /* UIColor+Ext.swift */,
+				4ED8C2F323F30FFC005938AF /* UIKit+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		4E61816F23EC75AD0059DEA3 /* ProposalsListRust */ = {
+		4E61816F23EC75AD0059DEA3 /* ProposalsRust */ = {
 			isa = PBXGroup;
 			children = (
 				4E61816223E9E5910059DEA3 /* Cells */,
@@ -306,7 +326,7 @@
 				4E290FB323DDF2A1008A5E15 /* ProposalsRust.storyboard */,
 				4E61815B23E9B22F0059DEA3 /* ProposalsCoordinator.swift */,
 			);
-			path = ProposalsListRust;
+			path = ProposalsRust;
 			sourceTree = "<group>";
 		};
 		4E61817023EC75B50059DEA3 /* ProposalsSwift */ = {
@@ -354,6 +374,31 @@
 				4ED8C2E223F1B4BF005938AF /* NoConnection.storyboard */,
 			);
 			path = NoConnection;
+			sourceTree = "<group>";
+		};
+		4ED8C2E423F30C49005938AF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				4ED8C2E523F30C56005938AF /* FilterListGenericView.swift */,
+				4ED8C2E723F30C99005938AF /* FilterCollectionViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		4ED8C2EB23F30D03005938AF /* vender */ = {
+			isa = PBXGroup;
+			children = (
+				4ED8C2EC23F30D0D005938AF /* DGCollectionViewLeftAlignFlowLayout.swift */,
+			);
+			path = vender;
+			sourceTree = "<group>";
+		};
+		4ED8C2EE23F30E60005938AF /* FilterHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				4ED8C2EF23F30E7E005938AF /* FilterHeaderView.swift */,
+			);
+			path = FilterHeaderView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -500,28 +545,35 @@
 				4E290FC123DE098E008A5E15 /* BaseCoordinator.swift in Sources */,
 				4E290FB723DDF5D2008A5E15 /* Storyboaded.swift in Sources */,
 				4E290FB023DDF274008A5E15 /* BaseViewController.swift in Sources */,
+				4ED8C2ED23F30D0D005938AF /* DGCollectionViewLeftAlignFlowLayout.swift in Sources */,
 				4E61815A23E85EB80059DEA3 /* Buttons.swift in Sources */,
 				4ED8C2DA23F19FEF005938AF /* Implementation.swift in Sources */,
 				4E61816823EB451B0059DEA3 /* Config.swift in Sources */,
+				4ED8C2F223F30F33005938AF /* UIColor+Ext.swift in Sources */,
 				4ED8C2D723F1965E005938AF /* URL.swift in Sources */,
 				4E290FB223DDF28E008A5E15 /* ProposalsRustViewController.swift in Sources */,
+				4ED8C2E623F30C56005938AF /* FilterListGenericView.swift in Sources */,
 				4E61817C23EC807C0059DEA3 /* ProposalsSwiftCoordinator.swift in Sources */,
 				4E290FC923E15E0E008A5E15 /* HttpClient.swift in Sources */,
 				4E61815E23E9B4CA0059DEA3 /* AppCoordinator.swift in Sources */,
 				4E290FCE23E15EC9008A5E15 /* RustProposals.swift in Sources */,
+				4ED8C2E823F30C99005938AF /* FilterCollectionViewCell.swift in Sources */,
 				4E61816E23EB46A70059DEA3 /* Protocols.swift in Sources */,
 				4E290F8123DDEF34008A5E15 /* Evolution_iOS.xcdatamodeld in Sources */,
 				4ED8C2DC23F1B1DE005938AF /* Reachability.swift in Sources */,
 				4E61818023EC80980059DEA3 /* ProposalsSwiftViewController.swift in Sources */,
+				4ED8C2F423F30FFC005938AF /* UIKit+Ext.swift in Sources */,
 				4E61815723E8523B0059DEA3 /* UIColor+Extensions.swift in Sources */,
 				4ED8C2DF23F1B44C005938AF /* NoConnectionViewController.swift in Sources */,
 				4E290FCB23E15E48008A5E15 /* EvoNetworking.swift in Sources */,
 				4E61817723EC77270059DEA3 /* ProposalsContainerCoordinator.swift in Sources */,
+				4ED8C2EA23F30CD8005938AF /* UICollectionView+Ext.swift in Sources */,
 				4E61816B23EB45DD0059DEA3 /* String.swift in Sources */,
 				4E61817323EC76800059DEA3 /* ProposalsContainerViewController.swift in Sources */,
 				4E61816423E9E5AA0059DEA3 /* ProposalsRustTableViewCell.swift in Sources */,
 				4ED8C2D123EDFF40005938AF /* ProposalsSwiftTableViewCell.swift in Sources */,
 				4E290F7723DDEF34008A5E15 /* AppDelegate.swift in Sources */,
+				4ED8C2F023F30E7E005938AF /* FilterHeaderView.swift in Sources */,
 				4E61815C23E9B22F0059DEA3 /* ProposalsCoordinator.swift in Sources */,
 				4E290FC423DF7B0F008A5E15 /* NavDropDown.swift in Sources */,
 				4E61817A23EC7C9F0059DEA3 /* Containered.swift in Sources */,

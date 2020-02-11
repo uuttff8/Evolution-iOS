@@ -11,7 +11,7 @@ import Combine
 
 private typealias OfferEmployeCell = (type: String, height: CGFloat, enumType: LanguageSelected, data: Any?)
 
-class ProposalsRustViewController: ViewController, Storyboarded {
+class ProposalsRustViewController: NetViewController, Storyboarded {
     
     weak var coordinator: ProposalsRustCoordinator?
     
