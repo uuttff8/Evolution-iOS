@@ -209,11 +209,9 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
             
             
             MLApi.Swift.fetchProposals()
-                .receive(on: RunLoop.main)
-                .sink { [weak self] (propSwift)   in
-                    guard let propSwift = propSwift else { return }
-                    
-                    guard let strongSelf = self else { return }
+                .sink { [weak self] (propSwift) in
+                guard let propSwift = propSwift else { return }
+                guard let strongSelf = self else { return }
                     
                     if strongSelf.dataSource.count > 0 {
                         strongSelf.filteredDataSource   = []
@@ -245,7 +243,6 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
                             strongSelf.refreshControl.endRefreshing()
                         }
                     }
-                    
             }.store(in: &self.cancellable)
             
         } else {

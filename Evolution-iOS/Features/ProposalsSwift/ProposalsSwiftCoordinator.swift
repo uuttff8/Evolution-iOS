@@ -12,7 +12,7 @@ import Combine
 class ProposalsSwiftCoordinator: Coordinator {
     var navigationController: UINavigationController?
     var childCoordinators = [Coordinator]()
-
+    
     private var cancellable = Set<AnyCancellable>()
     
     init(navigationController: UINavigationController? = nil) {
@@ -29,13 +29,11 @@ class ProposalsSwiftCoordinator: Coordinator {
         return vc
     }
     
-    func getProposalsList(completion: @escaping (([ProposalSwift]) -> ())) {
+    func getProposalsList() -> AnyPublisher<[ProposalSwift]?, Never> {
+        
         MLApi.Swift.fetchProposals()
             .receive(on: RunLoop.main)
-            .sink { (propSwift) in
-            guard let propSwift = propSwift else { return }
-            completion(propSwift)
-        }.store(in: &self.cancellable)
+            .eraseToAnyPublisher()
     }
 }
 
