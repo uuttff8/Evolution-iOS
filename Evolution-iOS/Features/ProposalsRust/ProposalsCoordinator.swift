@@ -18,9 +18,6 @@ class ProposalsRustCoordinator: Coordinator {
 
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController?
-
-    private var cancellable = Set<AnyCancellable>()
-
     
     init(navigationController: UINavigationController? = nil) {
         self.navigationController = navigationController
@@ -34,5 +31,11 @@ class ProposalsRustCoordinator: Coordinator {
         let vc = ProposalsRustViewController.instantiate(from: AppStoryboards.ProposalsRust)
         vc.coordinator = self
         return vc
+    }
+    
+    func getProposalsList() -> AnyPublisher<ProposalsRust?, Never> {
+        return MLApi.Rust.fetchProposals()
+            .receive(on: RunLoop.main)
+            .eraseToAnyPublisher()
     }
 }

@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Combine
 
 class NetViewController: UIViewController {
+    
+    var cancellable = Set<AnyCancellable>()
     
     lazy var noConnectionView: NoConnectionViewController = {
         return NoConnectionViewController.instantiate(from: AppStoryboards.NoConnection)

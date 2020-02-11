@@ -9,8 +9,6 @@
 import UIKit
 import Combine
 
-private typealias OfferEmployeCell = (type: String, height: CGFloat, enumType: LanguageSelected, data: Any?)
-
 class ProposalsRustViewController: NetViewController, Storyboarded {
     
     weak var coordinator: ProposalsRustCoordinator?
@@ -25,8 +23,23 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
     }
     
     // MARK: - Lifecycle
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         guard let _ = coordinator else { return }
+        
+        getProposalList()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    //MARK: - Request
+    private func getProposalList() {
+        coordinator?.getProposalsList().sink(receiveValue: { (propRust) in
+            guard let propRust = propRust else { return }
+            self.dataSource = propRust
+        }).store(in: &self.cancellable)
     }
 }
 

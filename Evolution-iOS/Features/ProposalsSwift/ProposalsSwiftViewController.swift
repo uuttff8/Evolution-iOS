@@ -23,9 +23,7 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
     
     weak var coordinator: ProposalsSwiftCoordinator?
     fileprivate weak var appDelegate: AppDelegate?
-    
-    private var cancellable = Set<AnyCancellable>()
-    
+        
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.estimatedRowHeight = 164
