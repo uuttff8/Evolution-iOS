@@ -13,6 +13,7 @@ class ProposalsSwiftCoordinator: Coordinator {
     var navigationController: UINavigationController?
     var childCoordinators = [Coordinator]()
 
+    private var cancellable = Set<AnyCancellable>()
     
     init(navigationController: UINavigationController? = nil) {
         self.navigationController = navigationController
@@ -26,6 +27,15 @@ class ProposalsSwiftCoordinator: Coordinator {
         let vc = ProposalsSwiftViewController.instantiate(from: AppStoryboards.ProposalsSwift)
         vc.coordinator = self
         return vc
+    }
+    
+    func getProposalsList(completion: @escaping (([ProposalSwift]) -> ())) {
+        MLApi.Swift.fetchProposals()
+            .receive(on: RunLoop.main)
+            .sink { (propSwift) in
+            guard let propSwift = propSwift else { return }
+            completion(propSwift)
+        }.store(in: &self.cancellable)
     }
 }
 

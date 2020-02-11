@@ -53,6 +53,11 @@
 		4ED8C2F023F30E7E005938AF /* FilterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2EF23F30E7E005938AF /* FilterHeaderView.swift */; };
 		4ED8C2F223F30F33005938AF /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2F123F30F33005938AF /* UIColor+Ext.swift */; };
 		4ED8C2F423F30FFC005938AF /* UIKit+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2F323F30FFC005938AF /* UIKit+Ext.swift */; };
+		4ED8C2F623F31494005938AF /* ProposalListHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2F523F31494005938AF /* ProposalListHeaderTableViewCell.swift */; };
+		4ED8C2F823F325B3005938AF /* SwiftProposals+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2F723F325B3005938AF /* SwiftProposals+Ext.swift */; };
+		4ED8C2FA23F32B41005938AF /* Swift+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2F923F32B41005938AF /* Swift+Ext.swift */; };
+		4ED8C2FC23F33DA6005938AF /* ProposalListHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED8C2FB23F33DA6005938AF /* ProposalListHeaderTableViewCell.xib */; };
+		4ED8C2FE23F33E28005938AF /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED8C2FD23F33E28005938AF /* FilterCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +129,11 @@
 		4ED8C2EF23F30E7E005938AF /* FilterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHeaderView.swift; sourceTree = "<group>"; };
 		4ED8C2F123F30F33005938AF /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		4ED8C2F323F30FFC005938AF /* UIKit+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Ext.swift"; sourceTree = "<group>"; };
+		4ED8C2F523F31494005938AF /* ProposalListHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalListHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		4ED8C2F723F325B3005938AF /* SwiftProposals+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftProposals+Ext.swift"; sourceTree = "<group>"; };
+		4ED8C2F923F32B41005938AF /* Swift+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Ext.swift"; sourceTree = "<group>"; };
+		4ED8C2FB23F33DA6005938AF /* ProposalListHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProposalListHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		4ED8C2FD23F33E28005938AF /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,8 +262,7 @@
 		4E290FB823DDFEEA008A5E15 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				4ED8C2EB23F30D03005938AF /* vender */,
-				4ED8C2E423F30C49005938AF /* view */,
+				4ED8C2EB23F30D03005938AF /* vendor */,
 				4E61815823E85EA30059DEA3 /* designables */,
 			);
 			path = CustomViews;
@@ -283,6 +292,7 @@
 			children = (
 				4E290FCD23E15EC9008A5E15 /* RustProposals.swift */,
 				4E61816523EB43B20059DEA3 /* SwiftProposals.swift */,
+				4ED8C2F723F325B3005938AF /* SwiftProposals+Ext.swift */,
 				4E61816723EB451B0059DEA3 /* Config.swift */,
 			);
 			path = Models;
@@ -314,6 +324,7 @@
 				4ED8C2E923F30CD8005938AF /* UICollectionView+Ext.swift */,
 				4ED8C2F123F30F33005938AF /* UIColor+Ext.swift */,
 				4ED8C2F323F30FFC005938AF /* UIKit+Ext.swift */,
+				4ED8C2F923F32B41005938AF /* Swift+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -363,6 +374,9 @@
 			isa = PBXGroup;
 			children = (
 				4ED8C2D023EDFF40005938AF /* ProposalsSwiftTableViewCell.swift */,
+				4ED8C2F523F31494005938AF /* ProposalListHeaderTableViewCell.swift */,
+				4ED8C2FB23F33DA6005938AF /* ProposalListHeaderTableViewCell.xib */,
+				4ED8C2FD23F33E28005938AF /* FilterCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -376,26 +390,19 @@
 			path = NoConnection;
 			sourceTree = "<group>";
 		};
-		4ED8C2E423F30C49005938AF /* view */ = {
-			isa = PBXGroup;
-			children = (
-				4ED8C2E523F30C56005938AF /* FilterListGenericView.swift */,
-				4ED8C2E723F30C99005938AF /* FilterCollectionViewCell.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		4ED8C2EB23F30D03005938AF /* vender */ = {
+		4ED8C2EB23F30D03005938AF /* vendor */ = {
 			isa = PBXGroup;
 			children = (
 				4ED8C2EC23F30D0D005938AF /* DGCollectionViewLeftAlignFlowLayout.swift */,
 			);
-			path = vender;
+			path = vendor;
 			sourceTree = "<group>";
 		};
 		4ED8C2EE23F30E60005938AF /* FilterHeaderView */ = {
 			isa = PBXGroup;
 			children = (
+				4ED8C2E523F30C56005938AF /* FilterListGenericView.swift */,
+				4ED8C2E723F30C99005938AF /* FilterCollectionViewCell.swift */,
 				4ED8C2EF23F30E7E005938AF /* FilterHeaderView.swift */,
 			);
 			path = FilterHeaderView;
@@ -515,6 +522,8 @@
 				4E290F8623DDEF34008A5E15 /* LaunchScreen.storyboard in Resources */,
 				4E290F8323DDEF34008A5E15 /* Assets.xcassets in Resources */,
 				4E290FC623DF7C36008A5E15 /* NavDropDown.xib in Resources */,
+				4ED8C2FE23F33E28005938AF /* FilterCollectionViewCell.xib in Resources */,
+				4ED8C2FC23F33DA6005938AF /* ProposalListHeaderTableViewCell.xib in Resources */,
 				4E290FB423DDF2A1008A5E15 /* ProposalsRust.storyboard in Resources */,
 				4ED8C2E323F1B4BF005938AF /* NoConnection.storyboard in Resources */,
 				4E61817523EC768B0059DEA3 /* ProposalsContainer.storyboard in Resources */,
@@ -565,18 +574,21 @@
 				4ED8C2F423F30FFC005938AF /* UIKit+Ext.swift in Sources */,
 				4E61815723E8523B0059DEA3 /* UIColor+Extensions.swift in Sources */,
 				4ED8C2DF23F1B44C005938AF /* NoConnectionViewController.swift in Sources */,
+				4ED8C2F823F325B3005938AF /* SwiftProposals+Ext.swift in Sources */,
 				4E290FCB23E15E48008A5E15 /* EvoNetworking.swift in Sources */,
 				4E61817723EC77270059DEA3 /* ProposalsContainerCoordinator.swift in Sources */,
 				4ED8C2EA23F30CD8005938AF /* UICollectionView+Ext.swift in Sources */,
 				4E61816B23EB45DD0059DEA3 /* String.swift in Sources */,
 				4E61817323EC76800059DEA3 /* ProposalsContainerViewController.swift in Sources */,
 				4E61816423E9E5AA0059DEA3 /* ProposalsRustTableViewCell.swift in Sources */,
+				4ED8C2F623F31494005938AF /* ProposalListHeaderTableViewCell.swift in Sources */,
 				4ED8C2D123EDFF40005938AF /* ProposalsSwiftTableViewCell.swift in Sources */,
 				4E290F7723DDEF34008A5E15 /* AppDelegate.swift in Sources */,
 				4ED8C2F023F30E7E005938AF /* FilterHeaderView.swift in Sources */,
 				4E61815C23E9B22F0059DEA3 /* ProposalsCoordinator.swift in Sources */,
 				4E290FC423DF7B0F008A5E15 /* NavDropDown.swift in Sources */,
 				4E61817A23EC7C9F0059DEA3 /* Containered.swift in Sources */,
+				4ED8C2FA23F32B41005938AF /* Swift+Ext.swift in Sources */,
 				4E61816623EB43B20059DEA3 /* SwiftProposals.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

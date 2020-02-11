@@ -9,6 +9,19 @@
 import UIKit
 
 class NetViewController: UIViewController {
+    
+    lazy var noConnectionView: NoConnectionViewController = {
+        return NoConnectionViewController.instantiate(from: AppStoryboards.NoConnection)
+    }()
+    
+    var showNoConnection: Bool = false {
+        didSet {
+            DispatchQueue.main.async { [unowned self] in
+                self.noConnectionView.view.isHidden = !self.showNoConnection
+            }
+        }
+    }
+    
     var alert: UIAlertController {
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))

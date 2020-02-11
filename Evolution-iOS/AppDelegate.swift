@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var coordinator: AppCoordinator?
     
+    public var people: [String: Person] = [:]
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         

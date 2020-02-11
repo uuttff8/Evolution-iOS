@@ -244,9 +244,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="5Hx-Tg-RYK" firstAttribute="top" secondItem="IaQ-kI-1xn" secondAttribute="bottom" id="B4F-3T-Mnl"/>
-                            <constraint firstItem="IaQ-kI-1xn" firstAttribute="leading" secondItem="Gf4-dP-AwM" secondAttribute="leading" id="CNH-bd-IqQ"/>
+                            <constraint firstItem="IaQ-kI-1xn" firstAttribute="leading" secondItem="a4U-1u-f6R" secondAttribute="leading" id="CNH-bd-IqQ"/>
                             <constraint firstItem="Gf4-dP-AwM" firstAttribute="trailing" secondItem="5Hx-Tg-RYK" secondAttribute="trailing" id="Has-Ne-DXc"/>
-                            <constraint firstItem="IaQ-kI-1xn" firstAttribute="trailing" secondItem="Gf4-dP-AwM" secondAttribute="trailing" id="TKJ-Ru-wb8"/>
+                            <constraint firstItem="IaQ-kI-1xn" firstAttribute="trailing" secondItem="a4U-1u-f6R" secondAttribute="trailing" id="TKJ-Ru-wb8"/>
                             <constraint firstItem="Gf4-dP-AwM" firstAttribute="bottom" secondItem="5Hx-Tg-RYK" secondAttribute="bottom" id="jm7-8D-NOw"/>
                             <constraint firstItem="IaQ-kI-1xn" firstAttribute="top" secondItem="Gf4-dP-AwM" secondAttribute="top" id="vGn-Ld-adf"/>
                             <constraint firstItem="5Hx-Tg-RYK" firstAttribute="leading" secondItem="Gf4-dP-AwM" secondAttribute="leading" id="zYe-or-gYB"/>
@@ -254,10 +254,36 @@
                         <viewLayoutGuide key="safeArea" id="Gf4-dP-AwM"/>
                     </view>
                     <connections>
+                        <outlet property="filterHeaderView" destination="IaQ-kI-1xn" id="bkV-HN-ZXn"/>
+                        <outlet property="filterHeaderViewHeightConstraint" destination="PCR-5X-rqy" id="1Ny-BN-z5O"/>
+                        <outlet property="footerView" destination="pQj-h9-g4A" id="8Bd-9k-vqS"/>
                         <outlet property="tableView" destination="5Hx-Tg-RYK" id="pc4-vf-38w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31C-Oz-O0p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="6pG-OP-MSb">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQj-h9-g4A">
+                            <rect key="frame" x="8" y="8" width="359" height="58"/>
+                            <string key="text">Copyright © 2017 Apple Inc. All rights reserved.
+
+Swift and the Swift logo are trademarks of Apple Inc. For more information about the Swift project, see Swift.org.</string>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                            <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="5tI-E8-2cV" firstAttribute="bottom" secondItem="pQj-h9-g4A" secondAttribute="bottom" constant="8" id="60E-Z0-WDs"/>
+                        <constraint firstItem="pQj-h9-g4A" firstAttribute="leading" secondItem="5tI-E8-2cV" secondAttribute="leading" constant="8" id="Fng-sz-rrZ"/>
+                        <constraint firstItem="pQj-h9-g4A" firstAttribute="top" secondItem="6pG-OP-MSb" secondAttribute="top" constant="8" id="VGt-5y-FFu"/>
+                        <constraint firstItem="5tI-E8-2cV" firstAttribute="trailing" secondItem="pQj-h9-g4A" secondAttribute="trailing" constant="8" id="rRq-PR-LMV"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="5tI-E8-2cV"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="-133.33333333333334" y="138.61607142857142"/>
         </scene>

@@ -122,3 +122,43 @@ extension UIView {
         return nil
     }
 }
+
+
+extension UIRefreshControl {
+    func forceShowAnimation() {
+        DispatchQueue.main.async {
+            guard let scrollView = self.superview as? UIScrollView else {
+                return
+            }
+            
+            let offSet = CGPoint(x: 0, y: scrollView.contentOffset.y - self.frame.height)
+            scrollView.setContentOffset(offSet, animated: true)
+
+            self.beginRefreshing()
+        }
+    }
+}
+
+
+extension UITableView {
+    
+    func registerNib<T: UITableViewCell>(withClass cellClass: T.Type) {
+        register(
+            Config.Nib.loadNib(name: T.cellIdentifier),
+            forCellReuseIdentifier: T.cellIdentifier
+        )
+    }
+    
+    func registerClass<T: UITableViewCell>(_ cellClass: T.Type) {
+        register(cellClass.self, forCellReuseIdentifier: cellClass.cellIdentifier)
+    }
+    
+    func cell<T: ReusableCellIdentifiable>(forRowAt indexPath: IndexPath) -> T {
+        return dequeueReusableCell(withIdentifier: T.cellIdentifier, for: indexPath) as! T
+    }
+    
+    func cell<T: ReusableCellIdentifiable>(forClass cellClass: T.Type) -> T {
+        return dequeueReusableCell(withIdentifier: T.cellIdentifier) as! T
+    }
+    
+}
