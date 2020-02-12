@@ -33,9 +33,4 @@ class ProposalsRustCoordinator: Coordinator {
         return vc
     }
     
-    func getProposalsList() -> AnyPublisher<ProposalsRust?, Never> {
-        return MLApi.Rust.fetchProposals()
-            .receive(on: RunLoop.main)
-            .eraseToAnyPublisher()
-    }
 }

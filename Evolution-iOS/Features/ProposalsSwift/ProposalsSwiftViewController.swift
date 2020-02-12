@@ -13,7 +13,15 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
     
     // Private IBOutlets
     @IBOutlet private(set) weak var footerView: UIView!
-    @IBOutlet private(set) weak var filterHeaderView: FilterHeaderView!
+    @IBOutlet private(set) weak var filterHeaderView: FilterHeaderView! {
+        didSet {
+            self.filterHeaderView.clipsToBounds = true
+            
+            self.filterHeaderView.filterButton.addTarget(self, action: #selector(filterButtonAction(_:)), for: .touchUpInside)
+            
+            filterHeaderView.filterLevel = .without
+        }
+    }
     @IBOutlet private(set) weak var filterHeaderViewHeightConstraint: NSLayoutConstraint!
     
     // @IBOutlet private(set) weak var settingsBarButtonItem: UIBarButtonItem?
@@ -23,12 +31,13 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
     
     weak var coordinator: ProposalsSwiftCoordinator?
     fileprivate weak var appDelegate: AppDelegate?
-        
+    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.estimatedRowHeight = 164
             tableView.estimatedSectionHeaderHeight = 44.0
             tableView.rowHeight = UITableView.automaticDimension
+            tableView.registerNib(withClass: ProposalListHeaderTableViewCell.self)
             
             tableView.addSubview(refreshControl)
         }
@@ -51,41 +60,29 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
                 .deferred, .rejected, .withdrawn]
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let _ = coordinator else { return }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let _ = coordinator else { return }
         
         self.appDelegate = UIApplication.shared.delegate as? AppDelegate
         
         refreshControl.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
         
-        tableView.registerNib(withClass: ProposalListHeaderTableViewCell.self)
+        self.filterHeaderView.filteredByButton.addTarget(self,
+                                                    action: #selector(filteredByButtonAction(_:)),
+                                                    for: .touchUpInside)
         
-        // Filter Header View settings
-        filterHeaderView.statusFilterView.delegate = self
-        filterHeaderView.languageVersionFilterView.delegate = self
-        filterHeaderView.searchBar.delegate = self
-        filterHeaderView.clipsToBounds = true
-        
-        filterHeaderView.filterButton.addTarget(self, action: #selector(filterButtonAction(_:)), for: .touchUpInside)
-        filterHeaderView.filteredByButton.addTarget(self, action: #selector(filteredByButtonAction(_:)), for: .touchUpInside)
-        
-        filterHeaderView.filterLevel = .without
+        // subscribe to delegates
+        setupDelegates()
         
         getProposalList()
         
-        // Configure reachability closures
-        if Reachability.isConnectedToNetwork() {
-            if self.dataSource.count == 0 {
-                self.getProposalList()
-            }
-        }
-        
         if !Reachability.isConnectedToNetwork() {
-            
             self.showNoConnection = true
-            
         }
         
     }
@@ -199,50 +196,53 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
         self.tableView.endUpdates()
     }
     
+    func setupDelegates() {
+        filterHeaderView.statusFilterView.delegate = self
+        filterHeaderView.languageVersionFilterView.delegate = self
+        filterHeaderView.searchBar.delegate = self
+    }
+    
     // MARK: - Requests
-    fileprivate func getProposalList() {
+    private func getProposalList() {
         if Reachability.isConnectedToNetwork() {
             // Hide No Connection View
+            
             self.refreshControl.forceShowAnimation()
             
-            
-            MLApi.Swift.fetchProposals()
-                .sink { [weak self] (propSwift) in
+            MLApi.Swift.fetchProposals { [weak self] (propSwift) in
+                guard let self = self else { return }
                 guard let propSwift = propSwift else { return }
-                guard let strongSelf = self else { return }
-                    
-                    if strongSelf.dataSource.count > 0 {
-                        strongSelf.filteredDataSource   = []
-                        strongSelf.dataSource           = []
-                        strongSelf.languages            = []
-                        strongSelf.status               = []
-                        strongSelf.appDelegate?.people  = [:]
+                
+                DispatchQueue.main.async {
+                    if self.refreshControl.isRefreshing {
+                        self.refreshControl.endRefreshing()
                     }
+                }
+                
+                if self.dataSource.count > 0 {
+                    self.filteredDataSource   = []
+                    self.dataSource           = []
+                    self.languages            = []
+                    self.status               = []
+                    self.appDelegate?.people  = [:]
+                }
+                
+                self.dataSource                       = propSwift.filter(by: self.statusOrder)
+                self.filteredDataSource               = self.dataSource
+                self.filterHeaderView.statusSource   = self.statusOrder
+                self.buildPeople()
+                
+                // Language Versions source
+                self.filterHeaderView?.languageVersionSource = propSwift.compactMap({ $0.status.version }).removeDuplicates().sorted()
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                     
-                    DispatchQueue.main.async {
-                        if strongSelf.refreshControl.isRefreshing {
-                            strongSelf.refreshControl.endRefreshing()
-                        }
+                    if self.refreshControl.isRefreshing {
+                        self.refreshControl.endRefreshing()
                     }
-                    
-                    
-                    strongSelf.dataSource                       = propSwift.filter(by: strongSelf.statusOrder)
-                    strongSelf.filteredDataSource               = strongSelf.dataSource
-                    strongSelf.filterHeaderView?.statusSource   = strongSelf.statusOrder
-                    strongSelf.buildPeople()
-                    
-                    // Language Versions source
-                    strongSelf.filterHeaderView?.languageVersionSource = propSwift.compactMap({ $0.status.version }).removeDuplicates().sorted()
-                    
-                    DispatchQueue.main.async {
-                        strongSelf.tableView.reloadData()
-                        
-                        if strongSelf.refreshControl.isRefreshing {
-                            strongSelf.refreshControl.endRefreshing()
-                        }
-                    }
-            }.store(in: &self.cancellable)
-            
+                }
+            }
         } else {
             refreshControl.endRefreshing()
             showNoConnection = true
@@ -297,15 +297,15 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
 extension ProposalsSwiftViewController: UITableViewDelegate, UITableViewDataSource {
     // Data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return filteredDataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProposalsSwiftTableViewCell.self), for: indexPath) as! ProposalsSwiftTableViewCell
+        let cell = tableView.cell(forRowAt: indexPath) as ProposalsSwiftTableViewCell
         
-        cell.proposal = self.dataSource[indexPath.item]
         cell.delegate = self
-        
+        cell.proposal = self.filteredDataSource[indexPath.row]
+
         return cell
     }
     

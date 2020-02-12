@@ -16,11 +16,11 @@ private enum ConstantsApiUrl: String {
 }
 
 private protocol MLApiLinksProviderSwift {
-    func fetchProposals() -> AnyPublisher<[ProposalSwift]?, Never>
+    func fetchProposals(completion: @escaping ([ProposalSwift]?) -> Void) 
 }
 
 private protocol MLApiLinksProviderRust {
-    func fetchProposals() -> AnyPublisher<ProposalsRust?, Never>
+    func fetchProposals(completion: @escaping (Result<ProposalsRust?, Never>) -> ())
 }
 
 private protocol MLApiProviderRust: MLApiLinksProviderRust { }
@@ -34,21 +34,40 @@ final class MLApiImplRust: MLApiProviderRust {
         self.httpClient = httpClient
     }
     
-    func fetchProposals() -> AnyPublisher<ProposalsRust?, Never> {
-        let url = URL(string: ConstantsApiUrl.Rust.rawValue + "proposals")
-        return httpClient.get(url: url!)
-            .retry(1)
-            .map { data -> ProposalsRust? in
-                guard let data = data,
-                let response = try? JSONDecoder().decode(ProposalsRust.self, from: data) else {
-                    return nil
+    func fetchProposals(completion: @escaping (Result<ProposalsRust?, Never>) -> ()) {
+        let url = URL(string: ConstantsApiUrl.Rust.rawValue + "proposals")!
+        
+        httpClient.get(url: url) { (res) in
+            switch res {
+            case .success(let data):
+                let response = try? JSONDecoder().decode(ProposalsRust.self, from: data)
+                completion(.success(response))
+            default:
+                break
             }
-            return response
         }
-        .replaceError(with: nil)
-        .eraseToAnyPublisher()
     }
 }
+
+//            .retry(1)
+//            .map { data -> ProposalsRust? in
+//                guard let data = data,
+//                let response = try? JSONDecoder().decode(ProposalsRust.self, from: data) else {
+//                    return nil
+//            }
+//            return response
+    
+//    return httpClient.get(url: url!)
+//        .retry(1)
+//        .map { data -> [ProposalSwift]? in
+//            guard let data = data,
+//            let response = try? JSONDecoder().decode([ProposalSwift].self, from: data) else {
+//                return nil
+//        }
+//        return response
+//    }
+
+
 
 final class MLApiImplSwift: MLApiProviderSwift {
 
@@ -58,19 +77,17 @@ final class MLApiImplSwift: MLApiProviderSwift {
         self.httpClient = httpClient
     }
     
-    func fetchProposals() -> AnyPublisher<[ProposalSwift]?, Never> {
-        let url = URL(string: ConstantsApiUrl.Swift.rawValue + "proposals")
-        return httpClient.get(url: url!)
-            .retry(1)
-            .map { data -> [ProposalSwift]? in
-                guard let data = data,
-                let response = try? JSONDecoder().decode([ProposalSwift].self, from: data) else {
-                    return nil
+    func fetchProposals(completion: @escaping ([ProposalSwift]?) -> Void) {
+        let url = URL(string: ConstantsApiUrl.Swift.rawValue + "proposals")!
+        httpClient.get(url: url) { (res) in
+            switch res {
+            case .success(let data):
+                let response = try? JSONDecoder().decode([ProposalSwift].self, from: data)
+                completion((response))
+            default:
+                break
             }
-            return response
         }
-        .replaceError(with: nil)
-        .eraseToAnyPublisher()
     }
 }
 

@@ -36,10 +36,7 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
     
     //MARK: - Request
     private func getProposalList() {
-        coordinator?.getProposalsList().sink(receiveValue: { (propRust) in
-            guard let propRust = propRust else { return }
-            self.dataSource = propRust
-        }).store(in: &self.cancellable)
+        
     }
 }
 

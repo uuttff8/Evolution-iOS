@@ -6,32 +6,39 @@
 //  Copyright © 2020 Anton Kuzmin. All rights reserved.
 //
 
-import Combine
 import Foundation
 
+enum CustomHttpError: Error {
+    case fail
+}
+
 protocol HTTPClientProvider {
-    func get(url: URL) -> AnyPublisher<Data?, URLError>
-    func post(url: URL, params: [String: Any]) -> AnyPublisher<Data?, Never>
+    func get(url: URL, completion: @escaping ((Result<Data, CustomHttpError>) -> ()))
+    func post(url: URL, params: [String: Any], completion: @escaping ((Result<Data, CustomHttpError>)-> ()))
 }
 
 final class HTTPClient: HTTPClientProvider {
-    func get(url: URL) -> AnyPublisher<Data?, URLError> {
+    
+    func get(url: URL, completion: @escaping ((Result<Data, CustomHttpError>) -> ())) {
         let request = URLRequest(url: url)
-        return URLSession.shared.dataTaskPublisher(for: request)
-            .map { Optional.init($0.data) }
-            .eraseToAnyPublisher()
+        URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            if let data = data {
+                completion(.success(data))
+            }
+        }.resume()
     }
     
-    func post(url: URL, params: [String: Any]) -> AnyPublisher<Data?, Never> {
+    func post(url: URL, params: [String: Any], completion: @escaping ((Result<Data, CustomHttpError>)-> ())) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let jsonData = try? JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
         request.httpBody = jsonData
-        return URLSession.shared.dataTaskPublisher(for: request)
-            .map { Optional.init($0.data) }
-            .replaceError(with: nil)
-            .eraseToAnyPublisher()
+        URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            if let data = data {
+                completion(.success(data))
+            }
+        }.resume()
     }
 }
