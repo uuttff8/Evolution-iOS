@@ -13,6 +13,7 @@ enum AppStoryboards: String {
     case ProposalsRust = "ProposalsRust"
     case ProposalsSwift = "ProposalsSwift"
     case NoConnection = "NoConnection"
+    case ProposalDetail = "ProposalDetail"
 }
 
 protocol Storyboarded {
@@ -40,6 +41,8 @@ extension Storyboarded where Self: UIViewController {
             createStoryboard(AppStoryboards.ProposalsSwift)
         case .NoConnection:
             createStoryboard(AppStoryboards.NoConnection)
+        case .ProposalDetail:
+            createStoryboard(AppStoryboards.ProposalDetail)
         }
                 
         // instantiate a view controller with that identifier, and force cast as the type that was requested

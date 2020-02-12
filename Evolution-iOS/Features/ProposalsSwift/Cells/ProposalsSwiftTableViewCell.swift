@@ -9,6 +9,7 @@
 import UIKit
 import SwiftRichString
 
+
 // MARK: - Cell Delegate
 protocol ProposalSwiftDelegate: class {
     func didSelect(person: Person)
@@ -122,85 +123,75 @@ class ProposalsSwiftTableViewCell: UITableViewCell {
             self.detailsLabel.isUserInteractionEnabled = false
         }
         
-        let defaultStyle = Style {
+        let defaultStyle = Style("defaultStyle", {
             $0.lineSpacing = 5.5
             $0.hyphenationFactor = 1.0
-        }
-        
-        
-        let idStyle = Style {
-            $0.font = SystemFonts.HelveticaNeue.font(size: 20)
-            $0.color = UIColor.Proposal.lightGray
-            $0.lineSpacing = 0
-        }
-        
-        let titleStyle = Style {
-            $0.font = SystemFonts.HelveticaNeue.font(size: 20)
-            $0.color = UIColor.Proposal.darkGray
-            $0.lineSpacing = 0
-        }
-        
-        let labelStyle = Style {
-            $0.color = UIColor.Proposal.lightGray
-            $0.font = SystemFonts.HelveticaNeue.font(size: 14)
-        }
-        
-        let valueStyle = Style {
-            $0.color = UIColor.Proposal.darkGray
-            $0.font = SystemFonts.HelveticaNeue.font(size: 14)
-        }
-        
-        let anchorStyle = Style {
-            $0.color = UIColor.Proposal.darkGray
-            $0.font = SystemFonts.HelveticaNeue.font(size: 14)
-            $0.underline = (color: UIColor.Proposal.darkGray, style: NSUnderlineStyle.single)
-        }
+        })
         
         // Convert all styles into text
-        let myGroup = StyleGroup(base: defaultStyle, ["id": idStyle,
-                                                      "title": titleStyle,
-                                                      "label": labelStyle,
-                                                      "value": valueStyle,
-                                                      "anchor": anchorStyle])
-
-                
-        detailsLabel.attributedText = details.set(style: myGroup)
-                
-        self.detailsLabel.attributedText = details.set(style: myGroup)
-        
-        
-        
-        //        if let tagged = MarkupString(source: details) {
-        //            var attributedText = tagged.render(withStyles: self.styles()).add(style: defaultStyle)
-        //            let details = attributedText.string
-        //
-        //            // Title
-        //            attributedText = attributedText.link(title: proposal, text: details)
-        //
-        //            // Authors
-        //            if let authors = proposal.authors {
-        //                attributedText = attributedText.link(authors, text: details)
-        //                detailsLabel.attributedText = attributedText
-        //            }
-        //
-        //            // Review Manager
-        //            if let reviewer = proposal.reviewManager {
-        //                attributedText = attributedText.link(reviewer, text: details)
-        //                detailsLabel.attributedText = attributedText
-        //            }
-        //
-        //            // Implementations
-        //            if let implementations = proposal.implementations {
-        //                attributedText = attributedText.link(implementations, text: details)
-        //            }
-        //
-        //            self.detailsLabel.attributedText = attributedText
-        //        }
+        if let tagged = MarkupString(source: details) {
+            var attributedText = tagged.render(withStyles: self.styles()).add(style: defaultStyle)
+            let details = attributedText.string
+            
+            // Title
+            attributedText = attributedText.link(title: proposal, text: details)
+            
+            // Authors
+            if let authors = proposal.authors {
+                attributedText = attributedText.link(authors, text: details)
+                detailsLabel.attributedText = attributedText
+            }
+            
+            // Review Manager
+            if let reviewer = proposal.reviewManager {
+                attributedText = attributedText.link(reviewer, text: details)
+                detailsLabel.attributedText = attributedText
+            }
+            
+            // Implementations
+            if let implementations = proposal.implementations {
+                attributedText = attributedText.link(implementations, text: details)
+            }
+            
+            self.detailsLabel.attributedText = attributedText
+        }
     }
 }
 
 // MARK: - Renders && Style
 extension ProposalsSwiftTableViewCell {
+    
+    fileprivate func styles() -> [Style] {
+        let id = Style("id", {
+            $0.font = FontAttribute(.HelveticaNeue, size: 20)
+            $0.color = UIColor.Proposal.lightGray
+            $0.lineSpacing = 0
+        })
+        
+        let title = Style("title", {
+            $0.font = FontAttribute(.HelveticaNeue, size: 20)
+            $0.color = UIColor.Proposal.darkGray
+            $0.lineSpacing = 0
+        })
+        
+        let label = Style("label", {
+            $0.color = UIColor.Proposal.lightGray
+            $0.font = FontAttribute(.HelveticaNeue, size: 14)
+        })
+        
+        let value = Style("value", {
+            $0.color = UIColor.Proposal.darkGray
+            $0.font = FontAttribute(.HelveticaNeue, size: 14)
+        })
+        
+        let anchor = Style("anchor", {
+            $0.color = UIColor.Proposal.darkGray
+            $0.font = FontAttribute(.HelveticaNeue, size: 14)
+            $0.underline = UnderlineAttribute(color: UIColor.Proposal.darkGray, style: NSUnderlineStyle.single)
+        })
+        
+        return [id, title, label, value, anchor]
+    }
     
     fileprivate func renderAuthors() -> String? {
         guard let proposal = self.proposal,
@@ -367,79 +358,68 @@ public enum Host {
 }
 
 // MARK: - NSMutableAttributedString Extension
-//fileprivate extension NSMutableAttributedString {
-//
-//    func add(style: Style, range: NSRange) -> NSAttributedString {
-//
-//
-//
-//        return self
-//    }
-//
-//    func link(_ person: Person, text: String) -> NSMutableAttributedString {
-//        return self.link([person], text: text)
-//    }
-//
-//    func link(_ people: [Person], text: String) -> NSMutableAttributedString {
-//        var attributed = self
-//
-//        people.forEach { person in
-//            guard let username = person.username, let name = person.name else {
-//                return
-//            }
-//
-//            if let nameRange = text.range(of: name) {
-//                let range = text.nsRange(from: nameRange)
-//                let style = Style {
-//                    $0.linkURL = URL(string: "evo://profile/\(username)")
-//                }
-//
-//                attributed = attributed.add(style: style, range: range)
-//            }
-//        }
-//
-//        return attributed
-//    }
-//
-//    func link(title proposal: ProposalSwift, text: String) -> NSMutableAttributedString {
-//        var attributed = self
-//
-//        let title = proposal.title.trimmingCharacters(in: .whitespacesAndNewlines)
-//        if let titleRange = text.range(of: title) {
-//            let range = text.nsRange(from: titleRange)
-//            let style = Style  {
-//                $0.linkURL = URL(string: "evo://proposal/\(proposal.description)")
-//            }
-//
-//            attributed = attributed.add(style: style, range: range)
-//        }
-//
-//        return attributed
-//    }
-//
-//    func link(_ implementations: [Implementation], text: String) -> NSAttributedString {
-//        var attributed = self
-//
-//        implementations.forEach { implementation in
-//            if let textRange = text.range(of: implementation.description) {
-//                let range = text.nsRange(from: textRange)
-//                let style = Style  {
-//                    $0.linkURL = URL(string: "evo://implementation?path=\(implementation.path)")
-//                }
-//
-//                attributed = attributed.add(style: style, range: range)
-//            }
-//        }
-//
-//        return attributed
-//    }
-//}
-//
-//extension String {
-//    func nsRange(from range: Range<String.Index>) -> NSRange {
-//        let from = range.lowerBound.samePosition(in: utf16)
-//        let to = range.upperBound.samePosition(in: utf16)!
-//        return NSRange(location: utf16.distance(from: utf16.startIndex, to: from!),
-//                       length: utf16.distance(from: from!, to: to))
-//    }
-//}
+fileprivate extension NSMutableAttributedString {
+   
+   func add(style: Style, range: NSRange) -> NSMutableAttributedString {
+       self.addAttributes(style.attributes, range: range)
+       return self
+   }
+   
+   func link(_ person: Person, text: String) -> NSMutableAttributedString {
+       return self.link([person], text: text)
+   }
+   
+   func link(_ people: [Person], text: String) -> NSMutableAttributedString {
+       var attributed = self
+       
+       people.forEach { person in
+           guard let username = person.username, let name = person.name else {
+               return
+           }
+           
+           if let nameRange = text.range(of: name) {
+               let range = text.nsRange(from: nameRange)
+               let style = Style("url") {
+                   $0.linkURL = URL(string: "evo://profile/\(username)")
+               }
+               
+               attributed = attributed.add(style: style, range: range)
+           }
+       }
+       
+       return attributed
+   }
+   
+   func link(title proposal: ProposalSwift, text: String) -> NSMutableAttributedString {
+       var attributed = self
+       
+       let title = proposal.title.trimmingCharacters(in: .whitespacesAndNewlines)
+       if let titleRange = text.range(of: title) {
+           let range = text.nsRange(from: titleRange)
+           let style = Style("url") {
+               $0.linkURL = URL(string: "evo://proposal/\(proposal.description)")
+           }
+           
+           attributed = attributed.add(style: style, range: range)
+       }
+       
+       return attributed
+   }
+   
+   func link(_ implementations: [Implementation], text: String) -> NSMutableAttributedString {
+       var attributed = self
+       
+       implementations.forEach { implementation in
+           if let textRange = text.range(of: implementation.description) {
+               let range = text.nsRange(from: textRange)
+               let style = Style("url") {
+                   $0.linkURL = URL(string: "evo://implementation?path=\(implementation.path)")
+               }
+               
+               attributed = attributed.add(style: style, range: range)
+           }
+       }
+       
+       return attributed
+   }
+}
