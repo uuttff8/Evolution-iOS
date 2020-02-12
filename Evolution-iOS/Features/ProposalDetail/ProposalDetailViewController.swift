@@ -8,6 +8,15 @@
 
 import UIKit
 
-class ProposalDetailViewController: NetViewController {
+class ProposalDetailViewController: NetViewController, Storyboarded {
+    weak var coordinator: ProposalDetailCoordinator?
     
+    var currentLanguage: LanguageSelected?
+    var proposalLink: String?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(proposalLink)
+    }
+
 }

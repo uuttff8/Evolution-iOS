@@ -62,12 +62,10 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let _ = coordinator else { return }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.appDelegate = UIApplication.shared.delegate as? AppDelegate
         
         refreshControl.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
@@ -84,7 +82,6 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
         if !Reachability.isConnectedToNetwork() {
             self.showNoConnection = true
         }
-        
     }
     
     // MARK: - Layout
@@ -103,6 +100,7 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
     
     // MARK: - Objc Actions -
     @objc func filterButtonAction(_ sender: UIButton?) {
+        
         guard let sender = sender else {
             return
         }
@@ -314,6 +312,7 @@ extension ProposalsSwiftViewController: UITableViewDelegate, UITableViewDataSour
         // TODO: support split vc
         //let sourceViewController = UIDevice.current.userInterfaceIdiom == .pad ? splitViewController : self
         //Config.Segues.proposalDetail.performSegue(in: sourceViewController, split: true)
+        coordinator?.showProposalDetail(proposal: self.filteredDataSource[indexPath.item])
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

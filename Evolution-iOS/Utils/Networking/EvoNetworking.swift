@@ -20,7 +20,7 @@ private protocol MLApiLinksProviderSwift {
 }
 
 private protocol MLApiLinksProviderRust {
-    func fetchProposals(completion: @escaping (Result<ProposalsRust?, Never>) -> ())
+    func fetchProposals(completion: @escaping (ProposalsRust?) -> ())
 }
 
 private protocol MLApiProviderRust: MLApiLinksProviderRust { }
@@ -34,40 +34,20 @@ final class MLApiImplRust: MLApiProviderRust {
         self.httpClient = httpClient
     }
     
-    func fetchProposals(completion: @escaping (Result<ProposalsRust?, Never>) -> ()) {
+    func fetchProposals(completion: @escaping (ProposalsRust?) -> ()) {
         let url = URL(string: ConstantsApiUrl.Rust.rawValue + "proposals")!
         
         httpClient.get(url: url) { (res) in
             switch res {
             case .success(let data):
                 let response = try? JSONDecoder().decode(ProposalsRust.self, from: data)
-                completion(.success(response))
+                completion(response)
             default:
                 break
             }
         }
     }
 }
-
-//            .retry(1)
-//            .map { data -> ProposalsRust? in
-//                guard let data = data,
-//                let response = try? JSONDecoder().decode(ProposalsRust.self, from: data) else {
-//                    return nil
-//            }
-//            return response
-    
-//    return httpClient.get(url: url!)
-//        .retry(1)
-//        .map { data -> [ProposalSwift]? in
-//            guard let data = data,
-//            let response = try? JSONDecoder().decode([ProposalSwift].self, from: data) else {
-//                return nil
-//        }
-//        return response
-//    }
-
-
 
 final class MLApiImplSwift: MLApiProviderSwift {
 

@@ -24,6 +24,4 @@ class ProposalsContainerCoordinator: Coordinator {
         navigationController?.pushViewController(vc, animated: false)
         vc.coordinator = self
     }
-    
-    
 }

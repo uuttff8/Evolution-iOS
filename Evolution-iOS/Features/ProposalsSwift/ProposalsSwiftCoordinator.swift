@@ -25,5 +25,12 @@ class ProposalsSwiftCoordinator: Coordinator {
         vc.coordinator = self
         return vc
     }
+    
+    func showProposalDetail(proposal: ProposalSwift) {
+        let coordinator = ProposalDetailCoordinator(navigationController: navigationController,
+                                                    lang: LanguageSelected.Swift,
+                                                    link: Config.Base.URL.Evolution.markdown(for: proposal.description))
+        coordinator.start()
+    }
 }
 

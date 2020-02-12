@@ -15,10 +15,13 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var dataSource: ProposalsRust? {
+    var dataSource: ProposalsRust = { return ProposalsRust(proposals: []) }() {
         didSet {
-            self.dataSource?.proposals.reverse()
-            tableView.reloadData()
+            self.dataSource.proposals.reverse()
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -27,30 +30,38 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
         super.viewWillAppear(animated)
         guard let _ = coordinator else { return }
         
-        getProposalList()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getProposalList()
     }
     
     //MARK: - Request
     private func getProposalList() {
-        
+        MLApi.Rust.fetchProposals { (propRust) in
+            guard let propRust = propRust else { return }
+            self.dataSource = propRust
+        }
     }
 }
 
 extension ProposalsRustViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.proposals.count ?? 0
+        return dataSource.proposals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProposalsRustTableViewCell.self), for: indexPath) as! ProposalsRustTableViewCell
         
-        cell.initialaze(with: dataSource?.proposals[indexPath.item])
+        cell.initialaze(with: dataSource.proposals[indexPath.item])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator?.showProposalDetail(proposal: self.dataSource.proposals[indexPath.item])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

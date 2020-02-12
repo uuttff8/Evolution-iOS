@@ -73,7 +73,7 @@ struct Config {
     }
     
     struct Base {
-        struct URL {
+        struct URL {            
             struct Evolution {
                 static var base: String {
                     return "https://data.evoapp.io"
@@ -95,6 +95,10 @@ struct Config {
                 
                 static var base: String {
                     return "https://github.com"
+                }
+                
+                static func markdownRust(title: String) -> String {
+                    return "https://raw.githubusercontent.com/rust-lang/rfcs/master/text/\(title)"
                 }
             }
             
