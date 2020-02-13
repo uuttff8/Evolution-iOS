@@ -20,7 +20,7 @@ class ProposalsRustTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func initialaze(with proposal: ProposalRust?) {
+    func initialize(with proposal: ProposalRust?) {
         if let proposal = proposal {
             title.text = proposal.title
             index.text = proposal.index

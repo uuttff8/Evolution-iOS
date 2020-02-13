@@ -14,19 +14,19 @@ class ProposalDetailCoordinator: Coordinator {
     var navigationController: UINavigationController?
     
     var lang: LanguageSelected
-    var proposalLink: String
+    var proposalId: String
     
-    init(navigationController: UINavigationController? = nil, lang: LanguageSelected, link: String) {
+    init(navigationController: UINavigationController? = nil, lang: LanguageSelected, proposalId: String) {
         self.navigationController = navigationController
         self.lang = lang
-        self.proposalLink = link
+        self.proposalId = proposalId
     }
     
     func start() {
         let vc = ProposalDetailViewController.instantiate(from: AppStoryboards.ProposalDetail)
         vc.coordinator = self
         vc.currentLanguage = self.lang
-        vc.proposalLink = self.proposalLink
+        vc.proposalId = self.proposalId
         navigationController?.pushViewController(vc, animated: true)
     }
 }

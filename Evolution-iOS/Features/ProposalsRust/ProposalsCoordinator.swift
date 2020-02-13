@@ -36,7 +36,7 @@ class ProposalsRustCoordinator: Coordinator {
     func showProposalDetail(proposal: ProposalRust) {
         let coordinator = ProposalDetailCoordinator(navigationController: navigationController,
                                                     lang: LanguageSelected.Rust,
-                                                    link: Config.Base.URL.GitHub.markdownRust(title: proposal.title ?? ""))
+                                                    proposalId: proposal.title ?? "")
         coordinator.start()
     }
 }

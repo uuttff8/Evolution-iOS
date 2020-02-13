@@ -53,9 +53,9 @@ extension ProposalsRustViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProposalsRustTableViewCell.self), for: indexPath) as! ProposalsRustTableViewCell
+        let cell = tableView.cell(forRowAt: indexPath) as ProposalsRustTableViewCell
         
-        cell.initialaze(with: dataSource.proposals[indexPath.item])
+        cell.initialize(with: dataSource.proposals[indexPath.item])
         
         return cell
     }

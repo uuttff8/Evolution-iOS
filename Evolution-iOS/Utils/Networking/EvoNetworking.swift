@@ -16,11 +16,13 @@ private enum ConstantsApiUrl: String {
 }
 
 private protocol MLApiLinksProviderSwift {
-    func fetchProposals(completion: @escaping ([ProposalSwift]?) -> Void) 
+    func fetchProposals(completion: @escaping ([ProposalSwift]?) -> Void)
+    func proposalDetail(title: String, completion: @escaping ((String?) -> Void))
 }
 
 private protocol MLApiLinksProviderRust {
     func fetchProposals(completion: @escaping (ProposalsRust?) -> ())
+    func proposalDetail(title: String, completion: @escaping ((String?) -> Void))
 }
 
 private protocol MLApiProviderRust: MLApiLinksProviderRust { }
@@ -47,6 +49,22 @@ final class MLApiImplRust: MLApiProviderRust {
             }
         }
     }
+    
+    func proposalDetail(title: String, completion: @escaping ((String?) -> Void)) {
+        let url = URL(string: Config.Base.URL.GitHub.markdownRust(for: title))!
+        print(url)
+        
+        httpClient.get(url: url) { (res) in
+            switch res {
+            case let .success(data):
+                let response: String = String.init(data: data, encoding: .utf8) ?? ""
+                completion(response)
+            default:
+                break
+            }
+        }
+    }
+
 }
 
 final class MLApiImplSwift: MLApiProviderSwift {
@@ -64,6 +82,21 @@ final class MLApiImplSwift: MLApiProviderSwift {
             case .success(let data):
                 let response = try? JSONDecoder().decode([ProposalSwift].self, from: data)
                 completion((response))
+            default:
+                break
+            }
+        }
+    }
+    
+    func proposalDetail(title: String, completion: @escaping ((String?) -> Void)) {
+        let url = URL(string: Config.Base.URL.Evolution.markdown(for: title))!
+        print(url)
+        
+        httpClient.get(url: url) { (res) in
+            switch res {
+            case let .success(data):
+                let response: String = String.init(data: data, encoding: .utf8) ?? ""
+                completion(response)
             default:
                 break
             }

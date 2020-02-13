@@ -29,7 +29,7 @@ class ProposalsSwiftCoordinator: Coordinator {
     func showProposalDetail(proposal: ProposalSwift) {
         let coordinator = ProposalDetailCoordinator(navigationController: navigationController,
                                                     lang: LanguageSelected.Swift,
-                                                    link: Config.Base.URL.Evolution.markdown(for: proposal.description))
+                                                    proposalId: proposal.description)
         coordinator.start()
     }
 }

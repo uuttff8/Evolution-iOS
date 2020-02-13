@@ -97,7 +97,7 @@ struct Config {
                     return "https://github.com"
                 }
                 
-                static func markdownRust(title: String) -> String {
+                static func markdownRust(for title: String) -> String {
                     return "https://raw.githubusercontent.com/rust-lang/rfcs/master/text/\(title)"
                 }
             }
