@@ -22,10 +22,10 @@ class ProposalsContainerViewController: UIViewController, Storyboarded, Containe
     
     // MARK: - proposals view controllers
     private lazy var proposalsRustVC: ProposalsRustViewController = {
-        let coordinatorRust = ProposalsRustCoordinator(navigationController: self.navigationController)
+        let coordinatorRust = ProposalsLanguagesCoordinator(navigationController: self.navigationController)
         coordinator?.childCoordinators.append(coordinatorRust)
         coordinatorRust.start()
-        let vc = coordinatorRust.getVC()
+        let vc = coordinatorRust.getVcRust()
         // Add View Controller as Child View Controller
         self.add(asChildViewController: vc)
 
@@ -34,10 +34,10 @@ class ProposalsContainerViewController: UIViewController, Storyboarded, Containe
 
     // default view controller to be inited
     private lazy var proposalsSwiftVC: ProposalsSwiftViewController = {
-        let coordinatorSwift = ProposalsSwiftCoordinator(navigationController: self.navigationController)
+        let coordinatorSwift = ProposalsLanguagesCoordinator(navigationController: self.navigationController)
         coordinator?.childCoordinators.append(coordinatorSwift)
         coordinatorSwift.start()
-        let vc = coordinatorSwift.getVC()
+        let vc = coordinatorSwift.getVcSwift()
         // Add View Controller as Child View Controller
         self.add(asChildViewController: vc)
         return vc

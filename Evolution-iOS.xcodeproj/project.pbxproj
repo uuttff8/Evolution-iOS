@@ -25,7 +25,6 @@
 		4E290FCE23E15EC9008A5E15 /* RustProposals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E290FCD23E15EC9008A5E15 /* RustProposals.swift */; };
 		4E61815723E8523B0059DEA3 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61815623E8523B0059DEA3 /* UIColor+Extensions.swift */; };
 		4E61815A23E85EB80059DEA3 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61815923E85EB80059DEA3 /* Buttons.swift */; };
-		4E61815C23E9B22F0059DEA3 /* ProposalsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61815B23E9B22F0059DEA3 /* ProposalsCoordinator.swift */; };
 		4E61815E23E9B4CA0059DEA3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61815D23E9B4CA0059DEA3 /* AppCoordinator.swift */; };
 		4E61816423E9E5AA0059DEA3 /* ProposalsRustTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61816323E9E5AA0059DEA3 /* ProposalsRustTableViewCell.swift */; };
 		4E61816623EB43B20059DEA3 /* SwiftProposals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61816523EB43B20059DEA3 /* SwiftProposals.swift */; };
@@ -36,7 +35,6 @@
 		4E61817523EC768B0059DEA3 /* ProposalsContainer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E61817423EC768B0059DEA3 /* ProposalsContainer.storyboard */; };
 		4E61817723EC77270059DEA3 /* ProposalsContainerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61817623EC77270059DEA3 /* ProposalsContainerCoordinator.swift */; };
 		4E61817A23EC7C9F0059DEA3 /* Containered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61817923EC7C9F0059DEA3 /* Containered.swift */; };
-		4E61817C23EC807C0059DEA3 /* ProposalsSwiftCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61817B23EC807C0059DEA3 /* ProposalsSwiftCoordinator.swift */; };
 		4E61817E23EC80870059DEA3 /* ProposalsSwift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E61817D23EC80870059DEA3 /* ProposalsSwift.storyboard */; };
 		4E61818023EC80980059DEA3 /* ProposalsSwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61817F23EC80980059DEA3 /* ProposalsSwiftViewController.swift */; };
 		4E791DFF23F49C21000A8495 /* ProposalDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E791DFE23F49C21000A8495 /* ProposalDetailCoordinator.swift */; };
@@ -44,6 +42,7 @@
 		4E791E0E23F5CD30000A8495 /* DownView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4E791E0D23F5CD30000A8495 /* DownView.bundle */; };
 		4EA129B623F80830007210E8 /* SwiftRichString in Frameworks */ = {isa = PBXBuildFile; productRef = 4EA129B523F80830007210E8 /* SwiftRichString */; };
 		4EA129B923F80D4D007210E8 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA129B823F80D4D007210E8 /* UserDefaultsService.swift */; };
+		4EA129BC23F81972007210E8 /* ProposalsLanguagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA129BB23F81972007210E8 /* ProposalsLanguagesCoordinator.swift */; };
 		4ED8C2D123EDFF40005938AF /* ProposalsSwiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D023EDFF40005938AF /* ProposalsSwiftTableViewCell.swift */; };
 		4ED8C2D723F1965E005938AF /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D623F1965E005938AF /* URL.swift */; };
 		4ED8C2DA23F19FEF005938AF /* Implementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D923F19FEF005938AF /* Implementation.swift */; };
@@ -108,7 +107,6 @@
 		4E290FCD23E15EC9008A5E15 /* RustProposals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RustProposals.swift; sourceTree = "<group>"; };
 		4E61815623E8523B0059DEA3 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		4E61815923E85EB80059DEA3 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
-		4E61815B23E9B22F0059DEA3 /* ProposalsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsCoordinator.swift; sourceTree = "<group>"; };
 		4E61815D23E9B4CA0059DEA3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		4E61816323E9E5AA0059DEA3 /* ProposalsRustTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsRustTableViewCell.swift; sourceTree = "<group>"; };
 		4E61816523EB43B20059DEA3 /* SwiftProposals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftProposals.swift; sourceTree = "<group>"; };
@@ -119,13 +117,13 @@
 		4E61817423EC768B0059DEA3 /* ProposalsContainer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProposalsContainer.storyboard; sourceTree = "<group>"; };
 		4E61817623EC77270059DEA3 /* ProposalsContainerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsContainerCoordinator.swift; sourceTree = "<group>"; };
 		4E61817923EC7C9F0059DEA3 /* Containered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Containered.swift; sourceTree = "<group>"; };
-		4E61817B23EC807C0059DEA3 /* ProposalsSwiftCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsSwiftCoordinator.swift; sourceTree = "<group>"; };
 		4E61817D23EC80870059DEA3 /* ProposalsSwift.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProposalsSwift.storyboard; sourceTree = "<group>"; };
 		4E61817F23EC80980059DEA3 /* ProposalsSwiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsSwiftViewController.swift; sourceTree = "<group>"; };
 		4E791DFE23F49C21000A8495 /* ProposalDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalDetailCoordinator.swift; sourceTree = "<group>"; };
 		4E791E0D23F5CD30000A8495 /* DownView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DownView.bundle; sourceTree = "<group>"; };
 		4EA129B423F80827007210E8 /* SwiftRichString */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftRichString; path = Frameworks/SwiftRichString; sourceTree = "<group>"; };
 		4EA129B823F80D4D007210E8 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		4EA129BB23F81972007210E8 /* ProposalsLanguagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsLanguagesCoordinator.swift; sourceTree = "<group>"; };
 		4ED8C2D023EDFF40005938AF /* ProposalsSwiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsSwiftTableViewCell.swift; sourceTree = "<group>"; };
 		4ED8C2D623F1965E005938AF /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		4ED8C2D923F19FEF005938AF /* Implementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Implementation.swift; sourceTree = "<group>"; };
@@ -247,8 +245,7 @@
 				4ED8C32023F49756005938AF /* ProposalDetail */,
 				4ED8C2DD23F1B425005938AF /* NoConnection */,
 				4E61817123EC76550059DEA3 /* ProposalsContainer */,
-				4E61817023EC75B50059DEA3 /* ProposalsSwift */,
-				4E61816F23EC75AD0059DEA3 /* ProposalsRust */,
+				4EA129BA23F81921007210E8 /* ProposalsLanguages */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -351,7 +348,6 @@
 				4E61816223E9E5910059DEA3 /* Cells */,
 				4E290FB123DDF28E008A5E15 /* ProposalsRustViewController.swift */,
 				4E290FB323DDF2A1008A5E15 /* ProposalsRust.storyboard */,
-				4E61815B23E9B22F0059DEA3 /* ProposalsCoordinator.swift */,
 			);
 			path = ProposalsRust;
 			sourceTree = "<group>";
@@ -363,7 +359,6 @@
 				4ED8C2CF23EDFF1B005938AF /* Cells */,
 				4E61817F23EC80980059DEA3 /* ProposalsSwiftViewController.swift */,
 				4E61817D23EC80870059DEA3 /* ProposalsSwift.storyboard */,
-				4E61817B23EC807C0059DEA3 /* ProposalsSwiftCoordinator.swift */,
 			);
 			path = ProposalsSwift;
 			sourceTree = "<group>";
@@ -409,6 +404,16 @@
 				4EA129B823F80D4D007210E8 /* UserDefaultsService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		4EA129BA23F81921007210E8 /* ProposalsLanguages */ = {
+			isa = PBXGroup;
+			children = (
+				4EA129BB23F81972007210E8 /* ProposalsLanguagesCoordinator.swift */,
+				4E61817023EC75B50059DEA3 /* ProposalsSwift */,
+				4E61816F23EC75AD0059DEA3 /* ProposalsRust */,
+			);
+			path = ProposalsLanguages;
 			sourceTree = "<group>";
 		};
 		4ED8C2CF23EDFF1B005938AF /* Cells */ = {
@@ -612,12 +617,12 @@
 				4ED8C2ED23F30D0D005938AF /* DGCollectionViewLeftAlignFlowLayout.swift in Sources */,
 				4E61815A23E85EB80059DEA3 /* Buttons.swift in Sources */,
 				4ED8C2DA23F19FEF005938AF /* Implementation.swift in Sources */,
+				4EA129BC23F81972007210E8 /* ProposalsLanguagesCoordinator.swift in Sources */,
 				4E61816823EB451B0059DEA3 /* Config.swift in Sources */,
 				4ED8C2F223F30F33005938AF /* UIColor+Ext.swift in Sources */,
 				4ED8C2D723F1965E005938AF /* URL.swift in Sources */,
 				4E290FB223DDF28E008A5E15 /* ProposalsRustViewController.swift in Sources */,
 				4ED8C2E623F30C56005938AF /* FilterListGenericView.swift in Sources */,
-				4E61817C23EC807C0059DEA3 /* ProposalsSwiftCoordinator.swift in Sources */,
 				4E290FC923E15E0E008A5E15 /* HttpClient.swift in Sources */,
 				4E61815E23E9B4CA0059DEA3 /* AppCoordinator.swift in Sources */,
 				4E290FCE23E15EC9008A5E15 /* RustProposals.swift in Sources */,
@@ -640,7 +645,6 @@
 				4ED8C2D123EDFF40005938AF /* ProposalsSwiftTableViewCell.swift in Sources */,
 				4E290F7723DDEF34008A5E15 /* AppDelegate.swift in Sources */,
 				4ED8C2F023F30E7E005938AF /* FilterHeaderView.swift in Sources */,
-				4E61815C23E9B22F0059DEA3 /* ProposalsCoordinator.swift in Sources */,
 				4EA129B923F80D4D007210E8 /* UserDefaultsService.swift in Sources */,
 				4E290FC423DF7B0F008A5E15 /* NavDropDown.swift in Sources */,
 				4E61817A23EC7C9F0059DEA3 /* Containered.swift in Sources */,

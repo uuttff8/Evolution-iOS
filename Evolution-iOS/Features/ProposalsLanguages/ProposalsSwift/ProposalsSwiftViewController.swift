@@ -29,7 +29,7 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
     // Private properties
     fileprivate var timer: Timer = Timer()
     
-    weak var coordinator: ProposalsSwiftCoordinator?
+    weak var coordinator: ProposalsLanguagesCoordinator?
     fileprivate weak var appDelegate: AppDelegate?
     
     @IBOutlet weak var tableView: UITableView! {
@@ -312,7 +312,7 @@ extension ProposalsSwiftViewController: UITableViewDelegate, UITableViewDataSour
         // TODO: support split vc
         //let sourceViewController = UIDevice.current.userInterfaceIdiom == .pad ? splitViewController : self
         //Config.Segues.proposalDetail.performSegue(in: sourceViewController, split: true)
-        coordinator?.showProposalDetail(proposal: self.filteredDataSource[indexPath.item])
+        coordinator?.showProposalDetail(proposalLang:  .SwiftData(self.filteredDataSource[indexPath.item]))
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

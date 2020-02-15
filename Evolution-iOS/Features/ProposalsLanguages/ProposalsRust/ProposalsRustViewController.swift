@@ -11,7 +11,7 @@ import Combine
 
 class ProposalsRustViewController: NetViewController, Storyboarded {
     
-    weak var coordinator: ProposalsRustCoordinator?
+    weak var coordinator: ProposalsLanguagesCoordinator?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -61,7 +61,7 @@ extension ProposalsRustViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.showProposalDetail(proposal: self.dataSource.proposals[indexPath.item])
+        coordinator?.showProposalDetail(proposalLang: .RustData(self.dataSource.proposals[indexPath.item]))
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
