@@ -55,24 +55,7 @@ private extension ProposalDetailViewController {
     
     func renderDownInWebView(for text: String) {
         do {
-            // Implement through UserDefault
-            //            // Get access to down.min.css file in Resources/DownView.bunlde/css/down.min.css
-            //            let classBundle = Bundle(for: DownView.self)
-            //            let url = classBundle.url(forResource: "DownView", withExtension: "bundle")!
-            //            let bundle = Bundle(url: url)!
-            //            let path = bundle.url(forResource: "down", withExtension: "min.css", subdirectory: "css")
-            //
-            //            // Get contents of a file
-            //            let con = try String(contentsOf: path!)
-            //
-            //            // Access to a line of a file in [Int]
-            //            let components = con.components(separatedBy: "\n")
-            //
-            //            // Change font from 0.9 to 1.2 in css
-            //            let str = components[4].replacingOccurrences(of: "0.9em", with: "1.2em")
-            //            print(str)
-            //            try str.write(to: path!, atomically: true, encoding: .utf8)
-            //
+            try changeFont(to: "0.9")
             
             let downView = try DownView(frame: self.view.bounds, markdownString: text/*, templateBundle: bundle*/, didLoadSuccessfully: {
                 print("Markdown was rendered.")
@@ -85,7 +68,34 @@ private extension ProposalDetailViewController {
         } catch(let error) {
             self.showError(message: error.localizedDescription)
         }
+    }
+    
+    func writeChangesToDisk(from: String, to: String) throws {
+        // Get access to down.min.css file in Resources/DownView.bunlde/css/down.min.css
+        let classBundle = Bundle(for: DownView.self)
+        let url = classBundle.url(forResource: "DownView", withExtension: "bundle")!
+        let bundle = Bundle(url: url)!
+        let path = bundle.url(forResource: "down", withExtension: "min.css", subdirectory: "css")
         
+        // Get contents of a file
+        let con = try String(contentsOf: path!)
+        
+        // Access to a line of a file in [Int]
+        var components = con.components(separatedBy: "\n")
+        
+        // Change font from 0.9 to 1.2 in css
+        let str = components[4].replacingOccurrences(of: String(from), with: String(to))
+        // change only 4 line
+        components[4] = str
+        try components.joined(separator: "\n").write(to: path!, atomically: true, encoding: .utf8)
+    }
+    
+    func changeFont(to fontSize: String) throws {
+        let defaultFont = UserDefaultsService.shared.downFontSize
+        let newFont = String(0.9)
+        UserDefaultsService.shared.downFontSize = newFont
+        try writeChangesToDisk(from: defaultFont, to: fontSize)
+        UserDefaultsService.shared.clearOnlyDownFontSize()
     }
     
     func createStatusBarBackgrounds(above subview: UIView) {
