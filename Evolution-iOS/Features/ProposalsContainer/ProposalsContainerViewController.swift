@@ -62,7 +62,11 @@ class ProposalsContainerViewController: UIViewController, Storyboarded, Containe
         self.add(asChildViewController: self.proposalsSwiftVC)
         
         languageChangeSubscribe()
-        
+    }
+    
+    // MARK: - Actions
+    @IBAction func settingsButtonTapped(_ sender: UIBarButtonItem) {
+        coordinator?.goToSettingsScreen()
     }
     
     // MARK: - Private -

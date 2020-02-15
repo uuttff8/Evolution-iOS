@@ -24,4 +24,10 @@ class ProposalsContainerCoordinator: Coordinator {
         navigationController?.pushViewController(vc, animated: false)
         vc.coordinator = self
     }
+    
+    func goToSettingsScreen() {
+        let coordinator = SettingsCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }

@@ -8,28 +8,21 @@
 
 import UIKit
 
-protocol ProposalProtocol {}
-
-extension ProposalRust: ProposalProtocol {}
-extension ProposalSwift: ProposalProtocol {}
-
 enum LangDataOne {
     case RustData(ProposalRust)
     case SwiftData(ProposalSwift)
 }
 
-
-class ProposalsLanguagesCoordinator: Coordinator {
+class ProposalsLanguagesCoordinator: NSObject, Coordinator {
     var navigationController: UINavigationController?
     var childCoordinators = [Coordinator]()
+    
     
     init(navigationController: UINavigationController? = nil) {
         self.navigationController = navigationController
     }
     
-    func start() {
-        
-    }
+    func start() { }
     
     func getVcRust() -> ProposalsRustViewController {
         let vc = ProposalsRustViewController.instantiate(from: AppStoryboards.ProposalsRust)
