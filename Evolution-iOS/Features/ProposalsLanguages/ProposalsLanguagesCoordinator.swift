@@ -50,11 +50,13 @@ class ProposalsLanguagesCoordinator: Coordinator {
             let coordinator = ProposalDetailCoordinator(navigationController: navigationController,
                                                         lang: LanguageSelected.Rust,
                                                         proposalId: propRust.title ?? "")
+            childCoordinators.append(coordinator)
             coordinator.start()
         case let .SwiftData(propSwift):
             let coordinator = ProposalDetailCoordinator(navigationController: navigationController,
                                                         lang: LanguageSelected.Swift,
                                                         proposalId: propSwift.description)
+            childCoordinators.append(coordinator)
             coordinator.start()
         }
     }

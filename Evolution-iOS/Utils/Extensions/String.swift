@@ -178,3 +178,9 @@ extension Sequence where Self: RangeReplaceableCollection, Self: RandomAccessCol
         return false
     }
 }
+
+
+extension StringProtocol {
+    var firstUppercased: String { prefix(1).uppercased() + dropFirst() }
+    var firstCapitalized: String { prefix(1).capitalized + dropFirst() }
+}

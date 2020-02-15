@@ -22,6 +22,20 @@ class ProposalDetailViewController: NetViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        switch currentLanguage {
+        case .Rust:
+            
+            let navTitle = proposalId?
+                .replacingOccurrences(of: "-", with: " ")
+                .dropFirst(5)
+                .dropLast(3)
+            title = String(navTitle ?? "").firstUppercased
+        case .Swift:
+            title = proposalId
+        default:
+            break
+        }
+        
         getProposalDetailText { [weak self] (text) in
             DispatchQueue.main.async {
                 guard let self = self else { return }
@@ -47,8 +61,6 @@ class ProposalDetailViewController: NetViewController, Storyboarded {
             break
         }
     }
-    
-    
 }
 
 private extension ProposalDetailViewController {
