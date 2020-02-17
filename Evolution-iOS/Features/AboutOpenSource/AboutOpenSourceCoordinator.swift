@@ -1,14 +1,14 @@
 //
-//  SettingsCoordinator.swift
+//  AboutOpenSourceCoordinator.swift
 //  Evolution-iOS
 //
-//  Created by uuttff8 on 2/15/20.
+//  Created by uuttff8 on 2/17/20.
 //  Copyright © 2020 Anton Kuzmin. All rights reserved.
 //
 
 import UIKit
 
-class SettingsCoordinator: Coordinator {
+class AboutOpenSourceCoordinator: Coordinator {
     var navigationController: UINavigationController?
     var childCoordinators = [Coordinator]()
         
@@ -17,14 +17,9 @@ class SettingsCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = SettingsViewController.instantiate(from: AppStoryboards.Settings)
+        let vc = AboutOpenSourceViewController.instantiate(from: AppStoryboards.AboutOpenSource)
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func showAboutOpenSourceScreen() {
-        let coordinator = AboutOpenSourceCoordinator(navigationController: navigationController)
-        childCoordinators.append(coordinator)
-        coordinator.start()
+        // navigationController?.present(vc, animated: true, completion: nil)
     }
 }

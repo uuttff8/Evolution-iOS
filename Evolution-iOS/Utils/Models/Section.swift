@@ -19,7 +19,7 @@ enum SectionType: String {
     
     // Settings
     case notifications = "Notifications"
-    case about = "Open Source"
+    case openSource = "Open Source"
     case authors = "Authors"
 }
 

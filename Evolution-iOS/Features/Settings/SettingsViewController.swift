@@ -46,14 +46,18 @@ extension SettingsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // let section = coordinator?.dataSource[indexPath.section]
+        let section = self.dataSource.data.value[indexPath.section]
         
-//        if section.section == .about {
-//            performSegue(withIdentifier: "AboutStoryboardSegue", sender: nil)
-//        }
-//        else if section.section == .author, let item = section.items.first {
-//            let alertController = UIAlertController.presentAlert(to: item)
-//            self.present(alertController, animated: true, completion: nil)
-//        }
+        switch section.section {
+        case .openSource:
+            coordinator?.showAboutOpenSourceScreen()
+        case .authors:
+            let item = section.items[indexPath.item]
+            let alertController = UIAlertController.presentAlert(to: item)
+            self.present(alertController, animated: true, completion: nil)
+        default:
+            break
+        }
+        
     }
 }

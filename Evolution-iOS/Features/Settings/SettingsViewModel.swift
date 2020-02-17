@@ -14,7 +14,7 @@ class GenericDataSource<T> : NSObject {
 
 struct CurrencyViewModel {
     weak var dataSource : GenericDataSource<Section>?
-
+    
     init(dataSource : GenericDataSource<Section>?) {
         self.dataSource = dataSource
     }
@@ -28,7 +28,7 @@ struct CurrencyViewModel {
                               footer: nil,
                               grouped: false)
         
-        let about = Section(section: .about,
+        let about = Section(section: .openSource,
                             items: [
                                 Item(text: "See all details about this app", type: .undefined, value: "")],
                             footer: nil,
@@ -55,7 +55,7 @@ class SettingsDataSource: GenericDataSource<Section>, UITableViewDataSource {
         let item = section.items[indexPath.row]
         
         switch section.section {
-        case .about:
+        case .openSource:
             cell = tableView.cell(forRowAt: indexPath) as CustomSubtitleTableViewCell
             cell.textLabel?.text        = "Contributors, licenses and more"
             cell.detailTextLabel?.text  = item.text
