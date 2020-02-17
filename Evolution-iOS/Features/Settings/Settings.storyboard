@@ -14,9 +14,28 @@
                     <view key="view" contentMode="scaleToFill" id="Soi-0f-59V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Idi-jN-HPA">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="bNN-bc-GO2" id="qf9-Qi-kYp"/>
+                                    <outlet property="delegate" destination="bNN-bc-GO2" id="dEG-jK-ydp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Idi-jN-HPA" secondAttribute="baseline" id="NsD-UR-6ul"/>
+                            <constraint firstItem="Idi-jN-HPA" firstAttribute="leading" secondItem="dky-jy-n4o" secondAttribute="leading" id="RDD-1M-fGv"/>
+                            <constraint firstItem="Idi-jN-HPA" firstAttribute="top" secondItem="dky-jy-n4o" secondAttribute="top" id="X3g-vI-JuD"/>
+                            <constraint firstItem="dky-jy-n4o" firstAttribute="trailing" secondItem="Idi-jN-HPA" secondAttribute="trailing" id="cSs-GU-mEt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dky-jy-n4o"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Idi-jN-HPA" id="Jn3-Ui-tWb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNs-0K-qGt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

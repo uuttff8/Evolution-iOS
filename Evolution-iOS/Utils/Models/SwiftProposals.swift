@@ -292,7 +292,7 @@ struct Status: Decodable {
 
 
 enum ServerError: Error {
-    case asdasf
+    case unknownState
 }
 
 extension Status {
@@ -306,7 +306,7 @@ extension Status {
         let desiredState = State(stateString)
         
         guard let validState = StatusState(rawValue: desiredState) else {
-            throw ServerError.asdasf
+            throw ServerError.unknownState
         }
         state = validState
         

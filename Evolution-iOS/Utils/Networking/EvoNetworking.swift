@@ -6,9 +6,7 @@
 //  Copyright © 2020 Anton Kuzmin. All rights reserved.
 //
 
-import Foundation
-import Combine
-
+import UIKit
 
 private enum ConstantsApiUrl: String {
     case Swift = "https://data.evoapp.io/"
@@ -107,4 +105,44 @@ final class MLApiImplSwift: MLApiProviderSwift {
 enum MLApi {
     static let Swift = MLApiImplSwift()
     static let Rust = MLApiImplRust()
+    
+    @discardableResult
+    static func requestImage(_ url: String, completion: @escaping (Swift.Result<UIImage, ServerError>) -> Void) -> URLSessionDownloadTask? {
+        guard let URL = URL(string: url) else {
+            completion(.failure(ServerError.unknownState))
+            return nil
+        }
+        
+        let cache = URLCache.shared
+        let request = URLRequest(url: URL)
+        
+        if let cachedResponse = cache.cachedResponse(for: request),
+            let image = UIImage(data: cachedResponse.data) {
+            completion(.success(image))
+        }
+        else {
+            let session = URLSession(configuration: .default)
+            let task = session.downloadTask(with: URL) { url, response, error in
+                if let _ = error {
+                    completion(.failure(ServerError.unknownState))
+                }
+                else if let validURL = url,
+                    let response = response,
+                    let data = try? Data(contentsOf: validURL),
+                    let image = UIImage(data: data) {
+                    
+                    let cachedData = CachedURLResponse(response: response, data: data)
+                    cache.storeCachedResponse(cachedData, for: request)
+                    completion(.success(image))
+                }
+                else {
+                    completion(.failure(ServerError.unknownState))
+                }
+            }
+            task.resume()
+            return task
+        }
+        
+        return nil
+    }
 }

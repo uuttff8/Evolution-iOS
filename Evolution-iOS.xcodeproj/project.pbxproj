@@ -46,6 +46,11 @@
 		4EA129BF23F85346007210E8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA129BE23F85346007210E8 /* SettingsViewController.swift */; };
 		4EA129C123F8534D007210E8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EA129C023F8534D007210E8 /* Settings.storyboard */; };
 		4EA129C323F85362007210E8 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA129C223F85362007210E8 /* SettingsCoordinator.swift */; };
+		4EA129CC23F96815007210E8 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA129CB23F96815007210E8 /* Section.swift */; };
+		4EA129CE23F96E07007210E8 /* CustomSubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA129CD23F96E07007210E8 /* CustomSubtitleTableViewCell.swift */; };
+		4EA129D023F96E17007210E8 /* CustomSubtitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EA129CF23F96E17007210E8 /* CustomSubtitleTableViewCell.xib */; };
+		4EA129D223FAE4E9007210E8 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA129D123FAE4E9007210E8 /* SettingsViewModel.swift */; };
+		4EA129D423FAE584007210E8 /* DynamicValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA129D323FAE584007210E8 /* DynamicValue.swift */; };
 		4ED8C2D123EDFF40005938AF /* ProposalsSwiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D023EDFF40005938AF /* ProposalsSwiftTableViewCell.swift */; };
 		4ED8C2D723F1965E005938AF /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D623F1965E005938AF /* URL.swift */; };
 		4ED8C2DA23F19FEF005938AF /* Implementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D923F19FEF005938AF /* Implementation.swift */; };
@@ -130,6 +135,11 @@
 		4EA129BE23F85346007210E8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4EA129C023F8534D007210E8 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		4EA129C223F85362007210E8 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		4EA129CB23F96815007210E8 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		4EA129CD23F96E07007210E8 /* CustomSubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSubtitleTableViewCell.swift; sourceTree = "<group>"; };
+		4EA129CF23F96E17007210E8 /* CustomSubtitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomSubtitleTableViewCell.xib; sourceTree = "<group>"; };
+		4EA129D123FAE4E9007210E8 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		4EA129D323FAE584007210E8 /* DynamicValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicValue.swift; sourceTree = "<group>"; };
 		4ED8C2D023EDFF40005938AF /* ProposalsSwiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsSwiftTableViewCell.swift; sourceTree = "<group>"; };
 		4ED8C2D623F1965E005938AF /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		4ED8C2D923F19FEF005938AF /* Implementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Implementation.swift; sourceTree = "<group>"; };
@@ -248,8 +258,8 @@
 		4E290FAB23DDF21A008A5E15 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				4EA129BD23F85337007210E8 /* Settings */,
 				4ED8C32023F49756005938AF /* ProposalDetail */,
+				4EA129BD23F85337007210E8 /* Settings */,
 				4ED8C2DD23F1B425005938AF /* NoConnection */,
 				4E61817123EC76550059DEA3 /* ProposalsContainer */,
 				4EA129BA23F81921007210E8 /* ProposalsLanguages */,
@@ -262,6 +272,7 @@
 			children = (
 				4E290FAF23DDF274008A5E15 /* BaseViewController.swift */,
 				4E290FC023DE098E008A5E15 /* BaseCoordinator.swift */,
+				4EA129D323FAE584007210E8 /* DynamicValue.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -314,6 +325,7 @@
 				4E61816523EB43B20059DEA3 /* SwiftProposals.swift */,
 				4ED8C2F723F325B3005938AF /* SwiftProposals+Ext.swift */,
 				4E61816723EB451B0059DEA3 /* Config.swift */,
+				4EA129CB23F96815007210E8 /* Section.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -426,11 +438,22 @@
 		4EA129BD23F85337007210E8 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				4EA129C423F85E2C007210E8 /* Cells */,
 				4EA129BE23F85346007210E8 /* SettingsViewController.swift */,
+				4EA129D123FAE4E9007210E8 /* SettingsViewModel.swift */,
 				4EA129C023F8534D007210E8 /* Settings.storyboard */,
 				4EA129C223F85362007210E8 /* SettingsCoordinator.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		4EA129C423F85E2C007210E8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4EA129CD23F96E07007210E8 /* CustomSubtitleTableViewCell.swift */,
+				4EA129CF23F96E17007210E8 /* CustomSubtitleTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		4ED8C2CF23EDFF1B005938AF /* Cells */ = {
@@ -603,6 +626,7 @@
 				4ED8C2FC23F33DA6005938AF /* ProposalListHeaderTableViewCell.xib in Resources */,
 				4E290FB423DDF2A1008A5E15 /* ProposalsRust.storyboard in Resources */,
 				4ED8C2E323F1B4BF005938AF /* NoConnection.storyboard in Resources */,
+				4EA129D023F96E17007210E8 /* CustomSubtitleTableViewCell.xib in Resources */,
 				4E61817523EC768B0059DEA3 /* ProposalsContainer.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,7 +653,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E290FC123DE098E008A5E15 /* BaseCoordinator.swift in Sources */,
+				4EA129D223FAE4E9007210E8 /* SettingsViewModel.swift in Sources */,
 				4E290FB723DDF5D2008A5E15 /* Storyboaded.swift in Sources */,
+				4EA129CE23F96E07007210E8 /* CustomSubtitleTableViewCell.swift in Sources */,
 				4E290FB023DDF274008A5E15 /* BaseViewController.swift in Sources */,
 				4ED8C31F23F4974A005938AF /* ProposalDetailViewController.swift in Sources */,
 				4ED8C2ED23F30D0D005938AF /* DGCollectionViewLeftAlignFlowLayout.swift in Sources */,
@@ -649,6 +675,7 @@
 				4E61816E23EB46A70059DEA3 /* Protocols.swift in Sources */,
 				4E290F8123DDEF34008A5E15 /* Evolution_iOS.xcdatamodeld in Sources */,
 				4ED8C2DC23F1B1DE005938AF /* Reachability.swift in Sources */,
+				4EA129D423FAE584007210E8 /* DynamicValue.swift in Sources */,
 				4E61818023EC80980059DEA3 /* ProposalsSwiftViewController.swift in Sources */,
 				4ED8C2F423F30FFC005938AF /* UIKit+Ext.swift in Sources */,
 				4E61815723E8523B0059DEA3 /* UIColor+Extensions.swift in Sources */,
@@ -665,6 +692,7 @@
 				4ED8C2D123EDFF40005938AF /* ProposalsSwiftTableViewCell.swift in Sources */,
 				4E290F7723DDEF34008A5E15 /* AppDelegate.swift in Sources */,
 				4ED8C2F023F30E7E005938AF /* FilterHeaderView.swift in Sources */,
+				4EA129CC23F96815007210E8 /* Section.swift in Sources */,
 				4EA129B923F80D4D007210E8 /* UserDefaultsService.swift in Sources */,
 				4E290FC423DF7B0F008A5E15 /* NavDropDown.swift in Sources */,
 				4E61817A23EC7C9F0059DEA3 /* Containered.swift in Sources */,
