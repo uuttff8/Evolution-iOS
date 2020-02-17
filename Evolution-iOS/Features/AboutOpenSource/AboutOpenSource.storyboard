@@ -84,23 +84,5 @@
             </objects>
             <point key="canvasLocation" x="2662.3188405797105" y="-110.49107142857143"/>
         </scene>
-        <!--About Open Source Navigation Controller-->
-        <scene sceneID="3Dw-J2-E9V">
-            <objects>
-                <navigationController storyboardIdentifier="AboutOpenSourceNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="GcF-KB-2Sn" customClass="AboutOpenSourceNavigationController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hl2-Ht-FXx">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="4CG-6D-b7b" kind="relationship" relationship="rootViewController" id="tzY-7d-GYz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sGP-NQ-UbJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="900.00000000000011" y="-104.46428571428571"/>
-        </scene>
     </scenes>
 </document>

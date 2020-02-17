@@ -57,11 +57,9 @@ extension AboutOpenSourceViewController {
         let item = about.items[indexPath.row]
         
         if about.grouped {
-            print(123123123)
             coordinator?.showAboutDetail()
         }
         else {
-            print(123)
             let alertController = UIAlertController.presentAlert(to: item)
             self.present(alertController, animated: true, completion: nil)
         }

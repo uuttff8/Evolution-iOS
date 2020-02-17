@@ -11,20 +11,24 @@ import UIKit
 class AboutOpenSourceCoordinator: Coordinator {
     var navigationController: UINavigationController?
     var childCoordinators = [Coordinator]()
-        
+
+    var modalNavController: UINavigationController?
+    
     init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
     
     func start() {
         let vc = AboutOpenSourceViewController.instantiate(from: AppStoryboards.AboutOpenSource)
+
+        modalNavController = UINavigationController(rootViewController: vc)
+        
         vc.coordinator = self
-        navigationController?.pushViewController(vc, animated: true)
-        // navigationController?.present(vc, animated: true, completion: nil)
+        navigationController?.present(modalNavController ?? UINavigationController(), animated: true, completion: nil)
     }
     
     func showAboutDetail() {
-        let coordinator = AboutDetailOpenSourceCoordinator(navigationController: navigationController)
+        let coordinator = AboutDetailOpenSourceCoordinator(navigationController: modalNavController)
         childCoordinators.append(coordinator)
         coordinator.start()
     }
