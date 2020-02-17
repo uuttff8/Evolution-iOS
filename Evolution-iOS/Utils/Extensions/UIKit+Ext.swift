@@ -133,7 +133,7 @@ extension UIRefreshControl {
             
             let offSet = CGPoint(x: 0, y: scrollView.contentOffset.y - self.frame.height)
             scrollView.setContentOffset(offSet, animated: true)
-
+            
             self.beginRefreshing()
         }
     }
@@ -187,9 +187,8 @@ extension UIImageView {
         MLApi.requestImage(url) { [weak self] result in
             switch result {
             case .success(let image):
-                DispatchQueue.main.async {
-                    self?.image = image
-                }
+                // delete DispatchQueue.async.main, b/o is not needed
+                self?.image = image
             default: break
             }
         }
