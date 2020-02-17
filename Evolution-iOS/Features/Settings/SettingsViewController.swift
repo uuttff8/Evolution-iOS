@@ -12,8 +12,8 @@ class SettingsViewController: NetViewController, Storyboarded {
     weak var coordinator: SettingsCoordinator?
     
     private let dataSource = SettingsDataSource()
-    lazy var viewModel : CurrencyViewModel = {
-        let viewModel = CurrencyViewModel(dataSource: dataSource)
+    lazy var viewModel : SettingsViewModel = {
+        let viewModel = SettingsViewModel(dataSource: dataSource)
         return viewModel
     }()
     

@@ -12,7 +12,7 @@ class GenericDataSource<T> : NSObject {
     var data: DynamicValue<[T]> = DynamicValue([])
 }
 
-struct CurrencyViewModel {
+struct SettingsViewModel {
     weak var dataSource : GenericDataSource<Section>?
     
     init(dataSource : GenericDataSource<Section>?) {
