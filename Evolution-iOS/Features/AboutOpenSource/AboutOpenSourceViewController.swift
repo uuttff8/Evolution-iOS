@@ -58,7 +58,7 @@ extension AboutOpenSourceViewController {
         
         if about.grouped {
             print(123123123)
-            // Config.Segues.aboutDetails.performSegue(in: self)
+            coordinator?.showAboutDetail()
         }
         else {
             print(123)

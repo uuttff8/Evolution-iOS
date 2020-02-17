@@ -23,7 +23,7 @@ class SettingsCoordinator: Coordinator {
     }
     
     func showAboutOpenSourceScreen() {
-        let coordinator = AboutOpenSourceCoordinator(navigationController: navigationController)
+        let coordinator = AboutOpenSourceNavigationCoordinator(navigationController: navigationController)
         childCoordinators.append(coordinator)
         coordinator.start()
     }

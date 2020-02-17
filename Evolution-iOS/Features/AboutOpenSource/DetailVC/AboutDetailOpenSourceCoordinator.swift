@@ -1,5 +1,5 @@
 //
-//  AboutOpenSourceCoordinator.swift
+//  AboutDetailOpenSourceCoordinator.swift
 //  Evolution-iOS
 //
 //  Created by uuttff8 on 2/17/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutOpenSourceCoordinator: Coordinator {
+class AboutDetailOpenSourceCoordinator: Coordinator {
     var navigationController: UINavigationController?
     var childCoordinators = [Coordinator]()
         
@@ -17,15 +17,8 @@ class AboutOpenSourceCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = AboutOpenSourceViewController.instantiate(from: AppStoryboards.AboutOpenSource)
+        let vc = AboutDetailOpenSourceViewController.instantiate(from: AppStoryboards.AboutOpenSource)
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: true)
-        // navigationController?.present(vc, animated: true, completion: nil)
-    }
-    
-    func showAboutDetail() {
-        let coordinator = AboutDetailOpenSourceCoordinator(navigationController: navigationController)
-        childCoordinators.append(coordinator)
-        coordinator.start()
     }
 }
