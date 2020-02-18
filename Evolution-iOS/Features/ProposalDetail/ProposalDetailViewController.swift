@@ -67,7 +67,10 @@ private extension ProposalDetailViewController {
     
     func renderDownInWebView(for text: String) {
         do {
-            try changeFont(to: "0.9")
+            // TODO: Write Bundle files to Documents directory and accesses to it from Down framework,
+            // because Application can't write data to their bundles (DownView.bundle)
+
+//            try changeFont(to: "0.9")
             
             let downView = try DownView(frame: self.view.bounds, markdownString: text/*, templateBundle: bundle*/, didLoadSuccessfully: {
                 print("Markdown was rendered.")
@@ -79,6 +82,7 @@ private extension ProposalDetailViewController {
             self.createStatusBarBackgrounds(above: downView)
         } catch(let error) {
             self.showError(message: error.localizedDescription)
+            print(error.localizedDescription)
         }
     }
     
@@ -103,7 +107,18 @@ private extension ProposalDetailViewController {
         let str = components[4].replacingOccurrences(of: String(from), with: String(to))
         // change only 4 line
         components[4] = str
+        
+        // TODO: Write Bundle files to Documents directory and accesses to it from Down framework,
+        // because Application can't write data to their bundles (DownView.bundle)
         try components.joined(separator: "\n").write(to: path, atomically: true, encoding: .utf8)
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        // find all possible documents directories for this user
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+
+        // just send back the first one, which ought to be the only one
+        return paths[0]
     }
     
     func changeFont(to fontSize: String) throws {

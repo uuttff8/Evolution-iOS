@@ -11,14 +11,18 @@ import UIKit
 class AboutDetailOpenSourceCoordinator: Coordinator {
     var navigationController: UINavigationController?
     var childCoordinators = [Coordinator]()
+    
+    var aboutData: Section
         
-    init(navigationController: UINavigationController?) {
+    init(navigationController: UINavigationController?, aboutData: Section) {
         self.navigationController = navigationController
+        self.aboutData = aboutData
     }
     
     func start() {
         let vc = AboutDetailOpenSourceViewController.instantiate(from: AppStoryboards.AboutOpenSource)
         vc.coordinator = self
+        vc.about = self.aboutData
         navigationController?.pushViewController(vc, animated: true)
     }
 }

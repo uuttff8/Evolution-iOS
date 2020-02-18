@@ -27,8 +27,8 @@ class AboutOpenSourceCoordinator: Coordinator {
         navigationController?.present(modalNavController ?? UINavigationController(), animated: true, completion: nil)
     }
     
-    func showAboutDetail() {
-        let coordinator = AboutDetailOpenSourceCoordinator(navigationController: modalNavController)
+    func showAboutDetail(aboutData: Section) {
+        let coordinator = AboutDetailOpenSourceCoordinator(navigationController: modalNavController, aboutData: aboutData)
         childCoordinators.append(coordinator)
         coordinator.start()
     }

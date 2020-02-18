@@ -179,16 +179,15 @@ extension UIImageView {
         self.layer.masksToBounds = true
     }
     
-    public func loadImage(from url: String?) {
+    public func loadImage(from url: String?, completion: @escaping (UIImage) -> ()) {
         guard let url = url, url != "" else {
             return
         }
         
-        MLApi.requestImage(url) { [weak self] result in
+        MLApi.requestImage(url) { result in
             switch result {
             case .success(let image):
-                // delete DispatchQueue.async.main, b/o is not needed
-                self?.image = image
+                completion(image)
             default: break
             }
         }
@@ -244,5 +243,5 @@ extension UIAlertController {
         
         return alertController
     }
-
+    
 }

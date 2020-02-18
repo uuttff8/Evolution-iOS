@@ -52,7 +52,7 @@ final class CustomSubtitleTableViewCell: UITableViewCell {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-
+        
         if let imageView = imageView {
             let currentSize = imageView.frame.size
             let size = CGSize(width: currentSize.width - 8, height: currentSize.height - 8)
@@ -79,6 +79,8 @@ final class CustomSubtitleTableViewCell: UITableViewCell {
             return
         }
         
-        imageView.loadImage(from: url)
+        imageView.loadImage(from: url, completion: {  (image) in
+            imageView.image = image
+        })
     }
 }

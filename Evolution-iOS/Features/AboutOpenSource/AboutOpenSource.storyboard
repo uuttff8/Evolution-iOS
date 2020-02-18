@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -70,19 +69,22 @@
             <point key="canvasLocation" x="1810.144927536232" y="-104.46428571428571"/>
         </scene>
         <!--About Detail Open Source View Controller-->
-        <scene sceneID="ISm-qP-uNe">
+        <scene sceneID="aga-Uh-n9R">
             <objects>
-                <viewController storyboardIdentifier="AboutDetailOpenSourceViewController" id="mxO-9Q-Y6j" customClass="AboutDetailOpenSourceViewController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DUa-KH-Uih">
+                <tableViewController storyboardIdentifier="AboutDetailOpenSourceViewController" id="uPg-x4-TOO" customClass="AboutDetailOpenSourceViewController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZGF-fv-Au9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="54y-qH-4YB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SNu-jz-DlE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <connections>
+                            <outlet property="dataSource" destination="uPg-x4-TOO" id="Hhm-hv-c46"/>
+                            <outlet property="delegate" destination="uPg-x4-TOO" id="f5e-qF-nEI"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Snm-lY-STs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2662.3188405797105" y="-110.49107142857143"/>
+            <point key="canvasLocation" x="2581" y="-104"/>
         </scene>
     </scenes>
 </document>
