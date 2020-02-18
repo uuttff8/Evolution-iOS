@@ -27,6 +27,11 @@ struct AboutOpenSourceData {
             section: .mainDeveloper,
             items: [
                 Contributor(
+                    text: "Anton Kuzmin",
+                    type: .github,
+                    value: "uuttff8"
+                ),
+                Contributor(
                     text: "Thiago Holanda",
                     type: .github,
                     value: "unnamedd"
