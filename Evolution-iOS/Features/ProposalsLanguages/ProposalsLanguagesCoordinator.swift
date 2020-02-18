@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 enum LangDataOne {
     case RustData(ProposalRust)
@@ -52,5 +53,18 @@ class ProposalsLanguagesCoordinator: NSObject, Coordinator {
             childCoordinators.append(coordinator)
             coordinator.start()
         }
+    }
+    
+    func goToBrowser(target: UIViewController, with implementation: Implementation) {
+        if let url = URL(string: "\(Config.Base.URL.GitHub.base)/\(implementation.path)") {
+            let safariViewController = SFSafariViewController(url: url)
+            target.present(safariViewController, animated: true)
+        }
+    }
+    
+    func showProfile(with person: Person) {
+        let coordinator = ProfileCoordinator(navigationController: navigationController, person: person)
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 }

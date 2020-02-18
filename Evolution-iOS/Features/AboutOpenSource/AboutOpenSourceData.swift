@@ -27,11 +27,6 @@ struct AboutOpenSourceData {
             section: .mainDeveloper,
             items: [
                 Contributor(
-                    text: "Anton Kuzmin",
-                    type: .github,
-                    value: "uuttff8"
-                ),
-                Contributor(
                     text: "Thiago Holanda",
                     type: .github,
                     value: "unnamedd"
@@ -90,7 +85,8 @@ struct AboutOpenSourceData {
     private func app() -> Section {
         let items = [
             Item(text: "iOS App", type: .github, value: "evolution-app/ios"),
-            Item(text: "Backend", type: .github, value: "evolution-app/backend"),
+            Item(text: "Backend Swift", type: .github, value: "evolution-app/backend"),
+            Item(text: "Backend Rust", type: .github, value: "uuttff8/evo-rust-backend"),
             Item(text: "Twitter", type: .twitter, value: "evoapp_io"),
             Item(text: "Feedback", type: .email, value: "feedback@evoapp.io")
         ]

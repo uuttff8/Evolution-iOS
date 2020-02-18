@@ -16,6 +16,7 @@ enum AppStoryboards: String {
     case ProposalDetail = "ProposalDetail"
     case Settings = "Settings"
     case AboutOpenSource = "AboutOpenSource"
+    case Profile = "Profile"
 }
 
 protocol Storyboarded {
@@ -48,6 +49,8 @@ extension Storyboarded where Self: UIViewController {
         case .Settings:
             createStoryboard(storyboardId)
         case .AboutOpenSource:
+            createStoryboard(storyboardId)
+        case .Profile:
             createStoryboard(storyboardId)
         }
                 

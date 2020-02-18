@@ -105,7 +105,9 @@ final class MLApiImplSwift: MLApiProviderSwift {
 enum MLApi {
     static let Swift = MLApiImplSwift()
     static let Rust = MLApiImplRust()
-    
+}
+
+extension MLApi {
     @discardableResult
     static func requestImage(_ url: String, completion: @escaping (Swift.Result<UIImage, ServerError>) -> Void) -> URLSessionDownloadTask? {
         guard let URL = URL(string: url) else {
@@ -144,5 +146,105 @@ enum MLApi {
         }
         
         return nil
+    }
+}
+
+enum Header: String {
+    case accept = "Accept"
+    case authorization = "Authorization"
+    case contentType = "Content-Type"
+}
+
+enum MimeType: String {
+    case applicationJSON = "application/json"
+    case formUrlEncoded = "application/x-www-form-urlencoded"
+    case textPlain = "text/plain"
+}
+
+protocol RequestProtocol {
+    var url: String { get }
+    var method: ServiceMethod { get }
+    var headers: [Header: String]? { get }
+    var params: [String: Any]? { get }
+}
+
+// MARK: - Method
+enum ServiceMethod: String {
+    case get
+    case post
+    case put
+}
+
+struct RequestSettings: RequestProtocol {
+    var url: String
+    var method: ServiceMethod
+    var params: [String: Any]?
+    var headers: [Header: String]?
+    
+    init(_ url: String, method: ServiceMethod = .get, params: [String: Any]? = nil, headers: [Header: String]? = nil) {
+        self.url = url
+        self.method = method
+        self.params = params
+        self.headers = headers
+    }
+}
+
+
+extension MLApi {
+    // MARK: - Base Request
+    
+    @discardableResult
+    static func dispatch(_ settings: RequestProtocol, useLoadingMonitor: Bool = true, completion: @escaping (Swift.Result<Data, ServerError>) -> Void) -> URLSessionDataTask? {
+        guard let baseURL = URL(string: settings.url) else {
+            completion(.failure(ServerError.invalidURL(settings.url)))
+            return nil
+        }
+        
+        var request: URLRequest = URLRequest(url: baseURL)
+        request.httpMethod = settings.method.rawValue.uppercased()
+        
+        // Configure body based on method
+        switch settings.method {
+        case .post, .put:
+            if let parameters = settings.params {
+                do {
+                    let data = try JSONSerialization.data(withJSONObject: parameters, options: [])
+                    request.httpBody = data
+                }
+                catch let error {
+                    print("[Request URL] Error: \(error.localizedDescription)")
+                }
+            }
+        default:
+            break
+        }
+        
+        // Configure Headers
+        if let headers = settings.headers {
+            headers.forEach { (arg: (key: Header, value: String)) in
+                request.addValue(arg.value, forHTTPHeaderField: arg.key.rawValue)
+            }
+        }
+        
+        let config = URLSessionConfiguration.default
+        
+//        if useLoadingMonitor {
+//            config.protocolClasses = [LoadingMonitor.self]
+//        }
+        
+        let session = URLSession(configuration: config)
+        let task = session.dataTask(with: request) { data, _, error in
+            if let _ = error {
+                completion(.failure(ServerError.unknownState))
+            }
+            else if let data = data {
+                completion(.success(data))
+            }
+            else {
+                completion(.failure(ServerError.unknownState))
+            }
+        }
+        task.resume()
+        return task
     }
 }

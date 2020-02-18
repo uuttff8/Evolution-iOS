@@ -333,18 +333,15 @@ extension ProposalsSwiftViewController: UITableViewDelegate, UITableViewDataSour
 
 extension ProposalsSwiftViewController: ProposalSwiftDelegate {
     func didSelect(person: Person) {
-        // TODO: Go to person screen
-        print("person selected")
+        coordinator?.showProfile(with: person)
     }
     
     func didSelect(proposal: ProposalSwift) {
-        // TODO: Go to proposal screen
-        print("proposal selected")
+        coordinator?.showProposalDetail(proposalLang:  .SwiftData(proposal))
     }
     
     func didSelect(implementation: Implementation) {
-        // TODO: Go to safari with implementation
-        print("implementation selected")
+        coordinator?.goToBrowser(target: self, with: implementation)
     }
 }
 

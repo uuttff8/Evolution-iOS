@@ -68,9 +68,8 @@ class NavDropDown: UIButton {
         }
         
         alert.addAction(swiftAc); alert.addAction(rustAc)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
             self.rotateArrowWithAnimation()
-            
         }))
         
         self.showAlertCompletion?(alert)
