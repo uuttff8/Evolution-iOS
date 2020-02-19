@@ -21,17 +21,22 @@ class AboutOpenSourceViewController: UITableViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let _ = coordinator else { return }
+        
         title = "Open Source"
         
         tableView.register(CustomSubtitleTableViewCell.self, forCellReuseIdentifier: "AboutCellIdentifier")
         
         tableView.dataSource = self.dataSource
-        
         self.dataSource.data.addAndNotify(observer: self) { [weak self] in
             self?.tableView.reloadData()
         }
-        
         self.viewModel.fetchDataSource()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        coordinator?.removeDependency(self.coordinator)
     }
 }
 
