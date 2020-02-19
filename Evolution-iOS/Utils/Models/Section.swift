@@ -16,6 +16,7 @@ enum SectionType: String {
     case evolution = "Evolution App"
     case swiftEvolution = "Swift Evolution"
     case thanks = "Thanks to"
+    case application = "Application"
     
     // Settings
     case notifications = "Notifications"
@@ -30,6 +31,7 @@ enum Type: String {
     case url
     case email
     case undefined
+    case noUrl
 }
 
 // MARK: - ItemProtocols

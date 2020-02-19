@@ -221,7 +221,8 @@ extension UIAlertController {
             title = "Open Mail ?"
             value = "mailto:\(item.value)"
             message = item.value
-            
+        case .noUrl:
+            break
         default:
             value = item.value
             message = value
@@ -244,4 +245,13 @@ extension UIAlertController {
         return alertController
     }
     
+}
+
+extension Bundle {
+    var releaseVersionNumber: String? {
+        return infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    var buildVersionNumber: String? {
+        return infoDictionary?["CFBundleVersion"] as? String
+    }
 }

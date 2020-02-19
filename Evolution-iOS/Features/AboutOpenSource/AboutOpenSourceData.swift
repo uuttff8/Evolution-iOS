@@ -68,9 +68,7 @@ struct AboutOpenSourceData {
     private func licenses() -> Section {
         let items = [
             License(text: "Down", type: .github, value: "iwasrobbed/Down"),
-            License(text: "Reachability.swift", type: .github, value: "ashleymills/Reachability.swift"),
             License(text: "SwiftRichString", type: .github, value: "malcommac/SwiftRichString"),
-            License(text: "KeychainAccess", type: .github, value: "kishikawakatsumi/KeychainAccess"),
             License(text: "Kitura Web Framework", type: .url, value: "http://www.kitura.io/")
         ]
         

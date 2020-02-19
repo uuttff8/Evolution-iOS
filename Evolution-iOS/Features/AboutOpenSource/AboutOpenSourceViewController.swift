@@ -21,6 +21,7 @@ class AboutOpenSourceViewController: UITableViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Open Source"
         
         tableView.register(CustomSubtitleTableViewCell.self, forCellReuseIdentifier: "AboutCellIdentifier")
         
@@ -33,20 +34,6 @@ class AboutOpenSourceViewController: UITableViewController, Storyboarded {
         self.viewModel.fetchDataSource()
     }
 }
-//
-//// MARK: - Navigation
-//extension AboutViewController {
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destinationViewController = segue.destination as? AboutDetailTableViewController,
-//            let indexPath = tableView.indexPathForSelectedRow {
-//
-//            let section = dataSource[indexPath.section]
-//            if section.grouped {
-//                destinationViewController.about = section
-//            }
-//        }
-//    }
-//}
 
 
 // MARK: - UITableView Delegate

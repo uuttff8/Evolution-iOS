@@ -63,6 +63,8 @@
 		4EA129F223FC5381007210E8 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EA129F123FC5381007210E8 /* Profile.storyboard */; };
 		4EA129F423FC538F007210E8 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA129F323FC538F007210E8 /* ProfileCoordinator.swift */; };
 		4EA129F723FC53C0007210E8 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA129F623FC53C0007210E8 /* ProfileView.swift */; };
+		4EA129FE23FDC0F6007210E8 /* DataValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EA129FD23FDC0F6007210E8 /* DataValueTableViewCell.xib */; };
+		4EA12A0023FDC119007210E8 /* DataValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA129FF23FDC119007210E8 /* DataValueTableViewCell.swift */; };
 		4ED8C2D123EDFF40005938AF /* ProposalsSwiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D023EDFF40005938AF /* ProposalsSwiftTableViewCell.swift */; };
 		4ED8C2D723F1965E005938AF /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D623F1965E005938AF /* URL.swift */; };
 		4ED8C2DA23F19FEF005938AF /* Implementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D923F19FEF005938AF /* Implementation.swift */; };
@@ -164,6 +166,8 @@
 		4EA129F123FC5381007210E8 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4EA129F323FC538F007210E8 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		4EA129F623FC53C0007210E8 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		4EA129FD23FDC0F6007210E8 /* DataValueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DataValueTableViewCell.xib; sourceTree = "<group>"; };
+		4EA129FF23FDC119007210E8 /* DataValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValueTableViewCell.swift; sourceTree = "<group>"; };
 		4ED8C2D023EDFF40005938AF /* ProposalsSwiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsSwiftTableViewCell.swift; sourceTree = "<group>"; };
 		4ED8C2D623F1965E005938AF /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		4ED8C2D923F19FEF005938AF /* Implementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Implementation.swift; sourceTree = "<group>"; };
@@ -284,8 +288,8 @@
 			children = (
 				4EA129EE23FC535E007210E8 /* Profile */,
 				4EA129D523FB1CB0007210E8 /* AboutOpenSource */,
-				4ED8C32023F49756005938AF /* ProposalDetail */,
 				4EA129BD23F85337007210E8 /* Settings */,
+				4ED8C32023F49756005938AF /* ProposalDetail */,
 				4ED8C2DD23F1B425005938AF /* NoConnection */,
 				4E61817123EC76550059DEA3 /* ProposalsContainer */,
 				4EA129BA23F81921007210E8 /* ProposalsLanguages */,
@@ -479,6 +483,8 @@
 			children = (
 				4EA129CD23F96E07007210E8 /* CustomSubtitleTableViewCell.swift */,
 				4EA129CF23F96E17007210E8 /* CustomSubtitleTableViewCell.xib */,
+				4EA129FF23FDC119007210E8 /* DataValueTableViewCell.swift */,
+				4EA129FD23FDC0F6007210E8 /* DataValueTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -582,6 +588,7 @@
 				4E290F6F23DDEF34008A5E15 /* Sources */,
 				4E290F7023DDEF34008A5E15 /* Frameworks */,
 				4E290F7123DDEF34008A5E15 /* Resources */,
+				4EA12A0123FDC547007210E8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -688,6 +695,7 @@
 				4E791E0E23F5CD30000A8495 /* DownView.bundle in Resources */,
 				4EA129C123F8534D007210E8 /* Settings.storyboard in Resources */,
 				4E290F8623DDEF34008A5E15 /* LaunchScreen.storyboard in Resources */,
+				4EA129FE23FDC0F6007210E8 /* DataValueTableViewCell.xib in Resources */,
 				4E290F8323DDEF34008A5E15 /* Assets.xcassets in Resources */,
 				4E290FC623DF7C36008A5E15 /* NavDropDown.xib in Resources */,
 				4EA129DB23FB1D3F007210E8 /* AboutOpenSource.storyboard in Resources */,
@@ -716,6 +724,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4EA12A0123FDC547007210E8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbN=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbN=$((bN += 1))\nbN=$(printf \"%d\" $bN)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $bN\" \"$INFOPLIST_FILE\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4E290F6F23DDEF34008A5E15 /* Sources */ = {
@@ -769,6 +797,7 @@
 				4ED8C2F623F31494005938AF /* ProposalListHeaderTableViewCell.swift in Sources */,
 				4EA129D923FB1CF4007210E8 /* AboutOpenSourceData.swift in Sources */,
 				4ED8C2D123EDFF40005938AF /* ProposalsSwiftTableViewCell.swift in Sources */,
+				4EA12A0023FDC119007210E8 /* DataValueTableViewCell.swift in Sources */,
 				4E290F7723DDEF34008A5E15 /* AppDelegate.swift in Sources */,
 				4ED8C2F023F30E7E005938AF /* FilterHeaderView.swift in Sources */,
 				4EA129CC23F96815007210E8 /* Section.swift in Sources */,

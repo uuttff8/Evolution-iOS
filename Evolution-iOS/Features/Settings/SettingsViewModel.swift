@@ -34,8 +34,19 @@ struct SettingsViewModel {
                             footer: nil,
                             grouped: false)
         
+        let version = Section(
+            section: .application,
+            items: [
+                Item(text: "Build", type: .noUrl, value: Bundle.main.buildVersionNumber ?? ""),
+                Item(text: "Version", type: .noUrl, value: Bundle.main.releaseVersionNumber ?? "")
+            ],
+            footer: nil,
+            grouped: false
+        )
         
-        self.dataSource?.data.value = [authors, about]
+        
+        
+        self.dataSource?.data.value = [authors, about, version]
     }
 }
 
@@ -63,7 +74,14 @@ class SettingsDataSource: GenericDataSource<Section>, UITableViewDataSource {
             let contributor = section.items[indexPath.item] as? Contributor
             let contributorCell = tableView.cell(forRowAt: indexPath) as CustomSubtitleTableViewCell
             contributorCell.contributor = contributor
+            
             cell = contributorCell
+        case .application:
+            let versionCell = tableView.cell(forRowAt: indexPath) as DataValueTableViewCell
+            versionCell.item = section.items[indexPath.item] as? Item
+            versionCell.selectionStyle = .none
+        
+            cell = versionCell
         default:
             cell = UITableViewCell()
         }

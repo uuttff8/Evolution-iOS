@@ -54,8 +54,10 @@ class AboutOpenSourceDataSource: GenericDataSource<Section>, UITableViewDataSour
         cell.selectionStyle = .none
         
         if about.grouped {
-            let contributors = about.items.shuffle()
+            // Question to Thiago: Why did you add this shuffle here?
+            let contributors = about.items //.shuffle()
             cell.textLabel?.text = contributors.text
+            cell.accessoryType = .disclosureIndicator
         }
         else {
             cell.textLabel?.text = item.text

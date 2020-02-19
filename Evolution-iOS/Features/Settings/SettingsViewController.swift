@@ -24,6 +24,7 @@ class SettingsViewController: NetViewController, Storyboarded {
         guard let _ = coordinator else { return }
         
         tableView.registerNib(withClass: CustomSubtitleTableViewCell.self)
+        tableView.registerNib(withClass: DataValueTableViewCell.self)
         
         self.tableView.dataSource = self.dataSource
         

@@ -140,7 +140,6 @@ extension ProfileViewController: UITableViewDataSource {
 
 // MARK: - UITableView Delegate
 extension ProfileViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.cell(forClass: ProposalListHeaderTableViewCell.self)
         
