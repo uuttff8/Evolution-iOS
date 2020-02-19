@@ -19,4 +19,16 @@ struct ProposalRust: Decodable {
     let index: String? 
     let date: String?
     let issue: String?
+    
+    func getIssuePath() -> String {
+        return self.issue?.replacingOccurrences(of: "https://github.com", with: "") ?? ""
+    }
+    
+    func beatifulTitle() -> String {
+        return self.title?
+            .replacingOccurrences(of: "-", with: " ")
+            .dropFirst(5)
+            .dropLast(3)
+            .firstUppercased ?? ""
+    }
 }

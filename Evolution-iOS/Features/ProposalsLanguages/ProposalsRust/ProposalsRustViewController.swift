@@ -13,7 +13,12 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
     
     weak var coordinator: ProposalsLanguagesCoordinator?
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            self.tableView.estimatedRowHeight = 164
+            self.tableView.rowHeight = UITableView.automaticDimension
+        }
+    }
     
     var dataSource: ProposalsRust = { return ProposalsRust(proposals: []) }() {
         didSet {
@@ -26,14 +31,9 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
     }
     
     // MARK: - Lifecycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        guard let _ = coordinator else { return }
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let _ = coordinator else { return }
         
         getProposalList()
     }
@@ -65,6 +65,6 @@ extension ProposalsRustViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 106
+        return 150
     }
 }

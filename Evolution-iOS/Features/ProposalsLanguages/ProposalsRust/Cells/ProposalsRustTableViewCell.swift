@@ -22,10 +22,12 @@ class ProposalsRustTableViewCell: UITableViewCell {
     
     func initialize(with proposal: ProposalRust?) {
         if let proposal = proposal {
-            title.text = proposal.title
+            title.text = proposal.beatifulTitle()
             index.text = proposal.index
             date.text  = proposal.date
-            issue.text = proposal.issue
+            
+            print(proposal.issue)
+            issue.text = proposal.getIssuePath()
         }
     }
 
