@@ -15,12 +15,9 @@ class ProposalDetailViewController: NetViewController, Storyboarded {
     var currentLanguage: LanguageSelected?
     var proposalId: String?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard coordinator != nil else { return }
         
         switch currentLanguage {
         case .Rust:
@@ -43,6 +40,11 @@ class ProposalDetailViewController: NetViewController, Storyboarded {
                 
             }
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        coordinator?.removeDependency(coordinator)
     }
     
     private func getProposalDetailText(completion: @escaping (String) -> Void) {
@@ -142,7 +144,7 @@ private extension ProposalDetailViewController {
             subview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             subview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             subview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            subview.bottomAnchor.constraint(equalTo: bottomAnchor ?? view.safeAreaLayoutGuide.bottomAnchor)
+            subview.bottomAnchor.constraint(equalTo: bottomAnchor ?? view.bottomAnchor)
         ])
     }
     

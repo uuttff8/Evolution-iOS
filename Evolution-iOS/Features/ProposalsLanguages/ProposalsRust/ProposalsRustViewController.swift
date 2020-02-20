@@ -43,7 +43,17 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
         MLApi.Rust.fetchProposals { (propRust) in
             guard let propRust = propRust else { return }
             self.dataSource = propRust
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
     }
 }
 
@@ -62,9 +72,6 @@ extension ProposalsRustViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.showProposalDetail(proposalLang: .RustData(self.dataSource.proposals[indexPath.item]))
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

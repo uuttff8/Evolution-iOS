@@ -25,8 +25,6 @@ class ProposalsRustTableViewCell: UITableViewCell {
             title.text = proposal.beatifulTitle()
             index.text = proposal.index
             date.text  = proposal.date
-            
-            print(proposal.issue)
             issue.text = proposal.getIssuePath()
         }
     }

@@ -11,11 +11,11 @@
         <scene sceneID="3dv-FI-t3s">
             <objects>
                 <viewController storyboardIdentifier="ProposalDetailViewController" id="CEY-xY-72z" customClass="ProposalDetailViewController" customModule="Evolution_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ndR-PK-V3u">
+                    <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="ndR-PK-V3u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="jjo-IE-3kr"/>
+                        <viewLayoutGuide key="safeArea" id="VsM-fs-krb"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RTY-zg-ccT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
