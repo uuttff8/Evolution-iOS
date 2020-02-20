@@ -21,10 +21,10 @@ class AboutOpenSourceCoordinator: Coordinator {
     func start() {
         let vc = AboutOpenSourceViewController.instantiate(from: AppStoryboards.AboutOpenSource)
 
-        modalNavController = UINavigationController(rootViewController: vc)
+        modalNavController = BaseNavigationController(rootViewController: vc)
         
         vc.coordinator = self
-        navigationController?.present(modalNavController ?? UINavigationController(), animated: true, completion: nil)
+        navigationController?.present(modalNavController ?? BaseNavigationController(), animated: true, completion: nil)
     }
     
     func showAboutDetail(aboutData: Section) {

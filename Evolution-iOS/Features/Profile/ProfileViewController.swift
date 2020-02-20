@@ -21,8 +21,6 @@ class ProfileViewController: NetViewController, Storyboarded {
     
     @IBOutlet private weak var profileView: ProfileView!
     @IBOutlet private weak var tableView: UITableView!
-//    @IBOutlet private weak var toolbar: UIToolbar!
-//    @IBOutlet private weak var toolbarTopYConstraint: NSLayoutConstraint!
     
     open var profile: Person?
     fileprivate lazy var sections: [Section] = {
@@ -42,14 +40,7 @@ class ProfileViewController: NetViewController, Storyboarded {
         self.tableView.estimatedSectionHeaderHeight = 44.0
         self.tableView.rowHeight = UITableView.automaticDimension
         
-//        if UIDevice.current.userInterfaceIdiom != .pad {
-//            toolbar?.items?.removeAll()
-//            toolbarTopYConstraint.constant = -44
-//            view.layoutIfNeeded()
-//        }
-        
         // Settings
-        // self.showNoConnection = false
         self.profileView.profile = profile
         self.getUserDataFromGithub()
         self.tableView.reloadData()
@@ -61,13 +52,11 @@ class ProfileViewController: NetViewController, Storyboarded {
         }
         
         self.configureSections()
-        
-        //        // Configure reachability closures
-        //        self.reachability?.whenReachable = { [unowned self] reachability in
-        //            if self.profileView.imageURL == nil {
-        //                self.getUserDataFromGithub()
-        //            }
-        //        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        coordinator?.removeDependency(coordinator)
     }
     
 }

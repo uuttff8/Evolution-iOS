@@ -29,7 +29,9 @@ class AboutOpenSourceViewController: UITableViewController, Storyboarded {
         
         tableView.dataSource = self.dataSource
         self.dataSource.data.addAndNotify(observer: self) { [weak self] in
-            self?.tableView.reloadData()
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
         self.viewModel.fetchDataSource()
     }

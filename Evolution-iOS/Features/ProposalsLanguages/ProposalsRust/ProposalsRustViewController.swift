@@ -13,18 +13,18 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
     
     weak var coordinator: ProposalsLanguagesCoordinator?
     
+    private let dataSource = ProposalsRustDataSource()
+    
+    lazy var viewModel : ProposalsRustViewModel = {
+        let viewModel = ProposalsRustViewModel(dataSource: self.dataSource)
+        return viewModel
+    }()
+    
+    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             self.tableView.estimatedRowHeight = 164
             self.tableView.rowHeight = UITableView.automaticDimension
-        }
-    }
-    
-    var dataSource: ProposalsRust = { return ProposalsRust(proposals: []) }() {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
         }
     }
     
@@ -33,35 +33,26 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
         super.viewDidLoad()
         guard let _ = coordinator else { return }
         
-        getProposalList()
+        self.tableView.dataSource = self.dataSource
+        
+        self.dataSource.data.addAndNotify(observer: self) { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+        
+        self.viewModel.fetchDataSource()        
     }
     
-    //MARK: - Request
-    private func getProposalList() {
-        MLApi.Rust.fetchProposals { (propRust) in
-            guard let propRust = propRust else { return }
-            self.dataSource = propRust
-            self.dataSource.proposals.reverse()
-        }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        coordinator?.removeDependency(coordinator)
     }
 }
 
-extension ProposalsRustViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.proposals.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.cell(forRowAt: indexPath) as ProposalsRustTableViewCell
-        
-        cell.initialize(with: dataSource.proposals[indexPath.item])
-        cell.selectionStyle = .none
-        
-        return cell
-    }
-    
+extension ProposalsRustViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.showProposalDetail(proposalLang: .RustData(self.dataSource.proposals[indexPath.item]))
+        coordinator?.showProposalDetail(proposalLang: .RustData((self.viewModel.dataSource?.data.value[indexPath.item])!))
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

@@ -29,10 +29,18 @@ class SettingsViewController: NetViewController, Storyboarded {
         self.tableView.dataSource = self.dataSource
         
         self.dataSource.data.addAndNotify(observer: self) { [weak self] in
-            self?.tableView.reloadData()
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+                self?.tableView.layoutIfNeeded()
+            }
         }
         
         self.viewModel.fetchDataSource()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        coordinator?.removeDependency(coordinator)
     }
 }
 

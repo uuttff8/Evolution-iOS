@@ -8,9 +8,6 @@
 
 import UIKit
 
-class GenericDataSource<T> : NSObject {
-    var data: DynamicValue<[T]> = DynamicValue([])
-}
 
 struct SettingsViewModel {
     weak var dataSource : GenericDataSource<Section>?

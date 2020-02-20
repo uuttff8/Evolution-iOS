@@ -64,8 +64,17 @@ final class CustomSubtitleTableViewCell: UITableViewCell {
             imageView.frame = frame
             
             imageView.backgroundColor = UIColor.Proposal.lightGray.withAlphaComponent(0.5)
-            imageView.round(with: UIColor.clear, width: 0)
+            imageView.layer.cornerRadius = imageView.frame.size.width / 2
             imageView.clipsToBounds = true
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if let imageView = imageView {
+            imageView.layer.cornerRadius = imageView.frame.size.width / 2
+            imageView.clipsToBounds = true
+
         }
     }
     
@@ -80,7 +89,9 @@ final class CustomSubtitleTableViewCell: UITableViewCell {
         }
         
         imageView.loadImage(from: url, completion: {  (image) in
-            imageView.image = image
+            DispatchQueue.main.async {
+                imageView.image = image
+            }
         })
     }
 }

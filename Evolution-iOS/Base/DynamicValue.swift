@@ -40,3 +40,7 @@ class DynamicValue<T> {
         observers.removeAll()
     }
 }
+
+class GenericDataSource<T> : NSObject {
+    var data: DynamicValue<[T]> = DynamicValue([])
+}
