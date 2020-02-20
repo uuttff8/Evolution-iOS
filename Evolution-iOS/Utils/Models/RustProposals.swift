@@ -20,15 +20,15 @@ struct ProposalRust: Decodable {
     let date: String?
     let issue: String?
     
-    func getIssuePath() -> String {
-        return self.issue?.replacingOccurrences(of: "https://github.com", with: "") ?? ""
+    func getIssuePath() -> String? {
+        return self.issue?.replacingOccurrences(of: "https://github.com", with: "")
     }
     
-    func beatifulTitle() -> String {
+    func beatifulTitle() -> String? {
         return self.title?
             .replacingOccurrences(of: "-", with: " ")
             .dropFirst(5)
             .dropLast(3)
-            .firstUppercased ?? ""
+            .firstUppercased
     }
 }

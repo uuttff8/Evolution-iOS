@@ -62,10 +62,10 @@ final class CustomSubtitleTableViewCell: UITableViewCell {
             
             let frame = CGRect(origin: origin, size: size)
             imageView.frame = frame
-            imageView.clipsToBounds = true
             
             imageView.backgroundColor = UIColor.Proposal.lightGray.withAlphaComponent(0.5)
             imageView.round(with: UIColor.clear, width: 0)
+            imageView.clipsToBounds = true
         }
     }
     

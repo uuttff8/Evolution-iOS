@@ -7,40 +7,46 @@
 //
 
 import UIKit
+import SwiftRichString
+
+protocol ProposalRustDelegate: AnyObject {
+    func didSelect(issue: String)
+}
 
 class ProposalsRustTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var index: UILabel!
-    @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var issue: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var indexLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var issueLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var issueStackView: UIStackView!
+    @IBOutlet weak var dateStackView: UIStackView!
+    
+    weak var delegate: ProposalRustDelegate?
     
     func initialize(with proposal: ProposalRust?) {
         if let proposal = proposal {
-            title.text = proposal.beatifulTitle()
-            index.text = proposal.index
-            date.text  = proposal.date
-            issue.text = proposal.getIssuePath()
+            titleLabel.text = proposal.beatifulTitle()
+            indexLabel.text = proposal.index
+            
+            if let proposalDate = proposal.date, !proposalDate.isEmpty {
+                dateLabel.text = proposalDate
+            } else {
+                self.dateStackView.isHidden = true
+            }
+            
+            if let proposalIssue = proposal.getIssuePath(), !proposalIssue.isEmpty {
+                issueLabel.attributedText = NSAttributedString(string: proposalIssue, attributes:
+                [.underlineStyle: NSUnderlineStyle.single.rawValue])
+                
+            } else {
+                self.issueStackView.isHidden = true
+            }
         }
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-    
-    override func prepareForReuse() {
-        // BUG: Unexpectedly found nil while implicitly unwrapping an Optional value: file Features/ProposalsList/ProposalsListViewController.swift, cellForRowAt
-//        title = nil
-//        index = nil
-//        date = nil
-//        issue = nil
-    }
-
 }

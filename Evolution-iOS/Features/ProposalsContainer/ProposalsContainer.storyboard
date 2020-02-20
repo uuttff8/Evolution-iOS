@@ -37,7 +37,6 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="P1W-wB-50T">
-                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <action selector="settingsButtonTapped:" destination="7ru-Lh-aeD" id="iFs-ya-U2A"/>
                             </connections>

@@ -22,8 +22,6 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
     
     var dataSource: ProposalsRust = { return ProposalsRust(proposals: []) }() {
         didSet {
-            self.dataSource.proposals.reverse()
-            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -43,17 +41,8 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
         MLApi.Rust.fetchProposals { (propRust) in
             guard let propRust = propRust else { return }
             self.dataSource = propRust
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            self.dataSource.proposals.reverse()
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        tableView.reloadData()
-        tableView.layoutIfNeeded()
     }
 }
 
@@ -66,6 +55,7 @@ extension ProposalsRustViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.cell(forRowAt: indexPath) as ProposalsRustTableViewCell
         
         cell.initialize(with: dataSource.proposals[indexPath.item])
+        cell.selectionStyle = .none
         
         return cell
     }
