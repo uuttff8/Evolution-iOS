@@ -193,6 +193,121 @@ extension Sequence where Self: RangeReplaceableCollection, Self: RandomAccessCol
     }
 }
 
+extension Sequence where Self: RangeReplaceableCollection, Self: RandomAccessCollection, Iterator.Element == ProposalRust {
+    func filter(by value: String) -> [ProposalRust] {
+        var filter: [ProposalRust] = []
+        
+        // Index
+        let ids = self.filter {
+            return String($0.index) == value
+        }
+        
+        if ids.count > 0 {
+            filter.append(contentsOf: ids)
+        }
+        
+        // Title
+        let titles = self.filter {
+            guard let title = $0.title else { return false }
+            return title.contains(value)
+        }
+        
+        if titles.count > 0 {
+            filter.append(contentsOf: titles)
+        }
+        
+        // Date
+        
+        let dates = self.filter {
+            guard let date = $0.date else { return false }
+            return date.contains(value)
+        }
+        
+        if dates.count > 0 {
+            filter.append(contentsOf: titles)
+        }
+        
+        // Issues
+        
+        let issues = self.filter {
+            guard let issues = $0.issue else { return false }
+            return issues.contains(value)
+        }
+        
+        if issues.count > 0 {
+            filter.append(contentsOf: titles)
+        }
+        
+        //
+        
+//        // Status
+//        let statuses = self.filter { $0.status.state.rawValue.name.contains(value) }
+//        if statuses.count > 0 {
+//            filter.append(contentsOf: statuses)
+//        }
+        
+//        // Summary
+//        let summaries = self.filter {
+//            guard let summary = $0.summary else { return false }
+//            return summary.contains(value)
+//        }
+//        if summaries.count > 0 {
+//            filter.append(contentsOf: summaries)
+//        }
+        
+//        // Author
+//        let authors = self.filter {
+//            guard let authors = $0.authors else { return false }
+//            return authors.filter(by: value).count > 0
+//        }
+//        if authors.count > 0 {
+//            filter.append(contentsOf: authors)
+//        }
+        
+//        // Review Manager
+//        let reviews = self.filter {
+//            guard let manager = $0.reviewManager,
+//                let name = manager.name,
+//                let username = manager.username
+//                else {
+//                    return false
+//            }
+//            return (name.contains(value) || username == value)
+//        }
+//        if reviews.count > 0 {
+//            filter.append(contentsOf: reviews)
+//        }
+        
+//        // Bug
+//        let bugs = self.filter {
+//            guard let bugs = $0.bugs else { return false }
+//            return bugs.filter(by: value).count > 0
+//        }
+//        if bugs.count > 0 {
+//            filter.append(contentsOf: bugs)
+//        }
+        
+        return filter
+    }
+    
+    /**
+     Remove duplicated items from current list
+     */
+    func distinct() -> [ProposalRust] {
+        var result: [ProposalRust] = []
+        
+        for value in self {
+            if result.firstIndex(of: value) == nil {
+                result.append(value)
+            }
+        }
+        
+        return result
+    }
+}
+
+
+
 // MARK: - Status State Extension
 extension Sequence where Self: RangeReplaceableCollection, Self: RandomAccessCollection, Iterator.Element == Bug {
     func filter(by value: String) -> [Bug] {

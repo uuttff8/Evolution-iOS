@@ -8,19 +8,22 @@
 
 import UIKit
 
-struct ProposalsRustViewModel {
-    weak var dataSource : GenericDataSource<ProposalRust>?
-
-    init(dataSource : GenericDataSource<ProposalRust>?) {
-        self.dataSource = dataSource
+class ProposalsRustViewModel {
+    weak var filteredDataSource : GenericDataSource<ProposalRust>?
+    var dataSource: [ProposalRust]?
+    
+    init(dataSource : GenericDataSource<ProposalRust>) {
+        self.filteredDataSource = dataSource
     }
     
     func fetchDataSource() {
         MLApi.Rust.fetchProposals { (propRust) in
             guard let propRust = propRust else { return }
             
-            self.dataSource?.data.value = propRust.proposals
-            self.dataSource?.data.value.reverse()
+            self.filteredDataSource?.data.value = propRust.proposals
+            self.filteredDataSource?.data.value.reverse()
+            
+            self.dataSource = propRust.proposals.reversed()
         }
     }
 }
@@ -39,6 +42,3 @@ class ProposalsRustDataSource: GenericDataSource<ProposalRust>, UITableViewDataS
         return cell
     }
 }
-
-
-

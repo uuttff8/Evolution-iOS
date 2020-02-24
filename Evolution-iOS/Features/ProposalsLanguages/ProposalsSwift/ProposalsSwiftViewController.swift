@@ -17,7 +17,10 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
         didSet {
             self.filterHeaderView.clipsToBounds = true
             
-            self.filterHeaderView.filterButton.addTarget(self, action: #selector(filterButtonAction(_:)), for: .touchUpInside)
+            self.filterHeaderView.filterButton.addTarget(self,
+                                                         action: #selector(filterButtonAction(_:)),
+                                                         for: .touchUpInside)
+
             
             filterHeaderView.filterLevel = .without
         }
@@ -71,12 +74,10 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
         refreshControl.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
         
         self.filterHeaderView.filteredByButton.addTarget(self,
-                                                    action: #selector(filteredByButtonAction(_:)),
-                                                    for: .touchUpInside)
-        
-        // subscribe to delegates
-        setupDelegates()
-        
+                                                         action: #selector(filteredByButtonAction(_:)),
+                                                         for: .touchUpInside)
+        setupFilterHeaderDelegates()
+
         getProposalList()
         
         if !Reachability.isConnectedToNetwork() {
@@ -168,17 +169,17 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
         }
         
         if self.filterHeaderView.filterButton.isSelected {
-            
+
             // Check if there is at least on status selected
             if self.status.count > 0 {
                 var expection: [StatusState] = [.implemented]
                 if self.selected(status: .implemented) && self.languages.count == 0 {
                     expection = []
                 }
-                
+
                 self.filteredDataSource = self.filteredDataSource.filter(by: self.status, exceptions: expection).sort(.descending)
             }
-            
+
             // Check if the status selected is equal to .implemented and has language versions selected
             if self.selected(status: .implemented) && self.languages.count > 0 {
                 let implemented = self.dataSource.filter(by: self.languages).filter(status: .implemented)
@@ -187,14 +188,14 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
         }
         
         // Sort in the right order
-        self.filteredDataSource = self.filteredDataSource.distinct().filter(by: self.statusOrder)
+        self.filteredDataSource = self.filteredDataSource.filter(by: self.statusOrder)
         
         self.tableView.beginUpdates()
         self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
         self.tableView.endUpdates()
     }
     
-    func setupDelegates() {
+    func setupFilterHeaderDelegates() {
         filterHeaderView.statusFilterView.delegate = self
         filterHeaderView.languageVersionFilterView.delegate = self
         filterHeaderView.searchBar.delegate = self
@@ -409,7 +410,7 @@ extension ProposalsSwiftViewController: FilterGenericViewDelegate {
 
 // MARK: - UISearchBar Delegate
 
-private struct Search {
+fileprivate struct Search {
     let query: String
 }
 

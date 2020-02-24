@@ -16,7 +16,7 @@ struct ProposalsRust: Decodable {
 
 struct ProposalRust: Decodable {
     let title: String?
-    let index: String? 
+    let index: String
     let date: String?
     let issue: String?
     
@@ -30,5 +30,27 @@ struct ProposalRust: Decodable {
             .dropFirst(5)
             .dropLast(3)
             .firstUppercased
+    }
+}
+
+extension ProposalRust: Comparable {
+    public static func == (lhs: ProposalRust, rhs: ProposalRust) -> Bool {
+        return lhs.index == rhs.index
+    }
+    
+    public static func < (lhs: ProposalRust, rhs: ProposalRust) -> Bool {
+        return lhs.index < rhs.index
+    }
+    
+    public static func <= (lhs: ProposalRust, rhs: ProposalRust) -> Bool {
+        return lhs.index <= rhs.index
+    }
+    
+    public static func >= (lhs: ProposalRust, rhs: ProposalRust) -> Bool {
+        return lhs.index >= rhs.index
+    }
+    
+    public static func > (lhs: ProposalRust, rhs: ProposalRust) -> Bool {
+        return lhs.index > rhs.index
     }
 }

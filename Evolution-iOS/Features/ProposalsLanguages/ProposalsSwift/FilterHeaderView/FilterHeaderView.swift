@@ -19,9 +19,9 @@ class FilterHeaderView: UIView {
 
     @IBOutlet weak var statusFilterView: FilterListGenericView!
     @IBOutlet weak var languageVersionFilterView: FilterListGenericView!
-    @IBOutlet weak var filteredByButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var filteredByButton: UIButton!
     
     @IBOutlet fileprivate weak var statusFilterViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate weak var languageVersionFilterViewHeightConstraint: NSLayoutConstraint!

@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="adn-lI-NGj">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProposalsRustTableViewCell" rowHeight="167" id="F2K-w8-Thk" customClass="ProposalsRustTableViewCell" customModule="Evolution_iOS" customModuleProvider="target">
@@ -118,13 +118,33 @@
                                     <outlet property="delegate" destination="eGB-s8-oC8" id="hlV-iU-dd3"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="BTg-tw-blT">
+                                <rect key="frame" x="6" y="44" width="403" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="yes" keyboardType="webSearch"/>
+                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwt-XZ-r8z">
+                                <rect key="frame" x="0.0" y="99" width="414" height="1"/>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="7CD-bj-Y4x"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fwt-XZ-r8z" secondAttribute="trailing" id="6f9-aq-7tY"/>
                             <constraint firstAttribute="bottom" secondItem="adn-lI-NGj" secondAttribute="bottom" id="GWg-Ez-1mK"/>
                             <constraint firstItem="fke-I3-oC2" firstAttribute="trailing" secondItem="adn-lI-NGj" secondAttribute="trailing" id="LX2-xa-79g"/>
+                            <constraint firstItem="adn-lI-NGj" firstAttribute="top" secondItem="BTg-tw-blT" secondAttribute="bottom" id="WTL-eg-gTl"/>
+                            <constraint firstItem="BTg-tw-blT" firstAttribute="top" secondItem="fke-I3-oC2" secondAttribute="top" id="dUz-kO-Yz3"/>
+                            <constraint firstItem="BTg-tw-blT" firstAttribute="trailing" secondItem="fke-I3-oC2" secondAttribute="trailing" constant="-5" id="ed8-RL-uvV"/>
                             <constraint firstItem="adn-lI-NGj" firstAttribute="leading" secondItem="fke-I3-oC2" secondAttribute="leading" id="hfw-3d-Mgk"/>
-                            <constraint firstItem="adn-lI-NGj" firstAttribute="top" secondItem="fke-I3-oC2" secondAttribute="top" id="lww-PI-lfU"/>
+                            <constraint firstItem="adn-lI-NGj" firstAttribute="top" secondItem="fwt-XZ-r8z" secondAttribute="bottom" id="npF-dF-y2a"/>
+                            <constraint firstItem="fwt-XZ-r8z" firstAttribute="leading" secondItem="t11-9b-0aN" secondAttribute="leading" id="pVa-H8-Rba"/>
+                            <constraint firstItem="BTg-tw-blT" firstAttribute="leading" secondItem="fke-I3-oC2" secondAttribute="leading" constant="6" id="pdE-Or-IsT"/>
+                            <constraint firstItem="adn-lI-NGj" firstAttribute="top" secondItem="BTg-tw-blT" secondAttribute="bottom" id="rCT-jX-ysX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fke-I3-oC2"/>
                     </view>
@@ -137,6 +157,7 @@
                         </view>
                     </navigationItem>
                     <connections>
+                        <outlet property="rustProposalsSearchBar" destination="BTg-tw-blT" id="x6L-09-EtS"/>
                         <outlet property="tableView" destination="adn-lI-NGj" id="3aH-hW-AP1"/>
                     </connections>
                 </viewController>
