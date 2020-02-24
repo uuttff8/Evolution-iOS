@@ -23,6 +23,7 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
     @IBOutlet weak var rustProposalsSearchBar: UISearchBar! {
         didSet {
             self.rustProposalsSearchBar.delegate = self
+            self.rustProposalsSearchBar.returnKeyType = .search
         }
     }
     @IBOutlet weak var tableView: UITableView! {
@@ -30,6 +31,7 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
             self.tableView.estimatedRowHeight = 164
             self.tableView.rowHeight = UITableView.automaticDimension
             self.tableView.refreshControl = refreshControl
+            self.tableView.keyboardDismissMode = .onDrag
         }
     }
     
@@ -69,7 +71,7 @@ class ProposalsRustViewController: NetViewController, Storyboarded {
         if let filtered = filtered {
             self.viewModel.filteredDataSource?.data.value = filtered
         } else {
-            self.viewModel.filteredDataSource?.data.value = self.viewModel.dataSource!
+            self.viewModel.filteredDataSource?.data.value = self.viewModel.dataSource ?? []
         }
         
         

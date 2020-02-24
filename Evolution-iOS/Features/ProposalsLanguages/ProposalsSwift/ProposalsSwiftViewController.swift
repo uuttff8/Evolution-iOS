@@ -43,6 +43,7 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
             tableView.registerNib(withClass: ProposalListHeaderTableViewCell.self)
             
             tableView.addSubview(refreshControl)
+            self.tableView.keyboardDismissMode = .onDrag
         }
     }
     
