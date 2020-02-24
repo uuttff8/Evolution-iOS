@@ -1,4 +1,4 @@
-Fork of https://github.com/Evolution-App/iOS
+Fork of https://github.com/Evolution-App/iOS (not labeled so because rewritten)
 
 # Evolution-ios
 
