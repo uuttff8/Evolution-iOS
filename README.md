@@ -4,6 +4,8 @@ Fork of https://github.com/Evolution-App/iOS
 
 App for reading [Rust](https://github.com/rust-lang/rfcs/tree/master/text) and [Swift](https://github.com/apple/swift-evolution/tree/master/proposals) internal programming languages proposals
 
+![Alt text](assets/screens.jpg?raw=true)
+
 ## Features
 
 1. Dark Mode
