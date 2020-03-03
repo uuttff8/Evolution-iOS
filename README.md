@@ -1,6 +1,6 @@
 Fork of https://github.com/Evolution-App/iOS (not labeled so because rewritten)
 
-# Evolution-ios
+# Evolution-iOS
 
 App for reading [Rust](https://github.com/rust-lang/rfcs/tree/master/text) and [Swift](https://github.com/apple/swift-evolution/tree/master/proposals) internal programming languages proposals
 
