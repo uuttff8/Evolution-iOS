@@ -59,7 +59,7 @@ class ProposalsContainerViewController: UIViewController, Storyboarded, Containe
         guard let _ = coordinator else { return }
         
         // default
-        self.add(asChildViewController: self.proposalsSwiftVC)
+        self.add(asChildViewController: self.proposalsRustVC)
         
         languageChangeSubscribe()
     }

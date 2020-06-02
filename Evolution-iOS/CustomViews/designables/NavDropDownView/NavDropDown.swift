@@ -19,7 +19,7 @@ class NavDropDown: UIButton {
     var showAlertCompletion: ((UIAlertController) -> ())?
     var didChangeLanguageCompletion: ((LanguageSelected) -> ())?
     
-    var language = LanguageSelected.Swift
+    var language = LanguageSelected.Rust
     
     @IBOutlet private weak var title: UILabel!
     @IBOutlet private weak var arrow: UIButton!
@@ -40,9 +40,20 @@ class NavDropDown: UIButton {
     }
     
     private func commonInit() {
-        guard let view = Bundle(for: NavDropDown.self).loadNibNamed(String(describing: NavDropDown.self), owner: self, options: nil)?.first as? UIView else { return }
+        guard let view = Bundle(for: NavDropDown.self)
+            .loadNibNamed(String(describing: NavDropDown.self), owner: self, options: nil)?
+            .first as? UIView
+            else { return }
         view.frame = self.bounds
         self.addSubview(view)
+        
+        // handle first language init
+        switch language {
+        case .Rust:
+            title.text = "Rust"
+        case .Swift:
+            title.text = "Swift"
+        }
         
         let gest = UITapGestureRecognizer(target: self, action: #selector(self.rotateArrow))
         
@@ -77,7 +88,7 @@ class NavDropDown: UIButton {
     
     private func rotateArrowWithAnimation() {
         UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseInOut], animations: {
-                self.arrow.rotate(angle: 180)
+            self.arrow.rotate(angle: 180)
         })
     }
 }
