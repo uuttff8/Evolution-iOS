@@ -9,12 +9,13 @@
 import UIKit
 
 // MARK: - FilterGenericView Delegate
-protocol FilterGenericViewDelegate: class {
+
+protocol FilterGenericViewDelegate: AnyObject {
     func didSelectFilter(_ view: FilterListGenericView, type: FilterListGenericType, indexPath: IndexPath)
     func didDeselectFilter(_ view: FilterListGenericView, type: FilterListGenericType, indexPath: IndexPath)
 }
 
-protocol FilterGenericViewLayoutDelegate: class {
+protocol FilterGenericViewLayoutDelegate: AnyObject {
     func didFinishCalculateHeightToView(type: FilterListGenericType, height: CGFloat)
 }
 
@@ -46,10 +47,7 @@ class FilterListGenericView: UIView {
     }
     
     // MARK: - Initialization
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -70,6 +68,7 @@ class FilterListGenericView: UIView {
     }
     
     // MARK: - Layout
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -81,7 +80,6 @@ class FilterListGenericView: UIView {
         guard dataSource.count > 0 else {
             return
         }
-        
         
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -127,7 +125,11 @@ extension FilterListGenericView: UICollectionViewDelegate {
 // MARK: - UICollectionView DelegateFlowLayout
 
 extension FilterListGenericView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         
         if let text = self.textFor(indexPath: indexPath), let font = UIFont(name: "HelveticaNeue", size: 16) {
             let width = text.contraint(height: 28, font: font) + 34
@@ -139,12 +141,20 @@ extension FilterListGenericView: UICollectionViewDelegateFlowLayout {
         return CGSize.zero
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 3
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
+        3
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 3
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt section: Int
+    ) -> CGFloat {
+        3
     }
 }
 

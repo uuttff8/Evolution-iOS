@@ -12,15 +12,13 @@ import Combine
 class ProposalsContainerCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController?
-    
-    var cancellable = Set<AnyCancellable>()
-    
+        
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let vc = ProposalsContainerViewController.instantiate(from: AppStoryboards.ProposalsContainer)
+        let vc = ProposalsContainerViewController.instantiate(from: .ProposalsContainer)
         navigationController?.pushViewController(vc, animated: false)
         vc.coordinator = self
     }

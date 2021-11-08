@@ -11,31 +11,26 @@ import Combine
 
 class ProposalsSwiftViewController: NetViewController, Storyboarded {
     
-    // Private IBOutlets
-    @IBOutlet private(set) weak var footerView: UIView!
-    @IBOutlet private(set) weak var filterHeaderView: FilterHeaderView! {
+    // MARK: - Properties
+    
+    weak var coordinator: ProposalsLanguagesCoordinator?
+    weak var appDelegate: AppDelegate?
+    
+    @IBOutlet var footerView: UIView!
+    @IBOutlet var filterHeaderView: FilterHeaderView! {
         didSet {
             self.filterHeaderView.clipsToBounds = true
-            
-            self.filterHeaderView.filterButton.addTarget(self,
-                                                         action: #selector(filterButtonAction(_:)),
-                                                         for: .touchUpInside)
-
-            
+            self.filterHeaderView.filterButton.addTarget(
+                self,
+                action: #selector(filterButtonAction(_:)),
+                for: .touchUpInside
+            )
             filterHeaderView.filterLevel = .without
         }
     }
-    @IBOutlet private(set) weak var filterHeaderViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var filterHeaderViewHeightConstraint: NSLayoutConstraint!
     
-    // @IBOutlet private(set) weak var settingsBarButtonItem: UIBarButtonItem?
-    
-    // Private properties
-    fileprivate var timer: Timer = Timer()
-    
-    weak var coordinator: ProposalsLanguagesCoordinator?
-    fileprivate weak var appDelegate: AppDelegate?
-    
-    @IBOutlet weak var tableView: UITableView! {
+    @IBOutlet var tableView: UITableView! {
         didSet {
             tableView.estimatedRowHeight = 164
             tableView.estimatedSectionHeaderHeight = 44.0
@@ -46,18 +41,19 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
             self.tableView.keyboardDismissMode = .onDrag
         }
     }
+            
+    fileprivate var timer: Timer = Timer()
+            
+    // Data Sources
     
-    private lazy var filteredDataSource: [ProposalSwift] = {
-        return []
-    }()
+    private var filteredDataSource: [ProposalSwift] = []
+    private var dataSource: [ProposalSwift] = []
     
-    var dataSource: [ProposalSwift] = { return [] }()
-    
-    // Filters
-    fileprivate var languages: [Version] = []
-    fileprivate var status: [StatusState] = []
+    private var languages: [Version] = []
+    private var status: [StatusState] = []
     
     // Proposal ordering
+    
     fileprivate lazy var statusOrder: [StatusState] = {
         return [.awaitingReview, .scheduledForReview, .activeReview,
                 .returnedForRevision, .accepted, .acceptedWithRevisions, .implemented,
@@ -78,7 +74,6 @@ class ProposalsSwiftViewController: NetViewController, Storyboarded {
                                                          action: #selector(filteredByButtonAction(_:)),
                                                          for: .touchUpInside)
         setupFilterHeaderDelegates()
-
         getProposalList()
         
         if !Reachability.isConnectedToNetwork() {

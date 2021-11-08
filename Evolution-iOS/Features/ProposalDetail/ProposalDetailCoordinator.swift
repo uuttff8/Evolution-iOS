@@ -9,24 +9,24 @@
 import UIKit
 
 class ProposalDetailCoordinator: Coordinator {
-
+    
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController?
     
-    var lang: LanguageSelected
+    var language: LanguageType
     var proposalId: String
     
-    init(navigationController: UINavigationController? = nil, lang: LanguageSelected, proposalId: String) {
+    init(navigationController: UINavigationController? = nil, language: LanguageType, proposalId: String) {
         self.navigationController = navigationController
-        self.lang = lang
+        self.language = language
         self.proposalId = proposalId
     }
     
     func start() {
         let vc = ProposalDetailViewController.instantiate(from: AppStoryboards.ProposalDetail)
         vc.coordinator = self
-        vc.currentLanguage = self.lang
-        vc.proposalId = self.proposalId
+        vc.currentLanguage = language
+        vc.proposalId = proposalId
         navigationController?.pushViewController(vc, animated: true)
     }
 }

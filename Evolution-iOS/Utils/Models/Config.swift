@@ -48,6 +48,8 @@ struct Config {
     }
     
     struct Common {
+        static let defaultLanguage: LanguageType = .Swift
+        
         struct Regex {
             static var proposalID: String {
                 return "SE-([0-9]+)"
@@ -139,8 +141,6 @@ extension Notification.Name {
     static let NotificationRegister = Notification.Name("FinishedRegisterNotification")
     static let AppDidBecomeActive = Notification.Name("AppDidBecomeActive")
 }
-
-
 
 struct Environment {
     static var settings: [String: Any]? {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol NoConnectionDelegate: class {
+protocol NoConnectionDelegate: AnyObject {
     func retryConnection()
 }
 

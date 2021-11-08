@@ -8,18 +8,19 @@
 
 import UIKit
 
-enum LanguageSelected {
-    case Swift
-    case Rust
-}
-
 @IBDesignable
 class NavDropDown: UIButton {
     
     var showAlertCompletion: ((UIAlertController) -> ())?
-    var didChangeLanguageCompletion: ((LanguageSelected) -> ())?
+    var didChangeLanguageCompletion: ((LanguageType) -> ())?
     
-    var language = LanguageSelected.Rust
+    var language = Config.Common.defaultLanguage {
+        didSet {
+            self.title.text = self.language.rawValue
+            self.rotateArrowWithAnimation()
+            self.didChangeLanguageCompletion?(language)
+        }
+    }
     
     @IBOutlet private weak var title: UILabel!
     @IBOutlet private weak var arrow: UIButton!
@@ -33,55 +34,45 @@ class NavDropDown: UIButton {
         super.init(coder: aDecoder)
         commonInit()
     }
-    
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        commonInit()
-    }
-    
+        
     private func commonInit() {
         guard let view = Bundle(for: NavDropDown.self)
-            .loadNibNamed(String(describing: NavDropDown.self), owner: self, options: nil)?
-            .first as? UIView
-            else { return }
+            .loadNibNamed(String(describing: NavDropDown.self), owner: self, options: nil)?.first as? UIView
+        else {
+            return
+        }
+        
         view.frame = self.bounds
         self.addSubview(view)
         
         // handle first language init
-        switch language {
-        case .Rust:
-            title.text = "Rust"
-        case .Swift:
-            title.text = "Swift"
-        }
+        title.text = language.rawValue
         
-        let gest = UITapGestureRecognizer(target: self, action: #selector(self.rotateArrow))
-        
+        let gest = UITapGestureRecognizer(target: self, action: #selector(self.showLanguagePicker))
         addGestureRecognizer(gest)
     }
     
-    
-    @objc func rotateArrow() {
+    @objc func showLanguagePicker() {
+        
         rotateArrowWithAnimation()
+        
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let swiftAc = UIAlertAction(title: "Swift", style: .default) { (action) in
-            self.title.text = "Swift"
-            self.language = LanguageSelected.Swift
-            self.rotateArrowWithAnimation()
-            self.didChangeLanguageCompletion?(LanguageSelected.Swift)
+        
+        let swiftAc = UIAlertAction(title: "Swift", style: .default) { _ in
+            self.language = .Swift
         }
         
-        let rustAc = UIAlertAction(title: "Rust", style: .default) { (action) in
-            self.title.text = "Rust"
-            self.language = LanguageSelected.Rust
-            self.rotateArrowWithAnimation()
-            self.didChangeLanguageCompletion?(LanguageSelected.Rust)
+        let rustAc = UIAlertAction(title: "Rust", style: .default) { _ in
+            self.language = .Rust
         }
         
-        alert.addAction(swiftAc); alert.addAction(rustAc)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.rotateArrowWithAnimation()
-        }))
+        }
+        
+        alert.addAction(swiftAc)
+        alert.addAction(rustAc)
+        alert.addAction(cancelAction)
         
         self.showAlertCompletion?(alert)
     }
@@ -93,20 +84,3 @@ class NavDropDown: UIButton {
     }
 }
 
-
-// MARK: - UIView Extension -
-
-private extension UIView {
-    
-    /**
-     Rotate a view by specified degrees
-     
-     - parameter angle: angle in degrees
-     */
-    func rotate(angle: CGFloat) {
-        let radians = angle / 180.0 * CGFloat.pi
-        let rotation = self.transform.rotated(by: radians)
-        self.transform = rotation
-    }
-    
-}

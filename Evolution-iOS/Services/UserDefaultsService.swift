@@ -27,7 +27,9 @@ class UserDefaultsService {
     }
     
     var downFontSize: String {
-        get { return UserDefaults.standard.string(forKey: UserDefaultsService.KEYS.DOWN_FONT_SIZE.rawValue) ?? "0.9" }
-        set (newValue) { UserDefaults.standard.set(newValue, forKey: UserDefaultsService.KEYS.DOWN_FONT_SIZE.rawValue) }
+        get { UserDefaults.standard.string(forKey: UserDefaultsService.KEYS.DOWN_FONT_SIZE.rawValue) ?? "0.9" }
+        set { UserDefaults.standard.set(newValue, forKey: UserDefaultsService.KEYS.DOWN_FONT_SIZE.rawValue) }
     }
+    
+    
 }

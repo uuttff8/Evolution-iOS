@@ -11,7 +11,8 @@ import SwiftRichString
 
 
 // MARK: - Cell Delegate
-protocol ProposalSwiftDelegate: class {
+
+protocol ProposalSwiftDelegate: AnyObject {
     func didSelect(person: Person)
     func didSelect(proposal: ProposalSwift)
     func didSelect(implementation: Implementation)
@@ -40,7 +41,9 @@ class ProposalsSwiftTableViewCell: UITableViewCell {
     }
     
     // MARK: - Public properties
+    
     weak open var delegate: ProposalSwiftDelegate?
+    
     public var proposal: ProposalSwift? {
         didSet {
             self.configureElements()
@@ -159,6 +162,7 @@ class ProposalsSwiftTableViewCell: UITableViewCell {
 }
 
 // MARK: - Renders && Style
+
 extension ProposalsSwiftTableViewCell {
     
     fileprivate func styles() -> [Style] {
@@ -284,6 +288,7 @@ extension ProposalsSwiftTableViewCell {
 }
 
 // MARK: - UITextView Delegate
+
 extension ProposalsSwiftTableViewCell: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {

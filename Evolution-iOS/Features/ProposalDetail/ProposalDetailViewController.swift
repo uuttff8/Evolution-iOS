@@ -12,32 +12,31 @@ import Down
 class ProposalDetailViewController: NetViewController, Storyboarded {
     weak var coordinator: ProposalDetailCoordinator?
     
-    var currentLanguage: LanguageSelected?
+    var currentLanguage: LanguageType?
     var proposalId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard coordinator != nil else { return }
         
-        switch currentLanguage {
+        guard let lang = currentLanguage else {
+            return
+        }
+        
+        switch lang {
         case .Rust:
-            
             let navTitle = proposalId?
                 .replacingOccurrences(of: "-", with: " ")
                 .dropFirst(5)
                 .dropLast(3)
+            
             title = String(navTitle ?? "").firstUppercased
         case .Swift:
             title = proposalId
-        default:
-            break
         }
         
-        getProposalDetailText { [weak self] (text) in
+        getProposalDetailText { [weak self] text in
             DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.renderDownInWebView(for: text)
-                
+                self?.renderDownInWebView(for: text)
             }
         }
     }
@@ -48,19 +47,16 @@ class ProposalDetailViewController: NetViewController, Storyboarded {
     }
     
     private func getProposalDetailText(completion: @escaping (String) -> Void) {
-        switch currentLanguage {
+        guard let lang = currentLanguage,
+              let id = proposalId else {
+            return
+        }
+        
+        switch lang {
         case .Swift:
-            MLApi.Swift.proposalDetail(title: proposalId ?? "") { (markdown) in
-                guard let markdown = markdown else { return }
-                completion(markdown)
-            }
+            MLApi.Swift.proposalDetail(id: id, completion: completion)
         case .Rust:
-            MLApi.Rust.proposalDetail(title: proposalId ?? "") { (markdown) in
-                guard let markdown = markdown else { return }
-                completion(markdown)
-            }
-        default:
-            break
+            MLApi.Rust.proposalDetail(id: id, completion: completion)
         }
     }
 }
@@ -69,21 +65,23 @@ private extension ProposalDetailViewController {
     
     func renderDownInWebView(for text: String) {
         do {
-            // TODO: Write Bundle files to Documents directory and accesses to it from Down framework,
-            // because Application can't write data to their bundles (DownView.bundle)
+            guard let bundleUrl = Bundle.main.url(forResource: "DownView", withExtension: "bundle"),
+                  let tempBundle = Bundle(url: bundleUrl)
+            else {
+                self.showError(message: "Debug: cannot find bundle for Down")
+                return
+            }
 
-//            try changeFont(to: "0.9")
-            
-            let downView = try DownView(frame: self.view.bounds, markdownString: text/*, templateBundle: bundle*/, didLoadSuccessfully: {
+            let downView = try DownView(frame: self.view.bounds, markdownString: text, templateBundle: tempBundle, didLoadSuccessfully: {
                 print("Markdown was rendered.")
             })
             
             downView.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview(downView)
-            self.constrain(subview: downView)
-            self.createStatusBarBackgrounds(above: downView)
+            view.addSubview(downView)
+            constrain(subview: downView)
+            createStatusBarBackgrounds(above: downView)
         } catch(let error) {
-            self.showError(message: error.localizedDescription)
+            showError(message: error.localizedDescription)
             print(error.localizedDescription)
         }
     }
@@ -93,11 +91,11 @@ private extension ProposalDetailViewController {
         let classBundle = Bundle(for: DownView.self)
         
         guard let url = classBundle.url(forResource: "DownView", withExtension: "bundle"),
-            let bundle = Bundle(url: url),
-            let path = bundle.url(forResource: "down", withExtension: "min.css", subdirectory: "css")
-            else {
-                self.showError(message: "Debug: cannot find bundle for Down")
-                return
+              let bundle = Bundle(url: url),
+              let path = bundle.url(forResource: "down", withExtension: "min.css", subdirectory: "css")
+        else {
+            self.showError(message: "Debug: cannot find bundle for Down")
+            return
         }
         // Get contents of a file
         let con = try String(contentsOf: path)
@@ -116,10 +114,7 @@ private extension ProposalDetailViewController {
     }
     
     func getDocumentsDirectory() -> URL {
-        // find all possible documents directories for this user
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-
-        // just send back the first one, which ought to be the only one
         return paths[0]
     }
     
@@ -149,10 +144,11 @@ private extension ProposalDetailViewController {
     }
     
     func showError(message: String) {
-        let alertController = UIAlertController(title: "DownView Render Error",
-                                                message: message,
-                                                preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: "DownView Render Error",
+            message: message,
+            preferredStyle: .alert
+        )
         self.present(alertController, animated: true, completion: nil)
     }
-    
 }

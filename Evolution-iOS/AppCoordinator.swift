@@ -8,6 +8,16 @@
 
 import UIKit
 
+enum LanguageType: String {
+    case Swift
+    case Rust
+}
+
+enum LanguageDataType {
+    case RustData(ProposalRust)
+    case SwiftData(ProposalSwift)
+}
+
 class AppCoordinator: Coordinator {
     var navigationController: UINavigationController?    
     var childCoordinators = [Coordinator]()

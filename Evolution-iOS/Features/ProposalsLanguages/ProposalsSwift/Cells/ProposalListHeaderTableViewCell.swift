@@ -14,7 +14,7 @@ final class ProposalListHeaderTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var proposalsCountLabel: UILabel!
     
-    // MARK: - Internal Attributes
+    // MARK: - Properties
     
     var proposalCount: Int = 0 {
         didSet {
@@ -22,16 +22,17 @@ final class ProposalListHeaderTableViewCell: UITableViewCell {
         }
     }
     
-    var header: String? = "" {
+    var header: String = "" {
         didSet {
             proposalsCountLabel.text = header
         }
     }
     
+    // MARK: - Cell lifecycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.backgroundColor = UIColor(named: "SecBgColor")
     }
-    
 }
 

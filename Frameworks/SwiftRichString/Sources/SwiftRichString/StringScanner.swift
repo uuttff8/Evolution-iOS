@@ -185,9 +185,7 @@ public class StringScanner {
 	///
 	/// - Returns: parsed float value
 	/// - Throws: throw an exception .invalidFloat or .eof according to the error
-	public func scanFloat() throws -> Float {
-		let prevConsumed = self.consumed
-		
+	public func scanFloat() throws -> Float {		
 		func throwAndBackBy(length: Int) {
 			self.position = self.string.index(self.position, offsetBy: -length)
 			self.consumed -= length

@@ -15,18 +15,20 @@ private enum ConstantsApiUrl: String {
 
 private protocol MLApiLinksProviderSwift {
     func fetchProposals(completion: @escaping ([ProposalSwift]?) -> Void)
-    func proposalDetail(title: String, completion: @escaping ((String?) -> Void))
+    func proposalDetail(id: String, completion: @escaping ((String) -> Void))
 }
 
 private protocol MLApiLinksProviderRust {
     func fetchProposals(completion: @escaping (ProposalsRust?) -> ())
-    func proposalDetail(title: String, completion: @escaping ((String?) -> Void))
+    func proposalDetail(id: String, completion: @escaping ((String) -> Void))
 }
 
-private protocol MLApiProviderRust: MLApiLinksProviderRust { }
-private protocol MLApiProviderSwift: MLApiLinksProviderSwift { }
+enum MLApi {
+    static let Swift = MLApiImplSwift()
+    static let Rust = MLApiImplRust()
+}
 
-final class MLApiImplRust: MLApiProviderRust {
+final class MLApiImplRust: MLApiLinksProviderRust {
         
     private let httpClient: HTTPClientProvider
     
@@ -48,9 +50,8 @@ final class MLApiImplRust: MLApiProviderRust {
         }
     }
     
-    func proposalDetail(title: String, completion: @escaping ((String?) -> Void)) {
-        let url = URL(string: Config.Base.URL.GitHub.markdownRust(for: title))!
-        print(url)
+    func proposalDetail(id: String, completion: @escaping ((String) -> Void)) {
+        let url = URL(string: Config.Base.URL.GitHub.markdownRust(for: id))!
         
         httpClient.get(url: url) { (res) in
             switch res {
@@ -65,7 +66,7 @@ final class MLApiImplRust: MLApiProviderRust {
 
 }
 
-final class MLApiImplSwift: MLApiProviderSwift {
+final class MLApiImplSwift: MLApiLinksProviderSwift {
 
     private let httpClient: HTTPClientProvider
     
@@ -86,15 +87,14 @@ final class MLApiImplSwift: MLApiProviderSwift {
         }
     }
     
-    func proposalDetail(title: String, completion: @escaping ((String?) -> Void)) {
-        let url = URL(string: Config.Base.URL.Evolution.markdown(for: title))!
-        print(url)
+    func proposalDetail(id: String, completion: @escaping (String) -> Void) {
+        let url = URL(string: Config.Base.URL.Evolution.markdown(for: id))!
         
         httpClient.get(url: url) { (res) in
             switch res {
             case let .success(data):
-                let response: String = String.init(data: data, encoding: .utf8) ?? ""
-                completion(response)
+                guard let markdown = String(data: data, encoding: .utf8) else { return }
+                completion(markdown)
             default:
                 break
             }
@@ -102,16 +102,11 @@ final class MLApiImplSwift: MLApiProviderSwift {
     }
 }
 
-enum MLApi {
-    static let Swift = MLApiImplSwift()
-    static let Rust = MLApiImplRust()
-}
-
 extension MLApi {
     @discardableResult
-    static func requestImage(_ url: String, completion: @escaping (Swift.Result<UIImage, ServerError>) -> Void) -> URLSessionDownloadTask? {
+    static func requestImage(_ url: String, completion: @escaping (Swift.Result<UIImage, ServiceError>) -> Void) -> URLSessionDownloadTask? {
         guard let URL = URL(string: url) else {
-            completion(.failure(ServerError.unknownState))
+            completion(.failure(ServiceError.unknownState))
             return nil
         }
         
@@ -126,7 +121,7 @@ extension MLApi {
             let session = URLSession(configuration: .default)
             let task = session.downloadTask(with: URL) { url, response, error in
                 if let _ = error {
-                    completion(.failure(ServerError.unknownState))
+                    completion(.failure(ServiceError.unknownState))
                 }
                 else if let validURL = url,
                     let response = response,
@@ -138,7 +133,7 @@ extension MLApi {
                     completion(.success(image))
                 }
                 else {
-                    completion(.failure(ServerError.unknownState))
+                    completion(.failure(ServiceError.unknownState))
                 }
             }
             task.resume()
@@ -194,9 +189,13 @@ extension MLApi {
     // MARK: - Base Request
     
     @discardableResult
-    static func dispatch(_ settings: RequestProtocol, useLoadingMonitor: Bool = true, completion: @escaping (Swift.Result<Data, ServerError>) -> Void) -> URLSessionDataTask? {
+    static func dispatch(
+        _ settings: RequestProtocol,
+        useLoadingMonitor: Bool = true,
+        completion: @escaping (Swift.Result<Data, ServiceError>) -> Void
+    ) -> URLSessionDataTask? {
         guard let baseURL = URL(string: settings.url) else {
-            completion(.failure(ServerError.invalidURL(settings.url)))
+            completion(.failure(ServiceError.invalidURL(settings.url)))
             return nil
         }
         
@@ -227,21 +226,17 @@ extension MLApi {
         }
         
         let config = URLSessionConfiguration.default
-        
-//        if useLoadingMonitor {
-//            config.protocolClasses = [LoadingMonitor.self]
-//        }
-        
+                
         let session = URLSession(configuration: config)
         let task = session.dataTask(with: request) { data, _, error in
             if let _ = error {
-                completion(.failure(ServerError.unknownState))
+                completion(.failure(ServiceError.unknownState))
             }
             else if let data = data {
                 completion(.success(data))
             }
             else {
-                completion(.failure(ServerError.unknownState))
+                completion(.failure(ServiceError.unknownState))
             }
         }
         task.resume()

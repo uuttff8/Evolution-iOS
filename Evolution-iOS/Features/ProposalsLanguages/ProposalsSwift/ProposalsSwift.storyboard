@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,10 +20,10 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Hx-Tg-RYK">
                                 <rect key="frame" x="0.0" y="399" width="414" height="497"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProposalsSwiftTableViewCell" focusStyle="custom" rowHeight="176" id="TAB-it-BAz" customClass="ProposalsSwiftTableViewCell" customModule="Evolution_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="176"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="176"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TAB-it-BAz" id="qnU-uG-Byt">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
@@ -115,7 +117,7 @@
                                         <state key="normal" image="icon-filter-off"/>
                                         <state key="selected" image="icon-filter-on"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZF-0G-tJ8">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZF-0G-tJ8">
                                         <rect key="frame" x="16" y="49" width="382" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="8qv-av-zqK"/>
@@ -241,7 +243,8 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Gf4-dP-AwM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5Hx-Tg-RYK" firstAttribute="top" secondItem="IaQ-kI-1xn" secondAttribute="bottom" id="B4F-3T-Mnl"/>
                             <constraint firstItem="IaQ-kI-1xn" firstAttribute="leading" secondItem="a4U-1u-f6R" secondAttribute="leading" id="CNH-bd-IqQ"/>
@@ -251,7 +254,6 @@
                             <constraint firstItem="IaQ-kI-1xn" firstAttribute="top" secondItem="Gf4-dP-AwM" secondAttribute="top" id="vGn-Ld-adf"/>
                             <constraint firstItem="5Hx-Tg-RYK" firstAttribute="leading" secondItem="Gf4-dP-AwM" secondAttribute="leading" id="zYe-or-gYB"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Gf4-dP-AwM"/>
                     </view>
                     <connections>
                         <outlet property="filterHeaderView" destination="IaQ-kI-1xn" id="bkV-HN-ZXn"/>
@@ -275,6 +277,7 @@ Swift and the Swift logo are trademarks of Apple Inc. For more information about
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <viewLayoutGuide key="safeArea" id="5tI-E8-2cV"/>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="5tI-E8-2cV" firstAttribute="bottom" secondItem="pQj-h9-g4A" secondAttribute="bottom" constant="8" id="60E-Z0-WDs"/>
@@ -282,17 +285,22 @@ Swift and the Swift logo are trademarks of Apple Inc. For more information about
                         <constraint firstItem="pQj-h9-g4A" firstAttribute="top" secondItem="6pG-OP-MSb" secondAttribute="top" constant="8" id="VGt-5y-FFu"/>
                         <constraint firstItem="5tI-E8-2cV" firstAttribute="trailing" secondItem="pQj-h9-g4A" secondAttribute="trailing" constant="8" id="rRq-PR-LMV"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="5tI-E8-2cV"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="-133.33333333333334" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="wH1-Eu-zWM"/>
+    </designables>
     <resources>
         <image name="icon-filter-off" width="23" height="23"/>
         <image name="icon-filter-on" width="23" height="23"/>
         <namedColor name="BgColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -10,68 +10,69 @@ import UIKit
 
 class ProposalsContainerViewController: UIViewController, Storyboarded, Containered {
     
+    // MARK: - Properties
+    
+    weak var coordinator: ProposalsContainerCoordinator?
+    
     @IBOutlet weak var navDropDown: NavDropDown! {
         didSet {
-            self.navDropDown.showAlertCompletion = { [weak self] (alert: UIAlertController) in
-                guard let self = self else { return }
-                self.present(alert, animated: true, completion: nil)
+            navDropDown.showAlertCompletion = { [weak self] alert in
+                self?.present(alert, animated: true, completion: nil)
             }
         }
     }
-    weak var coordinator: ProposalsContainerCoordinator?
-    
-    // MARK: - proposals view controllers
+            
     private lazy var proposalsRustVC: ProposalsRustViewController = {
         let coordinatorRust = ProposalsLanguagesCoordinator(navigationController: self.navigationController)
         coordinator?.childCoordinators.append(coordinatorRust)
         coordinatorRust.start()
-        let vc = coordinatorRust.getVcRust()
+        let vc = coordinatorRust.generateRustViewController()
+        
         // Add View Controller as Child View Controller
-        self.add(asChildViewController: vc)
+        add(asChildViewController: vc)
 
         return vc
     }()
 
-    // default view controller to be inited
     private lazy var proposalsSwiftVC: ProposalsSwiftViewController = {
         let coordinatorSwift = ProposalsLanguagesCoordinator(navigationController: self.navigationController)
         coordinator?.childCoordinators.append(coordinatorSwift)
         coordinatorSwift.start()
-        let vc = coordinatorSwift.getVcSwift()
+        let vc = coordinatorSwift.generateSwiftViewController()
+        
         // Add View Controller as Child View Controller
-        self.add(asChildViewController: vc)
+        add(asChildViewController: vc)
         return vc
     }()
     
-    private lazy var noConnectionVC: NoConnectionViewController = {
-        let vc = NoConnectionViewController.instantiate(from: AppStoryboards.NoConnection)
-        return vc
-    }()
+    private lazy var noConnectionVC = NoConnectionViewController.instantiate(from: AppStoryboards.NoConnection)
     
-    // MARK: - Lifecycle -
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let _ = coordinator else { return }
         
-        // default
-        self.add(asChildViewController: self.proposalsRustVC)
+        switch Config.Common.defaultLanguage {
+        case .Swift:
+            add(asChildViewController: proposalsSwiftVC)
+        case .Rust:
+            add(asChildViewController: proposalsRustVC)
+        }
         
+        add(asChildViewController: proposalsSwiftVC)
         languageChangeSubscribe()
     }
     
     // MARK: - Actions
+    
     @IBAction func settingsButtonTapped(_ sender: UIBarButtonItem) {
         coordinator?.goToSettingsScreen()
     }
     
-    // MARK: - Private -
+    // MARK: - Private
+    
     private func languageChangeSubscribe() {
-        self.navDropDown.didChangeLanguageCompletion = { [weak self] (selectedLang: LanguageSelected) in
+        self.navDropDown.didChangeLanguageCompletion = { [weak self] (selectedLang: LanguageType) in
             guard let self = self else { return }
             
             switch selectedLang {

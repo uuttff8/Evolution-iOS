@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - UIView Extension -
+
 extension UIView {
     private class UIViewNamed: UIView {
         var name: String
@@ -120,6 +122,17 @@ extension UIView {
         }
         
         return nil
+    }
+    
+    /**
+     Rotate a view by specified degrees
+     
+     - parameter angle: angle in degrees
+     */
+    func rotate(angle: CGFloat) {
+        let radians = angle / 180.0 * CGFloat.pi
+        let rotation = self.transform.rotated(by: radians)
+        self.transform = rotation
     }
 }
 

@@ -2,11 +2,52 @@
 //  Implementation.swift
 //  Evolution-iOS
 //
-//  Created by uuttff8 on 2/10/20.
-//  Copyright © 2020 Anton Kuzmin. All rights reserved.
+//  Created by uuttff8 on 08.11.2021.
+//  Copyright © 2021 Anton Kuzmin. All rights reserved.
 //
 
 import Foundation
+
+enum ImplementationType: String, Codable {
+    case commit
+    case pull
+}
+
+struct Implementation: Decodable {
+    let type: ImplementationType
+    let id: String
+    let repository: String
+    let account: String
+}
+
+extension Implementation: CustomStringConvertible {
+    var description: String {
+        var content: String = ""
+        
+        switch self.type {
+        case .pull:
+            content = "\(repository)#\(id)"
+            
+        case .commit:
+            let index = id.index(id.startIndex, offsetBy: 7)
+            let hash = id.prefix(upTo: index)
+            
+            content = "\(repository)@\(hash)"
+            
+        }
+        return content
+    }
+    
+    var path: String {
+        return "\(account)/\(repository)/\(type.rawValue)/\(id)"
+    }
+}
+
+extension Implementation: Equatable {
+    public static func == (lhs: Implementation, rhs: Implementation) -> Bool {
+        return lhs.path == rhs.path
+    }
+}
 
 extension Sequence where Self: RangeReplaceableCollection, Self: RandomAccessCollection, Iterator.Element == Implementation {
     func get(by path: String) -> Implementation? {

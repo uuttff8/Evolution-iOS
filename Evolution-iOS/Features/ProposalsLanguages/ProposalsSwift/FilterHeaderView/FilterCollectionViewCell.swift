@@ -23,18 +23,12 @@ class FilterCollectionViewCell: UICollectionViewCell {
             self.statusLabel.selected = isSelected
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
+        
     override func prepareForReuse() {
         super.prepareForReuse()
         
         self.isSelected = false
         self.statusLabel.selected = false
     }
-
 }
 

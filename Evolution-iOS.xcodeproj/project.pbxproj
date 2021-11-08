@@ -68,7 +68,6 @@
 		4EA12A0323FF213A007210E8 /* ProposalsRustViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA12A0223FF213A007210E8 /* ProposalsRustViewModel.swift */; };
 		4ED8C2D123EDFF40005938AF /* ProposalsSwiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D023EDFF40005938AF /* ProposalsSwiftTableViewCell.swift */; };
 		4ED8C2D723F1965E005938AF /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D623F1965E005938AF /* URL.swift */; };
-		4ED8C2DA23F19FEF005938AF /* Implementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2D923F19FEF005938AF /* Implementation.swift */; };
 		4ED8C2DC23F1B1DE005938AF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2DB23F1B1DE005938AF /* Reachability.swift */; };
 		4ED8C2DF23F1B44C005938AF /* NoConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C2DE23F1B44C005938AF /* NoConnectionViewController.swift */; };
 		4ED8C2E323F1B4BF005938AF /* NoConnection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED8C2E223F1B4BF005938AF /* NoConnection.storyboard */; };
@@ -86,6 +85,14 @@
 		4ED8C2FE23F33E28005938AF /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED8C2FD23F33E28005938AF /* FilterCollectionViewCell.xib */; };
 		4ED8C31F23F4974A005938AF /* ProposalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8C31E23F4974A005938AF /* ProposalDetailViewController.swift */; };
 		4ED8C32223F49766005938AF /* ProposalDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED8C32123F49766005938AF /* ProposalDetail.storyboard */; };
+		4EE963A92738B72400284485 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE963A82738B72400284485 /* Person.swift */; };
+		4EE963AC2738B77600284485 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE963AB2738B77600284485 /* Formatters.swift */; };
+		4EE963AE2738B81100284485 /* GithubProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE963AD2738B81100284485 /* GithubProfile.swift */; };
+		4EE963B02738B83900284485 /* Implementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE963AF2738B83900284485 /* Implementation.swift */; };
+		4EE963B22738B87000284485 /* Bug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE963B12738B87000284485 /* Bug.swift */; };
+		4EE963B42738B89800284485 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE963B32738B89800284485 /* State.swift */; };
+		4EE963B62738B8C700284485 /* Warning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE963B52738B8C700284485 /* Warning.swift */; };
+		4EE963B82738B99500284485 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE963B72738B99500284485 /* Status.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,7 +179,6 @@
 		4EA12A0223FF213A007210E8 /* ProposalsRustViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsRustViewModel.swift; sourceTree = "<group>"; };
 		4ED8C2D023EDFF40005938AF /* ProposalsSwiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsSwiftTableViewCell.swift; sourceTree = "<group>"; };
 		4ED8C2D623F1965E005938AF /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
-		4ED8C2D923F19FEF005938AF /* Implementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Implementation.swift; sourceTree = "<group>"; };
 		4ED8C2DB23F1B1DE005938AF /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		4ED8C2DE23F1B44C005938AF /* NoConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionViewController.swift; sourceTree = "<group>"; };
 		4ED8C2E223F1B4BF005938AF /* NoConnection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoConnection.storyboard; sourceTree = "<group>"; };
@@ -190,6 +196,14 @@
 		4ED8C2FD23F33E28005938AF /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		4ED8C31E23F4974A005938AF /* ProposalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalDetailViewController.swift; sourceTree = "<group>"; };
 		4ED8C32123F49766005938AF /* ProposalDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProposalDetail.storyboard; sourceTree = "<group>"; };
+		4EE963A82738B72400284485 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		4EE963AB2738B77600284485 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		4EE963AD2738B81100284485 /* GithubProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubProfile.swift; sourceTree = "<group>"; };
+		4EE963AF2738B83900284485 /* Implementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Implementation.swift; sourceTree = "<group>"; };
+		4EE963B12738B87000284485 /* Bug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bug.swift; sourceTree = "<group>"; };
+		4EE963B32738B89800284485 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		4EE963B52738B8C700284485 /* Warning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warning.swift; sourceTree = "<group>"; };
+		4EE963B72738B99500284485 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,11 +368,12 @@
 		4E290FCC23E15EAB008A5E15 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4EE963AA2738B73400284485 /* Swift */,
 				4E290FCD23E15EC9008A5E15 /* RustProposals.swift */,
-				4E61816523EB43B20059DEA3 /* SwiftProposals.swift */,
 				4ED8C2F723F325B3005938AF /* SwiftProposals+Ext.swift */,
 				4E61816723EB451B0059DEA3 /* Config.swift */,
 				4EA129CB23F96815007210E8 /* Section.swift */,
+				4EE963AB2738B77600284485 /* Formatters.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -385,7 +400,6 @@
 			children = (
 				4E61816A23EB45DD0059DEA3 /* String.swift */,
 				4ED8C2D623F1965E005938AF /* URL.swift */,
-				4ED8C2D923F19FEF005938AF /* Implementation.swift */,
 				4ED8C2E923F30CD8005938AF /* UICollectionView+Ext.swift */,
 				4ED8C2F123F30F33005938AF /* UIColor+Ext.swift */,
 				4ED8C2F323F30FFC005938AF /* UIKit+Ext.swift */,
@@ -419,9 +433,9 @@
 		4E61817123EC76550059DEA3 /* ProposalsContainer */ = {
 			isa = PBXGroup;
 			children = (
+				4E61817623EC77270059DEA3 /* ProposalsContainerCoordinator.swift */,
 				4E61817223EC76800059DEA3 /* ProposalsContainerViewController.swift */,
 				4E61817423EC768B0059DEA3 /* ProposalsContainer.storyboard */,
-				4E61817623EC77270059DEA3 /* ProposalsContainerCoordinator.swift */,
 			);
 			path = ProposalsContainer;
 			sourceTree = "<group>";
@@ -574,11 +588,26 @@
 		4ED8C32023F49756005938AF /* ProposalDetail */ = {
 			isa = PBXGroup;
 			children = (
+				4E791DFE23F49C21000A8495 /* ProposalDetailCoordinator.swift */,
 				4ED8C31E23F4974A005938AF /* ProposalDetailViewController.swift */,
 				4ED8C32123F49766005938AF /* ProposalDetail.storyboard */,
-				4E791DFE23F49C21000A8495 /* ProposalDetailCoordinator.swift */,
 			);
 			path = ProposalDetail;
+			sourceTree = "<group>";
+		};
+		4EE963AA2738B73400284485 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				4E61816523EB43B20059DEA3 /* SwiftProposals.swift */,
+				4EE963A82738B72400284485 /* Person.swift */,
+				4EE963AD2738B81100284485 /* GithubProfile.swift */,
+				4EE963AF2738B83900284485 /* Implementation.swift */,
+				4EE963B12738B87000284485 /* Bug.swift */,
+				4EE963B32738B89800284485 /* State.swift */,
+				4EE963B52738B8C700284485 /* Warning.swift */,
+				4EE963B72738B99500284485 /* Status.swift */,
+			);
+			path = Swift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -649,7 +678,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "Anton Kuzmin";
 				TargetAttributes = {
 					4E290F7223DDEF34008A5E15 = {
@@ -755,14 +784,15 @@
 			files = (
 				4E290FC123DE098E008A5E15 /* BaseCoordinator.swift in Sources */,
 				4EA129D223FAE4E9007210E8 /* SettingsViewModel.swift in Sources */,
+				4EE963B22738B87000284485 /* Bug.swift in Sources */,
 				4E290FB723DDF5D2008A5E15 /* Storyboaded.swift in Sources */,
 				4EA129CE23F96E07007210E8 /* CustomSubtitleTableViewCell.swift in Sources */,
 				4E290FB023DDF274008A5E15 /* BaseViewController.swift in Sources */,
+				4EE963AC2738B77600284485 /* Formatters.swift in Sources */,
 				4ED8C31F23F4974A005938AF /* ProposalDetailViewController.swift in Sources */,
 				4ED8C2ED23F30D0D005938AF /* DGCollectionViewLeftAlignFlowLayout.swift in Sources */,
 				4E61815A23E85EB80059DEA3 /* Buttons.swift in Sources */,
 				4EA129F423FC538F007210E8 /* ProfileCoordinator.swift in Sources */,
-				4ED8C2DA23F19FEF005938AF /* Implementation.swift in Sources */,
 				4EA129BC23F81972007210E8 /* ProposalsLanguagesCoordinator.swift in Sources */,
 				4E61816823EB451B0059DEA3 /* Config.swift in Sources */,
 				4ED8C2F223F30F33005938AF /* UIColor+Ext.swift in Sources */,
@@ -777,12 +807,15 @@
 				4E290FCE23E15EC9008A5E15 /* RustProposals.swift in Sources */,
 				4ED8C2E823F30C99005938AF /* FilterCollectionViewCell.swift in Sources */,
 				4EA12A0323FF213A007210E8 /* ProposalsRustViewModel.swift in Sources */,
+				4EE963B62738B8C700284485 /* Warning.swift in Sources */,
 				4E61816E23EB46A70059DEA3 /* Protocols.swift in Sources */,
 				4E290F8123DDEF34008A5E15 /* Evolution_iOS.xcdatamodeld in Sources */,
 				4ED8C2DC23F1B1DE005938AF /* Reachability.swift in Sources */,
 				4EA129D423FAE584007210E8 /* DynamicValue.swift in Sources */,
 				4EA129E223FB2C3C007210E8 /* AboutDetailOpenSourceViewController.swift in Sources */,
 				4EA129DF23FB22D5007210E8 /* AboutOpenSourceViewModel.swift in Sources */,
+				4EE963B02738B83900284485 /* Implementation.swift in Sources */,
+				4EE963A92738B72400284485 /* Person.swift in Sources */,
 				4EA129DD23FB1FF6007210E8 /* AboutOpenSourceCoordinator.swift in Sources */,
 				4E61818023EC80980059DEA3 /* ProposalsSwiftViewController.swift in Sources */,
 				4ED8C2F423F30FFC005938AF /* UIKit+Ext.swift in Sources */,
@@ -795,7 +828,9 @@
 				4EA129E423FB2C52007210E8 /* AboutDetailOpenSourceCoordinator.swift in Sources */,
 				4ED8C2EA23F30CD8005938AF /* UICollectionView+Ext.swift in Sources */,
 				4E61816B23EB45DD0059DEA3 /* String.swift in Sources */,
+				4EE963AE2738B81100284485 /* GithubProfile.swift in Sources */,
 				4E61817323EC76800059DEA3 /* ProposalsContainerViewController.swift in Sources */,
+				4EE963B42738B89800284485 /* State.swift in Sources */,
 				4EA129D723FB1CBF007210E8 /* AboutOpenSourceViewController.swift in Sources */,
 				4E61816423E9E5AA0059DEA3 /* ProposalsRustTableViewCell.swift in Sources */,
 				4ED8C2F623F31494005938AF /* ProposalListHeaderTableViewCell.swift in Sources */,
@@ -806,6 +841,7 @@
 				4ED8C2F023F30E7E005938AF /* FilterHeaderView.swift in Sources */,
 				4EA129CC23F96815007210E8 /* Section.swift in Sources */,
 				4EA129B923F80D4D007210E8 /* UserDefaultsService.swift in Sources */,
+				4EE963B82738B99500284485 /* Status.swift in Sources */,
 				4E290FC423DF7B0F008A5E15 /* NavDropDown.swift in Sources */,
 				4E61817A23EC7C9F0059DEA3 /* Containered.swift in Sources */,
 				4EA129E723FB2EE6007210E8 /* BaseNavigationController.swift in Sources */,
@@ -884,6 +920,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -944,6 +981,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
